@@ -1,571 +1,1166 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="theme-color" content="#080808">
-
-    <meta name="description" content="75K 2027 - Longas Distâncias, Grandes Histórias. Um desafio de ultramaratona, superação e resistência.">
-
-    <title>75K 2027 | Longas Distâncias, Grandes Histórias</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #080808;
-            color: #ffffff;
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-        }
-
-        :root {
-            --gold: #d4af37;
-            --gold-light: #f5d76e;
-            --black: #080808;
-            --dark: #111111;
-            --gray: #999999;
-        }
-
-        /* MENU */
-
-        header {
-            width: 100%;
-            padding: 22px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(8, 8, 8, 0.96);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            color: var(--gold);
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--gold);
-        }
-
-        /* CAPA PRINCIPAL */
-
-        .hero {
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    rgba(212, 175, 55, 0.13),
-                    transparent 65%
-                ),
-                linear-gradient(180deg, #080808, #151515);
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .tag {
-            color: var(--gold);
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(38px, 7vw, 76px);
-            line-height: 1.1;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero h2 {
-            color: var(--gold-light);
-            font-size: clamp(55px, 10vw, 110px);
-            font-weight: 900;
-            letter-spacing: 5px;
-            line-height: 1.2;
-            margin: 15px 0;
-        }
-
-        .hero p {
-            color: #cccccc;
-            font-size: 18px;
-            max-width: 650px;
-            margin: 25px auto 35px;
-        }
-
-        .gold-line {
-            width: 100px;
-            height: 3px;
-            background: var(--gold);
-            margin: 25px auto;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 35px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background: var(--gold);
-            color: #080808;
-        }
-
-        /* SEÇÕES */
-
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .section-title span {
-            color: var(--gold);
-            font-size: 12px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-
-        .section-title h2 {
-            font-size: clamp(30px, 5vw, 45px);
-            margin-top: 12px;
-        }
-
-        .section-title h2 strong {
-            color: var(--gold);
-        }
-
-        /* SOBRE */
-
-        .about {
-            background: #101010;
-        }
-
-        .about-content {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            color: #bbbbbb;
-            font-size: 17px;
-            margin-bottom: 20px;
-        }
-
-        .about-highlight {
-            color: var(--gold);
-            font-size: 23px;
-            font-weight: bold;
-            margin-top: 35px;
-        }
-
-        /* CONCEITO */
-
-        .concept {
-            background: #080808;
-        }
-
-        .concept-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .concept-card {
-            background: #151515;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            padding: 40px 25px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .concept-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--gold);
-        }
-
-        .concept-card .number {
-            color: var(--gold);
-            font-size: 38px;
-            font-weight: 900;
-            margin-bottom: 15px;
-        }
-
-        .concept-card h3 {
-            font-size: 19px;
-            margin-bottom: 15px;
-        }
-
-        .concept-card p {
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        /* FRASE */
-
-        .quote {
-            background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.85),
-                    rgba(0, 0, 0, 0.85)
-                ),
-                #242016;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .quote h2 {
-            color: var(--gold);
-            font-size: clamp(27px, 5vw, 48px);
-            max-width: 900px;
-            margin: auto;
-            line-height: 1.3;
-        }
-
-        .quote p {
-            margin-top: 25px;
-            color: #cccccc;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        /* INFORMAÇÕES */
-
-        .information {
-            background: #111111;
-            text-align: center;
-        }
-
-        .information p {
-            color: #bbbbbb;
-            font-size: 16px;
-            max-width: 650px;
-            margin: auto;
-        }
-
-        .information .button {
-            margin-top: 30px;
-        }
-
-        /* RODAPÉ */
-
-        footer {
-            background: #050505;
-            text-align: center;
-            padding: 45px 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        footer h2 {
-            color: var(--gold);
-            font-size: 25px;
-            letter-spacing: 3px;
-        }
-
-        footer p {
-            color: #777777;
-            font-size: 12px;
-            margin-top: 12px;
-        }
-
-        .footer-slogan {
-            color: #cccccc;
-            margin-top: 15px;
-            letter-spacing: 2px;
-        }
-
-        /* CELULAR */
-
-        @media (max-width: 768px) {
-
-            header {
-                flex-direction: column;
-                gap: 18px;
-            }
-
-            nav {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav a {
-                font-size: 11px;
-            }
-
-            .hero {
-                min-height: 75vh;
-            }
-
-            .concept-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 7%;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ultramaratona 75K Recife/Pombos — Longas distâncias. Grandes histórias.">
+<title>75K 2027 | Recife a Pombos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #d5ad62;
+  --gold-light: #f0d69b;
+  --black: #080808;
+  --dark: #111;
+  --gray: #aaa;
+  --white: #f5f5f5;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--black);
+  color:var(--white);
+  font-family:'Montserrat',sans-serif;
+  line-height:1.7;
+}
+
+a { color:inherit; text-decoration:none; }
+
+.container {
+  width:min(1160px,90%);
+  margin:auto;
+}
+
+.gold { color:var(--gold); }
+
+.eyebrow {
+  color:var(--gold);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+h1,h2,h3 {
+  font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;
+  line-height:1.05;
+}
+
+header {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  padding:20px 0;
+  border-bottom:1px solid #ffffff22;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.logo {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span { color:var(--gold); }
+
+nav {
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+nav a {
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#ddd;
+}
+
+nav a:hover { color:var(--gold); }
+
+.nav-cta {
+  color:var(--gold);
+  border:1px solid var(--gold);
+  padding:9px 14px;
+}
+
+.btn {
+  display:inline-block;
+  padding:14px 23px;
+  background:var(--gold);
+  color:#111;
+  border:1px solid var(--gold);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover {
+  background:transparent;
+  color:var(--gold);
+}
+
+.btn-outline {
+  background:transparent;
+  color:var(--gold);
+}
+
+section { padding:90px 0; }
+
+.hero {
+  min-height:760px;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.45)),
+    linear-gradient(0deg,#080808,transparent 35%),
+    url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=85') center/cover;
+}
+
+.hero-content {
+  max-width:750px;
+  padding-top:90px;
+}
+
+.hero h1 {
+  font-size:clamp(80px,13vw,150px);
+  margin:20px 0;
+  font-weight:900;
+  line-height:.9;
+}
+
+.hero h1 span {
+  display:block;
+  color:var(--gold);
+}
+
+.hero p {
+  max-width:560px;
+  color:#ddd;
+  font-size:14px;
+  margin-bottom:28px;
+}
+
+.hero-buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.hero-stats {
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  margin-top:55px;
+}
+
+.hero-stats strong {
+  display:block;
+  color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:38px;
+}
+
+.hero-stats small {
+  color:#ccc;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.heading {
+  max-width:720px;
+  margin-bottom:40px;
+}
+
+.heading h2 {
+  font-size:clamp(43px,7vw,70px);
+  margin:15px 0;
+}
+
+.heading p {
+  color:var(--gray);
+  font-size:13px;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.about-grid p {
+  color:var(--gray);
+  font-size:13px;
+  margin:15px 0;
+}
+
+.about-image {
+  min-height:430px;
+  background:url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1100&q=85') center/cover;
+}
+
+.concept { background:#111; }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card {
+  padding:30px;
+  background:#191919;
+  border:1px solid #303030;
+}
+
+.card-number {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:42px;
+  color:var(--gold);
+}
+
+.card h3 {
+  font-size:27px;
+  margin:12px 0;
+}
+
+.card p {
+  font-size:12px;
+  color:var(--gray);
+}
+
+.route {
+  background:
+    linear-gradient(#080808df,#080808f5),
+    url('https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=1600&q=85') center/cover;
+}
+
+.route-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.route-point {
+  border-top:2px solid var(--gold);
+  padding-top:17px;
+}
+
+.route-point strong {
+  display:block;
+  color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:32px;
+}
+
+.route-point span {
+  color:#ccc;
+  font-size:11px;
+}
+
+.info-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.info-box {
+  padding:23px;
+  background:#171717;
+  border-bottom:2px solid var(--gold);
+}
+
+.info-box small {
+  color:#aaa;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.info-box strong {
+  display:block;
+  color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;
+  margin-top:8px;
+}
+
+.regulation { background:#111; }
+
+.notice {
+  padding:18px;
+  margin-bottom:30px;
+  border-left:3px solid var(--gold);
+  background:#d5ad6215;
+  color:#e6d5b6;
+  font-size:12px;
+}
+
+.regulation details {
+  border-bottom:1px solid #333;
+  padding:18px 0;
+}
+
+.regulation summary {
+  cursor:pointer;
+  color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:24px;
+  text-transform:uppercase;
+}
+
+.regulation details p,
+.regulation details li {
+  color:#bbb;
+  font-size:12px;
+  margin:12px 0;
+}
+
+.regulation details ul { padding-left:20px; }
+
+.safety-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.safety-card {
+  padding:28px;
+  background:#171717;
+  border:1px solid #383838;
+}
+
+.safety-card h3 {
+  color:var(--gold);
+  font-size:27px;
+  margin-bottom:12px;
+}
+
+.safety-card p,
+.safety-card li {
+  color:#bbb;
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.safety-card ul { padding-left:20px; }
+
+.registration {
+  background:
+    linear-gradient(#080808ed,#080808f5),
+    url('https://images.unsplash.com/photo-1502904550040-7534597429ae?auto=format&fit=crop&w=1600&q=85') center/cover;
+  text-align:center;
+}
+
+.registration h2 {
+  font-size:clamp(48px,8vw,82px);
+  margin:20px 0;
+}
+
+.registration p {
+  max-width:650px;
+  margin:0 auto 25px;
+  color:#ccc;
+  font-size:13px;
+}
+
+/* FORMULÁRIO */
+
+.registration-form-section {
+  background:#101010;
+}
+
+.form-wrapper {
+  max-width:900px;
+  margin:auto;
+}
+
+.form-intro {
+  margin-bottom:30px;
+  color:#aaa;
+  font-size:13px;
+}
+
+.form-card {
+  background:#171717;
+  border:1px solid #333;
+  padding:35px;
+}
+
+.form-section-title {
+  color:var(--gold);
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:27px;
+  margin:28px 0 17px;
+  padding-bottom:10px;
+  border-bottom:1px solid #333;
+}
+
+.form-section-title:first-child { margin-top:0; }
+
+.form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.field {
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full { grid-column:1/-1; }
+
+.field label {
+  color:#ddd;
+  font-size:11px;
+  font-weight:700;
+}
+
+.field label span { color:var(--gold); }
+
+.field input,
+.field select,
+.field textarea {
+  width:100%;
+  background:#0d0d0d;
+  border:1px solid #414141;
+  color:white;
+  padding:13px;
+  border-radius:0;
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:var(--gold);
+}
+
+.field select option { background:#111; }
+
+.field textarea {
+  resize:vertical;
+  min-height:85px;
+}
+
+.form-note {
+  color:#999;
+  font-size:10px;
+  margin-top:7px;
+}
+
+.pdf-box {
+  padding:20px;
+  margin:25px 0;
+  background:#0e0e0e;
+  border:1px solid #4a3b23;
+}
+
+.pdf-box h3 {
+  color:var(--gold);
+  font-size:23px;
+  margin-bottom:8px;
+}
+
+.pdf-box p {
+  color:#bbb;
+  font-size:11px;
+  margin-bottom:15px;
+}
+
+.check-area {
+  margin:15px 0;
+  padding:15px;
+  background:#101010;
+  border:1px solid #333;
+}
+
+.check-line {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:12px 0;
+  color:#ccc;
+  font-size:11px;
+}
+
+.check-line input {
+  margin-top:3px;
+  accent-color:var(--gold);
+  flex-shrink:0;
+}
+
+.submit-area {
+  margin-top:28px;
+  text-align:center;
+}
+
+.submit-area button {
+  width:100%;
+  max-width:480px;
+  font-family:'Montserrat',sans-serif;
+  font-size:12px;
+}
+
+.submit-note {
+  max-width:600px;
+  margin:15px auto 0;
+  color:#888;
+  font-size:10px;
+}
+
+footer {
+  padding:40px 0;
+  background:#050505;
+  border-top:1px solid #292929;
+}
+
+.footer-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+footer p {
+  color:#777;
+  font-size:10px;
+}
+
+.footer-tagline {
+  color:var(--gold);
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+@media(max-width:850px) {
+  nav { gap:12px; }
+  nav a { font-size:9px; }
+  .about-grid { grid-template-columns:1fr; }
+  .info-grid { grid-template-columns:1fr 1fr; }
+  .route-grid { grid-template-columns:1fr 1fr; }
+}
+
+@media(max-width:600px) {
+  header { padding:13px 0; }
+  .nav { flex-direction:column; }
+  nav {
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+  nav a { font-size:8px; }
+  .hero { min-height:730px; }
+  .hero h1 { font-size:82px; }
+  section { padding:65px 0; }
+  .cards { grid-template-columns:1fr; }
+  .safety-grid { grid-template-columns:1fr; }
+  .form-grid { grid-template-columns:1fr; }
+  .field.full { grid-column:auto; }
+  .form-card { padding:20px 15px; }
+  .info-grid { grid-template-columns:1fr 1fr; }
+  .footer-content {
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">75K<span>.</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#desafio">O desafio</a>
+      <a href="#percurso">Percurso</a>
+      <a href="#regulamento">Regulamento</a>
+      <a href="#inscricao" class="nav-cta">Inscrição</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Uma jornada além dos limites</span>
+      <h1>75<span>KM</span></h1>
+      <p>
+        Recife a Pombos. Uma jornada de resistência, coragem e superação.
+        Mais do que uma ultramaratona, uma experiência para quem acredita
+        na força de cada quilômetro.
+      </p>
+      <div class="hero-buttons">
+        <a href="#inscricao" class="btn">Quero me inscrever</a>
+        <a href="#regulamento" class="btn btn-outline">Ver regulamento</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>75 KM</strong><small>Distância aproximada</small></div>
+        <div><strong>12H</strong><small>Tempo limite previsto</small></div>
+        <div><strong>2027</strong><small>Edição planejada</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="desafio">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow">Longas distâncias. Grandes histórias.</span>
+      <h2 style="font-size:clamp(42px,6vw,65px);margin:15px 0;">
+        Uma experiência que vai <span class="gold">além da corrida.</span>
+      </h2>
+      <p>
+        Existem desafios que não são medidos apenas em quilômetros.
+        São medidos em coragem, persistência e na capacidade de continuar
+        quando o corpo pede para parar.
+      </p>
+      <p>
+        A Ultramaratona 75K Recife/Pombos nasce com o propósito de reunir
+        atletas apaixonados pelas longas distâncias em uma jornada
+        de resistência e superação.
+      </p>
+    </div>
+    <div class="about-image" role="img" aria-label="Imagem ilustrativa de corrida"></div>
+  </div>
+</section>
+
+<section class="concept">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">O espírito dos 75K</span>
+      <h2>Mais que uma prova.<br><span class="gold">Uma história.</span></h2>
+      <p>Uma experiência construída para celebrar a resistência humana.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-number">01</div>
+        <h3>Superação</h3>
+        <p>Enfrentar os próprios limites e descobrir a força que existe em cada passo.</p>
+      </article>
+      <article class="card">
+        <div class="card-number">02</div>
+        <h3>Experiência</h3>
+        <p>Compartilhar uma jornada única com atletas apaixonados pelas longas distâncias.</p>
+      </article>
+      <article class="card">
+        <div class="card-number">03</div>
+        <h3>Conquista</h3>
+        <p>Cruzar a linha de chegada e levar para sempre uma história para contar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="route" id="percurso">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">O caminho da superação</span>
+      <h2>Recife <span class="gold">a Pombos.</span></h2>
+      <p>Uma jornada aproximada de 75 quilômetros.</p>
+    </div>
+    <div class="route-grid">
+      <div class="route-point"><strong>KM 00</strong><span>Marco Zero — Recife</span></div>
+      <div class="route-point"><strong>KM 20</strong><span>Jaboatão — PC 1</span></div>
+      <div class="route-point"><strong>KM 37,5</strong><span>Moreno — PC 2</span></div>
+      <div class="route-point"><strong>KM 58–75</strong><span>Vitória de Santo Antão e Pombos</span></div>
+    </div>
+    <p class="form-note" style="margin-top:25px;">
+      Percurso e pontos de controle sujeitos à validação técnica,
+      operacional e às autorizações necessárias.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Informações gerais</span>
+      <h2>O desafio em <span class="gold">números.</span></h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-box"><small>Distância</small><strong>75 KM</strong></div>
+      <div class="info-box"><small>Tempo limite previsto</small><strong>12 HORAS</strong></div>
+      <div class="info-box"><small>Partida</small><strong>RECIFE</strong></div>
+      <div class="info-box"><small>Chegada</small><strong>POMBOS/PE</strong></div>
+    </div>
+    <p class="form-note">Data, valores e confirmação da prova serão divulgados após validação.</p>
+  </div>
+</section>
+
+<section class="regulation" id="regulamento">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Documento da prova</span>
+      <h2>Regulamento <span class="gold">75K.</span></h2>
+      <p>Consulte as regras preliminares do evento.</p>
+    </div>
+
+    <div class="notice">
+      <strong>REGULAMENTO PRELIMINAR V1.0 — RASCUNHO PARA VALIDAÇÃO.</strong>
+      As informações poderão ser ajustadas antes da publicação da versão oficial.
+    </div>
+
+    <details open>
+      <summary>1. Da prova e finalidade</summary>
+      <p>
+        A Ultramaratona 75K Recife/Pombos é um desafio de corrida de longa
+        distância, planejado para ligar o Marco Zero do Recife ao município
+        de Pombos/PE, em percurso aproximado de 75 km.
+      </p>
+      <p>
+        A prova terá caráter competitivo e de superação pessoal, com respeito
+        às leis de trânsito, ao fair play e às regras de segurança.
+      </p>
+    </details>
+
+    <details>
+      <summary>2. Categorias e modalidades</summary>
+      <ul>
+        <li>Solo Masculino e Feminino: percurso individual de 75 km.</li>
+        <li>Revezamento Duplas: dois atletas dividem o percurso.</li>
+        <li>Revezamento Quartetos: quatro atletas dividem os trechos.</li>
+        <li>Revezamento Octetos: oito atletas dividem os trechos.</li>
+      </ul>
+      <p>Os pontos de troca serão definidos pela organização.</p>
+    </details>
+
+    <details>
+      <summary>3. Horários previstos</summary>
+      <ul>
+        <li>Solo: 03h30.</li>
+        <li>Revezamentos: 04h15.</li>
+      </ul>
+      <p>Horários preliminares, sujeitos à validação operacional.</p>
+    </details>
+
+    <details>
+      <summary>4. Segurança no percurso</summary>
+      <p>
+        A circulação dos atletas em trechos rodoviários dependerá de
+        autorização e de plano operacional de segurança aprovado pelos
+        órgãos competentes. A posição de corrida, sinalização e procedimentos
+        deverão seguir as determinações oficiais aplicáveis.
+      </p>
+      <p>
+        O atleta deverá obedecer às orientações da organização, dos fiscais
+        e das autoridades de trânsito.
+      </p>
+    </details>
+
+    <details>
+      <summary>5. Equipamentos obrigatórios previstos</summary>
+      <ul>
+        <li>Colete refletivo durante o período de baixa luminosidade.</li>
+        <li>Lanterna para a categoria Solo e primeiro atleta de cada equipe.</li>
+        <li>Mochila ou cinto de hidratação com capacidade mínima prevista de 500 ml.</li>
+      </ul>
+      <p>A lista definitiva será publicada no regulamento oficial.</p>
+    </details>
+
+    <details>
+      <summary>6. Apoio e veículos</summary>
+      <p>
+        A logística de veículos de apoio, pontos de parada, hidratação
+        e transporte das equipes será definida pela organização,
+        respeitando as condições de segurança e as autorizações aplicáveis.
+      </p>
+    </details>
+
+    <details>
+      <summary>7. Tempo limite e pontos de corte</summary>
+      <p>Tempo limite global previsto: 12 horas.</p>
+      <ul>
+        <li>PC 1 — Jaboatão, km 20: 3 horas, horário previsto 06h30.</li>
+        <li>PC 2 — Moreno, km 37,5: 6 horas, horário previsto 09h30.</li>
+        <li>PC 3 — Vitória de Santo Antão, km 58: 9h15, horário previsto 12h45.</li>
+        <li>Chegada — Pombos, km 75: 12 horas, horário previsto 15h30.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>8. Penalidades</summary>
+      <p>
+        Poderá haver desclassificação por descumprimento das regras de
+        segurança, uso de transporte não autorizado, desrespeito às
+        orientações oficiais ou ultrapassagem dos pontos de corte.
+      </p>
+    </details>
+
+    <details>
+      <summary>9. Saúde e documentação</summary>
+      <ul>
+        <li>Parecer cardiológico conforme critérios e validade definidos pela organização.</li>
+        <li>Termo individual de responsabilidade e ciência de riscos preenchido e assinado.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>10. Disposições finais</summary>
+      <p>
+        A participação dependerá do cumprimento do regulamento definitivo,
+        da documentação exigida e dos procedimentos de segurança.
+        Casos não previstos serão avaliados pela organização, conforme
+        a legislação aplicável.
+      </p>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Antes de encarar os 75 quilômetros</span>
+      <h2>Saúde, preparo e <span class="gold">responsabilidade.</span></h2>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h3>01. Parecer cardiológico</h3>
+        <p>
+          Todos os participantes deverão apresentar parecer cardiológico
+          emitido por médico habilitado, conforme os critérios e o prazo
+          de validade que serão definidos pela organização.
+        </p>
+      </div>
+      <div class="safety-card">
+        <h3>02. Termo de responsabilidade</h3>
+        <p>
+          Cada atleta deverá ler, preencher e assinar o termo individual
+          de ciência de riscos e responsabilidade antes da participação.
+        </p>
+        <p>
+          O documento registra a ciência dos riscos, mas não elimina
+          responsabilidades legais da organização.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIÇÃO -->
+
+<section class="registration" id="inscricao">
+  <div class="container">
+    <span class="eyebrow">Sua próxima grande história começa aqui</span>
+    <h2>75 KM.<br><span class="gold">Uma história para contar.</span></h2>
+    <p>
+      Preencha seus dados e envie sua solicitação de inscrição
+      diretamente para a organização pelo WhatsApp.
+    </p>
+    <a href="#formulario" class="btn">Preencher inscrição</a>
+  </div>
+</section>
+
+<section class="registration-form-section" id="formulario">
+  <div class="container form-wrapper">
+
+    <div class="heading">
+      <span class="eyebrow">Inscrição 75K 2027</span>
+      <h2>Faça parte <span class="gold">dessa história.</span></h2>
+      <p>
+        Preencha todos os campos obrigatórios com atenção.
+        Seus dados serão organizados em uma mensagem para o WhatsApp
+        da organização.
+      </p>
+    </div>
+
+    <div class="form-card">
+      <form id="registrationForm">
+
+        <h3 class="form-section-title">01. Dados pessoais</h3>
+
+        <div class="form-grid">
+
+          <div class="field full">
+            <label for="nome">Nome completo <span>*</span></label>
+            <input id="nome" name="nome" type="text" required maxlength="100" autocomplete="name" placeholder="Seu nome completo">
+          </div>
+
+          <div class="field">
+            <label for="cpf">CPF <span>*</span></label>
+            <input id="cpf" name="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00">
+          </div>
+
+          <div class="field">
+            <label for="nascimento">Data de nascimento <span>*</span></label>
+            <input id="nascimento" name="nascimento" type="date" required>
+          </div>
+
+          <div class="field">
+            <label for="telefone">WhatsApp do atleta <span>*</span></label>
+            <input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail <span>*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="seuemail@email.com">
+          </div>
+
+          <div class="field">
+            <label for="cidade">Cidade <span>*</span></label>
+            <input id="cidade" name="cidade" type="text" required placeholder="Sua cidade">
+          </div>
+
+          <div class="field">
+            <label for="estado">Estado <span>*</span></label>
+            <select id="estado" name="estado" required>
+              <option value="">Selecione</option>
+              <option>PE</option><option>PB</option><option>AL</option>
+              <option>RN</option><option>CE</option><option>BA</option>
+              <option>SE</option><option>PI</option><option>MA</option>
+              <option>SP</option><option>RJ</option><option>MG</option>
+              <option>ES</option><option>PR</option><option>SC</option>
+              <option>RS</option><option>DF</option><option>GO</option>
+              <option>MT</option><option>MS</option><option>TO</option>
+              <option>PA</option><option>AP</option><option>AM</option>
+              <option>RR</option><option>RO</option><option>AC</option>
+              <option>Outra localidade</option>
+            </select>
+          </div>
 
-        <div class="logo">75K</div>
-
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#sobre">O Desafio</a>
-            <a href="#conceito">Conceito</a>
-            <a href="#informacoes">Informações</a>
-        </nav>
-
-    </header>
-
-    <main>
-
-        <section class="hero" id="inicio">
-
-            <div class="hero-content">
-
-                <div class="tag">
-                    Desafio de Ultramaratona
-                </div>
-
-                <h1>
-                    Longas Distâncias,
-                    <span>Grandes Histórias</span>
-                </h1>
-
-                <div class="gold-line"></div>
-
-                <h2>75K</h2>
-
-                <h3 style="color: #d4af37; letter-spacing: 8px;">
-                    2027
-                </h3>
-
-                <p>
-                    Mais que uma prova, um encontro com seus limites
-                    e com grandes histórias.
-                </p>
-
-                <a href="#sobre" class="button">
-                    Conheça o desafio
-                </a>
-
-            </div>
-
-        </section>
-
-        <section class="about" id="sobre">
-
-            <div class="section-title">
-
-                <span>O propósito</span>
-
-                <h2>
-                    Mais que uma <strong>distância</strong>
-                </h2>
-
-            </div>
-
-            <div class="about-content">
-
-                <p>
-                    O 75K nasce de uma paixão pelas longas distâncias,
-                    pela resistência e pela capacidade humana de
-                    superar limites.
-                </p>
-
-                <p>
-                    Um encontro de atletas movidos pelo mesmo
-                    propósito: transformar quilômetros em histórias
-                    que merecem ser contadas.
-                </p>
-
-                <p>
-                    Uma experiência que vai além da competição.
-                    É sobre determinação, companheirismo e a força
-                    de continuar quando o caminho fica difícil.
-                </p>
-
-                <div class="about-highlight">
-                    75 quilômetros. Infinitas histórias.
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="concept" id="conceito">
-
-            <div class="section-title">
-
-                <span>Nossa essência</span>
-
-                <h2>
-                    O espírito dos <strong>75K</strong>
-                </h2>
-
-            </div>
-
-            <div class="concept-grid">
-
-                <div class="concept-card">
-
-                    <div class="number">01</div>
-
-                    <h3>Resistência</h3>
-
-                    <p>
-                        A força de enfrentar grandes distâncias
-                        e superar cada desafio.
-                    </p>
-
-                </div>
-
-                <div class="concept-card">
-
-                    <div class="number">02</div>
-
-                    <h3>Superação</h3>
-
-                    <p>
-                        Cada quilômetro representa uma conquista.
-                        Cada chegada, uma nova história.
-                    </p>
-
-                </div>
-
-                <div class="concept-card">
-
-                    <div class="number">03</div>
-
-                    <h3>Confraternização</h3>
-
-                    <p>
-                        Mais do que competir, reunir pessoas
-                        que compartilham a paixão pela corrida.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="quote">
-
-            <h2>
-                "Longas Distâncias.
-                Grandes Histórias."
-            </h2>
-
-            <p>
-                75K • 2027
-            </p>
-
-        </section>
-
-        <section class="information" id="informacoes">
-
-            <div class="section-title">
-
-                <span>Prepare-se</span>
-
-                <h2>
-                    Uma nova história <strong>começa aqui</strong>
-                </h2>
-
-            </div>
-
-            <p>
-                Estamos preparando uma experiência especial
-                para os apaixonados pelas longas distâncias.
-
-                Em breve, mais informações sobre o desafio,
-                percurso, inscrições e premiação.
-            </p>
-
-        </section>
-
-    </main>
-
-    <footer>
-
-        <h2>75K • 2027</h2>
-
-        <div class="footer-slogan">
-            LONGAS DISTÂNCIAS. GRANDES HISTÓRIAS.
         </div>
 
-        <p>
-            © 2027 - Todos os direitos reservados.
+        <h3 class="form-section-title">02. Dados esportivos</h3>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="modalidade">Modalidade desejada <span>*</span></label>
+            <select id="modalidade" name="modalidade" required>
+              <option value="">Selecione sua modalidade</option>
+              <option>Solo Masculino</option>
+              <option>Solo Feminino</option>
+              <option>Revezamento Duplas</option>
+              <option>Revezamento Quartetos</option>
+              <option>Revezamento Octetos</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="camisa">Tamanho da camisa</label>
+            <select id="camisa" name="camisa">
+              <option value="">Selecione</option>
+              <option>PP</option>
+              <option>P</option>
+              <option>M</option>
+              <option>G</option>
+              <option>GG</option>
+              <option>XG</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="experiencia">Experiência em provas de longa distância</label>
+            <textarea id="experiencia" name="experiencia" maxlength="500" placeholder="Conte brevemente sobre suas experiências em provas, ultramaratonas ou desafios de longa distância."></textarea>
+          </div>
+
+          <div class="field full">
+            <label for="equipe">Nome da equipe ou assessoria (se houver)</label>
+            <input id="equipe" name="equipe" type="text" maxlength="100" placeholder="Nome da equipe">
+          </div>
+
+        </div>
+
+        <h3 class="form-section-title">03. Contato para emergência</h3>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="emergencia">Nome do contato <span>*</span></label>
+            <input id="emergencia" name="emergencia" type="text" required maxlength="100" placeholder="Nome da pessoa">
+          </div>
+
+          <div class="field">
+            <label for="telefoneEmergencia">Telefone do contato <span>*</span></label>
+            <input id="telefoneEmergencia" name="telefoneEmergencia" type="tel" required placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="field full">
+            <label for="parentesco">Grau de parentesco ou relação</label>
+            <input id="parentesco" name="parentesco" type="text" maxlength="50" placeholder="Ex.: cônjuge, irmão, amigo">
+          </div>
+
+        </div>
+
+        <h3 class="form-section-title">04. Documentação obrigatória</h3>
+
+        <div class="pdf-box">
+          <h3>Termo de Responsabilidade e Ciência de Riscos</h3>
+          <p>
+            Leia o documento, faça o download, preencha e assine.
+            A organização informará como deverá ser entregue para
+            validação da inscrição.
+          </p>
+          <a class="btn btn-outline"
+             href="termo-responsabilidade-75k-rascunho.pdf"
+             target="_blank"
+             rel="noopener">
+            Baixar termo em PDF
+          </a>
+          <p class="form-note">
+            O arquivo disponível é um modelo preliminar. A versão definitiva
+            deverá ser aprovada pela organização antes da abertura oficial
+            das inscrições.
+          </p>
+        </div>
+
+        <div class="check-area">
+
+          <label class="check-line">
+            <input type="checkbox" id="leuRegulamento" required>
+            <span>Declaro que li e estou ciente do regulamento preliminar e das regras da prova. <strong>*</strong></span>
+          </label>
+
+          <label class="check-line">
+            <input type="checkbox" id="leuTermo" required>
+            <span>Declaro que li o Termo de Responsabilidade e Ciência de Riscos e estou ciente de que deverá ser preenchido e assinado. <strong>*</strong></span>
+          </label>
+
+          <label class="check-line">
+            <input type="checkbox" id="parecer" required>
+            <span>Estou ciente da exigência prevista de apresentação de parecer cardiológico conforme os critérios que serão publicados pela organização. <strong>*</strong></span>
+          </label>
+
+          <label class="check-line">
+            <input type="checkbox" id="dados" required>
+            <span>Autorizo o uso dos dados informados para contato, análise e gestão da minha solicitação de inscrição, conforme o aviso de privacidade. <strong>*</strong></span>
+          </label>
+
+        </div>
+
+        <p class="form-note">
+          Seus dados serão encaminhados pelo WhatsApp para a organização.
+          Não informe dados médicos detalhados neste formulário.
         </p>
 
-    </footer>
+        <div class="submit-area">
+          <button type="submit" class="btn">
+            Enviar inscrição pelo WhatsApp
+          </button>
+
+          <p class="submit-note">
+            Ao clicar, o WhatsApp será aberto com os dados preenchidos.
+            Você deverá conferir e enviar a mensagem no próprio WhatsApp.
+            O envio não confirma automaticamente uma vaga.
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <div>
+      <div class="logo">75K<span>.</span></div>
+      <p class="footer-tagline">Longas distâncias. Grandes histórias.</p>
+    </div>
+    <p>
+      Ultramaratona 75K Recife/Pombos — Projeto 2027<br>
+      © Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+
+<script>
+const form = document.getElementById("registrationForm");
+
+const whatsappOrganizacao = "5588994813384";
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  const valor = id => {
+    const campo = document.getElementById(id);
+    return campo ? campo.value.trim() : "";
+  };
+
+  const nascimento = valor("nascimento");
+
+  const nascimentoFormatado = nascimento
+    ? nascimento.split("-").reverse().join("/")
+    : "";
+
+  const mensagem = [
+    "*SOLICITAÇÃO DE INSCRIÇÃO — ULTRAMARATONA 75K*",
+    "Recife / Pombos — Edição planejada 2027",
+    "",
+    "*DADOS PESSOAIS*",
+    "Nome: " + valor("nome"),
+    "CPF: " + valor("cpf"),
+    "Nascimento: " + nascimentoFormatado,
+    "WhatsApp: " + valor("telefone"),
+    "E-mail: " + valor("email"),
+    "Cidade: " + valor("cidade"),
+    "Estado: " + valor("estado"),
+    "",
+    "*DADOS ESPORTIVOS*",
+    "Modalidade: " + valor("modalidade"),
+    "Tamanho da camisa: " + (valor("camisa") || "Não informado"),
+    "Experiência: " + (valor("experiencia") || "Não informada"),
+    "Equipe/assessoria: " + (valor("equipe") || "Não informada"),
+    "",
+    "*CONTATO DE EMERGÊNCIA*",
+    "Nome: " + valor("emergencia"),
+    "Telefone: " + valor("telefoneEmergencia"),
+    "Relação: " + (valor("parentesco") || "Não informada"),
+    "",
+    "*DECLARAÇÕES*",
+    "Li o regulamento: SIM",
+    "Li o termo de responsabilidade: SIM",
+    "Ciente da exigência de parecer cardiológico: SIM",
+    "Autorizo o uso dos dados para gestão da inscrição: SIM",
+    "",
+    "Estou encaminhando esta solicitação de inscrição e aguardo as orientações da organização sobre os próximos procedimentos e a documentação."
+  ].join("\n");
+
+  const url = "https://wa.me/" + whatsappOrganizacao +
+    "?text=" + encodeURIComponent(mensagem);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+</script>
 
 </body>
-
 </html>
