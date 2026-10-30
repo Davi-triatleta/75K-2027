@@ -1,15 +1,571 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>75K - 2027</title>
+
+    <meta name="theme-color" content="#080808">
+
+    <meta name="description" content="75K 2027 - Longas Distâncias, Grandes Histórias. Um desafio de ultramaratona, superação e resistência.">
+
+    <title>75K 2027 | Longas Distâncias, Grandes Histórias</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080808;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --gold-light: #f5d76e;
+            --black: #080808;
+            --dark: #111111;
+            --gray: #999999;
+        }
+
+        /* MENU */
+
+        header {
+            width: 100%;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.96);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* CAPA PRINCIPAL */
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(212, 175, 55, 0.13),
+                    transparent 65%
+                ),
+                linear-gradient(180deg, #080808, #151515);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .tag {
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 76px);
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero h2 {
+            color: var(--gold-light);
+            font-size: clamp(55px, 10vw, 110px);
+            font-weight: 900;
+            letter-spacing: 5px;
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero p {
+            color: #cccccc;
+            font-size: 18px;
+            max-width: 650px;
+            margin: 25px auto 35px;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            margin: 25px auto;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: var(--gold);
+            color: #080808;
+        }
+
+        /* SEÇÕES */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 45px);
+            margin-top: 12px;
+        }
+
+        .section-title h2 strong {
+            color: var(--gold);
+        }
+
+        /* SOBRE */
+
+        .about {
+            background: #101010;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            color: #bbbbbb;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .about-highlight {
+            color: var(--gold);
+            font-size: 23px;
+            font-weight: bold;
+            margin-top: 35px;
+        }
+
+        /* CONCEITO */
+
+        .concept {
+            background: #080808;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .concept-card {
+            background: #151515;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 40px 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--gold);
+        }
+
+        .concept-card .number {
+            color: var(--gold);
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .concept-card h3 {
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .concept-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* FRASE */
+
+        .quote {
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.85),
+                    rgba(0, 0, 0, 0.85)
+                ),
+                #242016;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .quote h2 {
+            color: var(--gold);
+            font-size: clamp(27px, 5vw, 48px);
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.3;
+        }
+
+        .quote p {
+            margin-top: 25px;
+            color: #cccccc;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        /* INFORMAÇÕES */
+
+        .information {
+            background: #111111;
+            text-align: center;
+        }
+
+        .information p {
+            color: #bbbbbb;
+            font-size: 16px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .information .button {
+            margin-top: 30px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            background: #050505;
+            text-align: center;
+            padding: 45px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        footer h2 {
+            color: var(--gold);
+            font-size: 25px;
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            color: #777777;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        .footer-slogan {
+            color: #cccccc;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 7%;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-    <h1>Longas Distâncias, Grandes Histórias</h1>
-    <h2>75K - 2027</h2>
-    <p>Mais que uma prova, um encontro com seus limites e com grandes histórias.</p>
+    <header>
+
+        <div class="logo">75K</div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#sobre">O Desafio</a>
+            <a href="#conceito">Conceito</a>
+            <a href="#informacoes">Informações</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div class="tag">
+                    Desafio de Ultramaratona
+                </div>
+
+                <h1>
+                    Longas Distâncias,
+                    <span>Grandes Histórias</span>
+                </h1>
+
+                <div class="gold-line"></div>
+
+                <h2>75K</h2>
+
+                <h3 style="color: #d4af37; letter-spacing: 8px;">
+                    2027
+                </h3>
+
+                <p>
+                    Mais que uma prova, um encontro com seus limites
+                    e com grandes histórias.
+                </p>
+
+                <a href="#sobre" class="button">
+                    Conheça o desafio
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="about" id="sobre">
+
+            <div class="section-title">
+
+                <span>O propósito</span>
+
+                <h2>
+                    Mais que uma <strong>distância</strong>
+                </h2>
+
+            </div>
+
+            <div class="about-content">
+
+                <p>
+                    O 75K nasce de uma paixão pelas longas distâncias,
+                    pela resistência e pela capacidade humana de
+                    superar limites.
+                </p>
+
+                <p>
+                    Um encontro de atletas movidos pelo mesmo
+                    propósito: transformar quilômetros em histórias
+                    que merecem ser contadas.
+                </p>
+
+                <p>
+                    Uma experiência que vai além da competição.
+                    É sobre determinação, companheirismo e a força
+                    de continuar quando o caminho fica difícil.
+                </p>
+
+                <div class="about-highlight">
+                    75 quilômetros. Infinitas histórias.
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="concept" id="conceito">
+
+            <div class="section-title">
+
+                <span>Nossa essência</span>
+
+                <h2>
+                    O espírito dos <strong>75K</strong>
+                </h2>
+
+            </div>
+
+            <div class="concept-grid">
+
+                <div class="concept-card">
+
+                    <div class="number">01</div>
+
+                    <h3>Resistência</h3>
+
+                    <p>
+                        A força de enfrentar grandes distâncias
+                        e superar cada desafio.
+                    </p>
+
+                </div>
+
+                <div class="concept-card">
+
+                    <div class="number">02</div>
+
+                    <h3>Superação</h3>
+
+                    <p>
+                        Cada quilômetro representa uma conquista.
+                        Cada chegada, uma nova história.
+                    </p>
+
+                </div>
+
+                <div class="concept-card">
+
+                    <div class="number">03</div>
+
+                    <h3>Confraternização</h3>
+
+                    <p>
+                        Mais do que competir, reunir pessoas
+                        que compartilham a paixão pela corrida.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="quote">
+
+            <h2>
+                "Longas Distâncias.
+                Grandes Histórias."
+            </h2>
+
+            <p>
+                75K • 2027
+            </p>
+
+        </section>
+
+        <section class="information" id="informacoes">
+
+            <div class="section-title">
+
+                <span>Prepare-se</span>
+
+                <h2>
+                    Uma nova história <strong>começa aqui</strong>
+                </h2>
+
+            </div>
+
+            <p>
+                Estamos preparando uma experiência especial
+                para os apaixonados pelas longas distâncias.
+
+                Em breve, mais informações sobre o desafio,
+                percurso, inscrições e premiação.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <h2>75K • 2027</h2>
+
+        <div class="footer-slogan">
+            LONGAS DISTÂNCIAS. GRANDES HISTÓRIAS.
+        </div>
+
+        <p>
+            © 2027 - Todos os direitos reservados.
+        </p>
+
+    </footer>
 
 </body>
+
 </html>
