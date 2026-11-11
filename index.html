@@ -1,7 +1,5 @@
 
-75K-2027-3.html
-100%
-75K-2027-2.html
+75K-2027-4.html
 100%
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -672,6 +670,16 @@ footer p {
     text-align:center;
   }
 }
+
+.team-member-card{grid-column:1/-1;padding:22px;background:#101010;border:1px solid #4a3b23;border-top:2px solid var(--gold);margin-top:12px}
+.team-member-card h4{font-family:'Barlow Condensed',sans-serif;color:var(--gold);font-size:23px;text-transform:uppercase;margin-bottom:15px}
+.team-member-card .form-grid{margin-top:10px}
+.team-members-intro{grid-column:1/-1;color:#bbb;font-size:11px;margin:4px 0 10px}
+.reg-download{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:24px;margin:25px 0;background:#0b0b0b;border:1px solid #6b542d}
+.reg-download p{color:#ccc;font-size:12px;max-width:620px;margin:8px 0 0}
+.reg-download h3{font-size:26px;color:var(--gold)}
+.reg-small{color:#999;font-size:10px;margin-top:12px}
+
 </style>
 </head>
 
@@ -771,7 +779,7 @@ footer p {
     <div class="heading">
       <span class="eyebrow">O caminho da superação</span>
       <h2>Do Recife <span class="gold">ao Itamatamirim.</span></h2>
-      <p>04 de abril de 2027 · Largada no Marco Zero · Chegada no Itamatamirim Parque.</p>
+      <p>04 de abril de 2027 · Largada às 03h00 no Marco Zero · Chegada no Itamatamirim Parque.</p>
     </div>
 
     <div class="route-grid">
@@ -896,7 +904,7 @@ footer p {
     <div class="heading" style="margin-top:55px;">
       <span class="eyebrow">Kit do atleta</span>
       <h2>Uma lembrança <span class="gold">dessa história.</span></h2>
-      <p>Todos os atletas inscritos receberão camisa oficial do evento. Os primeiros inscritos também receberão meia personalizada e boné de cinco painéis, enquanto durarem os estoques. Quantidades e critérios de distribuição serão divulgados pela organização.</p>
+      <p>Todos os atletas inscritos receberão camisa oficial e uma sandália como brinde, conforme grade de tamanhos e disponibilidade. Os primeiros inscritos também poderão receber itens promocionais adicionais, conforme divulgação da organização.</p>
     </div>
   </div>
 </section>
@@ -904,119 +912,107 @@ footer p {
 <section class="regulation" id="regulamento">
   <div class="container">
     <div class="heading">
-      <span class="eyebrow">Documento da prova</span>
+      <span class="eyebrow">Documento da prova · 04/04/2027</span>
       <h2>Regulamento <span class="gold">75K.</span></h2>
-      <p>Consulte as regras preliminares do evento.</p>
+      <p>Regras gerais de participação da Ultramaratona 75K — Longas Distâncias, Grandes Histórias.</p>
     </div>
-
+    <div class="reg-download" id="regulamento-pdf">
+      <div>
+        <h3>Regulamento da prova em PDF</h3>
+        <p>Baixe o documento para consultar as regras, modalidades, kit do atleta, segurança e condições de participação.</p>
+        <div class="reg-small">Versão 1.0 · 11 de novembro de 2026 · Documento sujeito à validação final do percurso e das autorizações operacionais.</div>
+      </div>
+      <a class="btn" href="regulamento-oficial-75k-2027.pdf" target="_blank" rel="noopener" download>Baixar regulamento PDF</a>
+    </div>
     <div class="notice">
-      <strong>REGULAMENTO PRELIMINAR V1.0 — RASCUNHO PARA VALIDAÇÃO.</strong>
-      As informações poderão ser ajustadas antes da publicação da versão oficial.
+      <strong>INFORMAÇÃO OPERACIONAL IMPORTANTE.</strong>
+      A largada geral está programada para 03h00 no Marco Zero do Recife. A realização do trajeto rodoviário depende da aferição final, do plano de segurança e das autorizações dos órgãos competentes. Pontos de troca, pontos de apoio, percurso alternativo e cortes serão detalhados em comunicado técnico antes da prova.
     </div>
-
     <details open>
-      <summary>1. Da prova e finalidade</summary>
-      <p>
-        A Ultramaratona 75K 2027 é um desafio de corrida de longa distância,
-        com largada planejada no Marco Zero do Recife e chegada no Itamatamirim
-        Parque, em Vitória de Santo Antão/PE. O percurso completo está planejado
-        para aproximadamente 75 km.
-      </p>
-      <p>
-        A prova terá caráter competitivo e de superação pessoal, com respeito
-        às leis de trânsito, ao fair play e às regras de segurança.
-      </p>
+      <summary>1. Da prova, data e finalidade</summary>
+      <p>A Ultramaratona 75K — Longas Distâncias, Grandes Histórias será realizada em 04 de abril de 2027, com largada prevista para 03h00, no Marco Zero, Recife/PE, e chegada no Itamatamirim Parque, em Vitória de Santo Antão/PE.</p>
+      <p>O desafio principal tem distância planejada de aproximadamente 75 km. A prova tem caráter esportivo, competitivo e de superação, devendo ser disputada com respeito às regras, às autoridades, aos demais participantes e à segurança viária.</p>
     </details>
-
     <details>
-      <summary>2. Categorias e modalidades</summary>
+      <summary>2. Modalidades e percurso</summary>
       <ul>
-        <li>Percurso completo: desafio individual planejado para aproximadamente 75 km.</li>
-        <li>Percurso alternativo: retorno antecipado, com distância menor a ser aferida e divulgada.</li>
-        <li>Modalidades: Solo, Revezamento Dupla, Revezamento Trio e Revezamento Quarteto.</li>
-        <li>Faixas etárias para premiação: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais.</li>
+        <li>Solo: participação individual durante todo o percurso escolhido.</li>
+        <li>Revezamento Dupla: equipe formada por dois atletas.</li>
+        <li>Revezamento Trio: equipe formada por três atletas.</li>
+        <li>Revezamento Quarteto: equipe formada por quatro atletas.</li>
+        <li>Percurso completo: distância planejada de aproximadamente 75 km.</li>
+        <li>Percurso alternativo: opção de retorno antecipado, com distância final a ser aferida e comunicada pela organização.</li>
       </ul>
-      <p>Os pontos de troca e os critérios operacionais dos revezamentos serão definidos pela organização.</p>
+      <p>A quilometragem oficial, o traçado definitivo e os pontos de troca dos revezamentos serão confirmados em comunicado técnico. A equipe deverá realizar as trocas exclusivamente nos locais autorizados, sem obstruir a via ou colocar terceiros em risco.</p>
     </details>
-
     <details>
-      <summary>3. Horários previstos</summary>
+      <summary>3. Inscrições, valores e confirmação</summary>
       <ul>
-        <li>Solo: 03h30.</li>
-        <li>Revezamentos: 04h15.</li>
+        <li>Primeiro lote: até 31 de dezembro de 2026.</li>
+        <li>Solo: R$ 250,00 por atleta.</li>
+        <li>Dupla, Trio e Quarteto: R$ 175,00 por atleta.</li>
       </ul>
-      <p>Horários preliminares, sujeitos à validação operacional.</p>
+      <p>Nas modalidades de revezamento, cada integrante deverá possuir cadastro individual completo, incluindo identificação, data de nascimento, sexo, contato, tamanho de camisa e numeração da sandália. O envio do formulário pelo WhatsApp constitui solicitação de inscrição e não garante vaga automaticamente. A inscrição somente será considerada confirmada após validação e orientação da organização quanto ao pagamento e aos documentos exigidos.</p>
+      <p>As vagas, prazos, eventuais alterações e procedimentos de confirmação serão comunicados pelos canais oficiais do evento.</p>
     </details>
-
     <details>
-      <summary>4. Segurança no percurso</summary>
-      <p>
-        A circulação dos atletas em trechos rodoviários dependerá de
-        autorização e de plano operacional de segurança aprovado pelos
-        órgãos competentes. A posição de corrida, sinalização e procedimentos
-        deverão seguir as determinações oficiais aplicáveis.
-      </p>
-      <p>
-        O atleta deverá obedecer às orientações da organização, dos fiscais
-        e das autoridades de trânsito.
-      </p>
+      <summary>4. Kit do atleta e brinde</summary>
+      <p>O kit previsto inclui camisa oficial e uma sandália como brinde, conforme disponibilidade e grade de tamanhos informada no cadastro. O atleta é responsável por selecionar corretamente o tamanho da camisa e a numeração da sandália. A organização poderá solicitar confirmação dos tamanhos antes da produção e entrega dos itens.</p>
+      <p>Itens adicionais, quantidades promocionais e critérios de distribuição serão divulgados nos canais oficiais, quando aplicáveis.</p>
     </details>
-
     <details>
-      <summary>5. Equipamentos obrigatórios previstos</summary>
+      <summary>5. Horário, concentração e largada</summary>
+      <p>A largada geral está programada para 03h00 da manhã de 04/04/2027, no Marco Zero do Recife. Os atletas deverão comparecer com antecedência suficiente para identificação, conferência de documentos, orientações e procedimentos de largada. O horário de concentração e o cronograma detalhado serão publicados em comunicado pré-prova.</p>
+    </details>
+    <details>
+      <summary>6. Saúde, aptidão e responsabilidade</summary>
       <ul>
-        <li>Colete refletivo durante o período de baixa luminosidade.</li>
-        <li>Lanterna para a categoria Solo e primeiro atleta de cada equipe.</li>
-        <li>Mochila ou cinto de hidratação com capacidade mínima prevista de 500 ml.</li>
+        <li>O participante deverá estar apto à prática de atividade física de longa duração.</li>
+        <li>Será exigido parecer cardiológico conforme critérios, prazo de validade e formato definidos pela organização.</li>
+        <li>Cada atleta deverá preencher e assinar individualmente o Termo de Responsabilidade e Ciência de Riscos.</li>
+        <li>O atleta deverá informar à organização, de forma reservada, qualquer condição que possa interferir na participação e buscar orientação médica quando necessário.</li>
       </ul>
-      <p>A lista definitiva será publicada no regulamento oficial.</p>
+      <p>A organização poderá impedir a largada ou interromper a participação de atleta que apresente sinais de risco à própria saúde ou à segurança de terceiros, observados os procedimentos de atendimento e as orientações médicas disponíveis.</p>
     </details>
-
     <details>
-      <summary>6. Apoio e veículos</summary>
-      <p>
-        A logística de veículos de apoio, pontos de parada, hidratação
-        e transporte das equipes será definida pela organização,
-        respeitando as condições de segurança e as autorizações aplicáveis.
-      </p>
-    </details>
-
-    <details>
-      <summary>7. Tempo limite e pontos de corte</summary>
-      <p>Tempo limite global preliminar: 12 horas, sujeito à validação operacional.</p>
+      <summary>7. Segurança e equipamentos</summary>
+      <p>Por se tratar de percurso com trechos rodoviários e largada em período noturno, os participantes deverão cumprir integralmente o plano de segurança e as instruções dos fiscais e autoridades. A lista final de equipamentos obrigatórios será publicada em comunicado técnico.</p>
       <ul>
-        <li>PC 1 — Jaboatão, km 20: 3 horas, horário previsto 06h30.</li>
-        <li>PC 2 — Moreno, km 37,5: 6 horas, horário previsto 09h30.</li>
-        <li>PC 3 — localização e horário a definir após aferição do percurso.</li>
-        <li>Chegada — Itamatamirim Parque, Vitória de Santo Antão/PE: horário sujeito à validação do tempo limite e da operação.</li>
+        <li>Elemento refletivo/coleto refletivo em condições de baixa luminosidade, conforme orientação técnica.</li>
+        <li>Lanterna funcional para os atletas que estiverem em atividade no período noturno, conforme exigência operacional.</li>
+        <li>Meio individual de hidratação, conforme especificação que será informada pela organização.</li>
+        <li>Documento de identificação e número de peito em local visível durante a prova.</li>
       </ul>
+      <p>É proibido correr em sentido contrário ao fluxo determinado, ignorar bloqueios, atravessar em locais não autorizados ou desobedecer orientações de segurança.</p>
     </details>
-
     <details>
-      <summary>8. Penalidades</summary>
-      <p>
-        Poderá haver desclassificação por descumprimento das regras de
-        segurança, uso de transporte não autorizado, desrespeito às
-        orientações oficiais ou ultrapassagem dos pontos de corte.
-      </p>
+      <summary>8. Apoio, hidratação e assistência</summary>
+      <p>Os pontos oficiais de apoio, hidratação, alimentação, atendimento e eventuais áreas de troca serão divulgados antes da prova. Apoio externo, veículos e assistência particular somente poderão atuar nos locais e condições autorizados pela organização e pelos órgãos competentes. É vedado qualquer apoio que comprometa a segurança do tráfego ou favoreça irregularmente um participante.</p>
     </details>
-
     <details>
-      <summary>9. Saúde e documentação</summary>
+      <summary>9. Tempo limite, pontos de controle e interrupção</summary>
+      <p>O planejamento operacional considera tempo limite global de até 12 horas, ainda sujeito à validação do percurso, dos pontos de controle e das autorizações. Os horários oficiais de corte e os locais dos postos de controle serão publicados em comunicado técnico. O atleta que ultrapassar o horário de corte deverá seguir a orientação da organização e poderá ser retirado da classificação.</p>
+      <p>A organização poderá interromper, neutralizar, alterar ou cancelar a prova por condições climáticas, riscos viários, determinações de autoridades, emergência ou força maior.</p>
+    </details>
+    <details>
+      <summary>10. Classificação e premiação</summary>
       <ul>
-        <li>Parecer cardiológico conforme critérios e validade definidos pela organização.</li>
-        <li>Termo individual de responsabilidade e ciência de riscos preenchido e assinado.</li>
+        <li>Geral masculino: troféus do 1º ao 5º colocado.</li>
+        <li>Geral feminino: troféus do 1º ao 5º colocado.</li>
+        <li>Faixas etárias: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais, com troféu para o primeiro colocado de cada faixa, conforme critérios de classificação.</li>
+        <li>Revezamentos: troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.</li>
+        <li>Todos os concluintes que cumprirem as regras e o percurso válido receberão medalha finisher.</li>
       </ul>
+      <p>Os critérios de desempate, validação de voltas/trechos e eventuais categorias adicionais serão detalhados pela organização antes do evento.</p>
     </details>
-
     <details>
-      <summary>10. Disposições finais</summary>
-      <p>
-        A participação dependerá do cumprimento do regulamento definitivo,
-        da documentação exigida e dos procedimentos de segurança.
-        Casos não previstos serão avaliados pela organização, conforme
-        a legislação aplicável.
-      </p>
+      <summary>11. Penalidades e desclassificação</summary>
+      <p>Poderão resultar em advertência, retirada da prova ou desclassificação: uso de transporte ou apoio não autorizado; corte ou alteração indevida do percurso; troca fora dos locais permitidos; ausência de identificação; descumprimento das instruções de fiscais e autoridades; conduta antidesportiva; descarte irregular de resíduos; e descumprimento das regras de segurança ou dos horários de corte.</p>
+    </details>
+    <details>
+      <summary>12. Imagem, dados e disposições finais</summary>
+      <p>O tratamento dos dados fornecidos na inscrição será limitado às finalidades de contato, organização, segurança, classificação e gestão do evento, observada a legislação aplicável. A autorização de uso de imagem deverá ser apresentada em termo próprio, quando aplicável.</p>
+      <p>Casos omissos serão analisados pela organização, respeitada a legislação vigente. Este regulamento deverá ser lido em conjunto com os comunicados técnicos oficiais publicados antes da prova. Em caso de atualização, prevalecerá a versão mais recente divulgada pelos canais oficiais.</p>
     </details>
   </div>
 </section>
@@ -1174,8 +1170,8 @@ footer p {
           </div>
 
           <div class="field">
-            <label for="camisa">Tamanho da camisa</label>
-            <select id="camisa" name="camisa">
+            <label for="camisa">Tamanho da camisa <span>*</span></label>
+            <select id="camisa" name="camisa" required>
               <option value="">Selecione</option>
               <option>PP</option>
               <option>P</option>
@@ -1185,6 +1181,19 @@ footer p {
               <option>XG</option>
             </select>
           </div>
+
+          <div class="field">
+            <label for="sandalia">Numeração da sandália (brinde) <span>*</span></label>
+            <select id="sandalia" name="sandalia" required>
+              <option value="">Selecione</option>
+              <option>33</option><option>34</option><option>35</option><option>36</option>
+              <option>37</option><option>38</option><option>39</option><option>40</option>
+              <option>41</option><option>42</option><option>43</option><option>44</option>
+              <option>45</option><option>46</option>
+            </select>
+          </div>
+
+          <div id="teamMembers" class="field full" aria-live="polite"></div>
 
           <div class="field full">
             <label for="experiencia">Experiência em provas de longa distância</label>
@@ -1222,7 +1231,7 @@ footer p {
         <h3 class="form-section-title">04. Documentação obrigatória</h3>
 
         <div class="pdf-box">
-          <h3>Termo de Responsabilidade e Ciência de Riscos</h3>
+          <h3>Documentos da prova</h3>
           <p>
             Leia o documento, faça o download, preencha e assine.
             A organização informará como deverá ser entregue para
@@ -1245,7 +1254,7 @@ footer p {
 
           <label class="check-line">
             <input type="checkbox" id="leuRegulamento" required>
-            <span>Declaro que li e estou ciente do regulamento preliminar e das regras da prova. <strong>*</strong></span>
+            <span>Declaro que li e estou ciente do regulamento da prova e dos comunicados técnicos oficiais. <strong>*</strong></span>
           </label>
 
           <label class="check-line">
@@ -1304,10 +1313,11 @@ footer p {
 
 <script>
 const form = document.getElementById("registrationForm");
-
 const whatsappOrganizacao = "5588994813384";
 const campoNascimento = document.getElementById("nascimento");
 const campoIdade = document.getElementById("idade");
+const modalidade = document.getElementById("modalidade");
+const teamMembers = document.getElementById("teamMembers");
 
 function calcularIdadeNaProva(dataNascimento) {
   if (!dataNascimento) return "";
@@ -1323,74 +1333,144 @@ function calcularIdadeNaProva(dataNascimento) {
   return idade >= 0 ? String(idade) : "";
 }
 
-campoNascimento.addEventListener("change", function() {
+campoNascimento.addEventListener("change", () => {
   campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
 });
 
+function quantidadeIntegrantes(valor) {
+  if (valor.includes("Dupla")) return 2;
+  if (valor.includes("Trio")) return 3;
+  if (valor.includes("Quarteto")) return 4;
+  return 1;
+}
+
+function opcoesCamisa() {
+  return ["PP", "P", "M", "G", "GG", "XG"].map(v => `<option value="${v}">${v}</option>`).join("");
+}
+function opcoesSandalia() {
+  return Array.from({length:14}, (_,i) => 33+i).map(v => `<option value="${v}">${v}</option>`).join("");
+}
+function campoEquipe(i, label, type, required=true, options=null) {
+  const id = `membro${i}_${label}`;
+  const input = options
+    ? `<select id="${id}" name="${id}" ${required ? "required" : ""}><option value="">Selecione</option>${options}</select>`
+    : `<input id="${id}" name="${id}" type="${type}" ${required ? "required" : ""} ${type==="date" ? 'max="2009-12-31"' : ""} ${type==="text" ? 'maxlength="100"' : ""}>`;
+  return `<div class="field"><label for="${id}">${label}${required ? ' <span>*</span>' : ''}</label>${input}</div>`;
+}
+function renderizarIntegrantes() {
+  const total = quantidadeIntegrantes(modalidade.value);
+  teamMembers.innerHTML = "";
+  if (total === 1) return;
+  const aviso = document.createElement("p");
+  aviso.className = "team-members-intro";
+  aviso.textContent = `A modalidade selecionada exige ${total} atletas. O cadastro principal já corresponde ao atleta 1. Preencha abaixo os dados individuais dos outros ${total-1} integrantes.`;
+  teamMembers.appendChild(aviso);
+  for (let i=2; i<=total; i++) {
+    const card = document.createElement("div");
+    card.className = "team-member-card";
+    card.innerHTML = `
+      <h4>Atleta ${i} da equipe</h4>
+      <div class="form-grid">
+        ${campoEquipe(i, "Nome completo", "text")}
+        ${campoEquipe(i, "CPF", "text")}
+        ${campoEquipe(i, "Data de nascimento", "date")}
+        ${campoEquipe(i, "Sexo", "select", true, '<option value="Masculino">Masculino</option><option value="Feminino">Feminino</option>')}
+        ${campoEquipe(i, "WhatsApp", "tel")}
+        ${campoEquipe(i, "E-mail", "email")}
+        ${campoEquipe(i, "Tamanho da camisa", "select", true, opcoesCamisa())}
+        ${campoEquipe(i, "Numeração da sandália", "select", true, opcoesSandalia())}
+      </div>`;
+    teamMembers.appendChild(card);
+  }
+}
+modalidade.addEventListener("change", renderizarIntegrantes);
+
+function valor(id) {
+  const campo = document.getElementById(id);
+  return campo ? campo.value.trim() : "";
+}
+function formatarData(data) {
+  return data ? data.split("-").reverse().join("/") : "Não informada";
+}
+function dadosAtletaPrincipal() {
+  return {
+    nome: valor("nome"), cpf: valor("cpf"), nascimento: valor("nascimento"),
+    idade: calcularIdadeNaProva(valor("nascimento")), sexo: valor("sexo"),
+    telefone: valor("telefone"), email: valor("email"),
+    camisa: valor("camisa"), sandalia: valor("sandalia")
+  };
+}
+function dadosAtletasEquipe() {
+  const total = quantidadeIntegrantes(modalidade.value);
+  const atletas = [];
+  for (let i=2; i<=total; i++) {
+    const get = key => {
+      const el = document.getElementById(`membro${i}_${key}`);
+      return el ? el.value.trim() : "";
+    };
+    atletas.push({
+      nome:get("Nome completo"), cpf:get("CPF"), nascimento:get("Data de nascimento"),
+      idade:calcularIdadeNaProva(get("Data de nascimento")), sexo:get("Sexo"),
+      telefone:get("WhatsApp"), email:get("E-mail"),
+      camisa:get("Tamanho da camisa"), sandalia:get("Numeração da sandália")
+    });
+  }
+  return atletas;
+}
 form.addEventListener("submit", function(event) {
   event.preventDefault();
+  if (!form.reportValidity()) return;
+  campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
 
-  if (!form.reportValidity()) {
-    return;
-  }
-
-  const valor = id => {
-    const campo = document.getElementById(id);
-    return campo ? campo.value.trim() : "";
-  };
-
-  const nascimento = valor("nascimento");
-  const idade = calcularIdadeNaProva(nascimento);
-  campoIdade.value = idade;
-
-  const nascimentoFormatado = nascimento
-    ? nascimento.split("-").reverse().join("/")
-    : "";
+  const atleta1 = dadosAtletaPrincipal();
+  const atletas = [atleta1, ...dadosAtletasEquipe()];
+  const linhasAtletas = atletas.map((a, index) => [
+    `*ATLETA ${index+1}*`,
+    `Nome: ${a.nome}`,
+    `CPF: ${a.cpf}`,
+    `Nascimento: ${formatarData(a.nascimento)}`,
+    `Idade na data da prova: ${a.idade ? a.idade + " anos" : "Não calculada"}`,
+    `Sexo: ${a.sexo}`,
+    `WhatsApp: ${a.telefone}`,
+    `E-mail: ${a.email}`,
+    `Camisa: ${a.camisa}`,
+    `Sandália (brinde): ${a.sandalia}`
+  ].join("\n"));
 
   const mensagem = [
     "*SOLICITAÇÃO DE INSCRIÇÃO — ULTRAMARATONA 75K*",
-    "Recife / Itamatamirim Parque — 04/04/2027",
+    "04/04/2027 — Largada programada: 03h00 — Marco Zero, Recife/PE",
     "",
-    "*DADOS PESSOAIS*",
-    "Nome: " + valor("nome"),
-    "CPF: " + valor("cpf"),
-    "Nascimento: " + nascimentoFormatado,
-    "Idade na data da prova (04/04/2027): " + (idade ? idade + " anos" : "Não calculada"),
-    "Sexo: " + valor("sexo"),
-    "WhatsApp: " + valor("telefone"),
-    "E-mail: " + valor("email"),
-    "Cidade: " + valor("cidade"),
-    "Estado: " + valor("estado"),
-    "",
-    "*DADOS ESPORTIVOS*",
+    "*MODALIDADE E PERCURSO*",
     "Modalidade: " + valor("modalidade"),
     "Percurso de interesse: " + valor("percursoEscolhido"),
-    "Tamanho da camisa: " + (valor("camisa") || "Não informado"),
-    "Experiência: " + (valor("experiencia") || "Não informada"),
     "Equipe/assessoria: " + (valor("equipe") || "Não informada"),
     "",
-    "*CONTATO DE EMERGÊNCIA*",
+    "*CADASTRO INDIVIDUAL DOS ATLETAS*",
+    ...linhasAtletas,
+    "",
+    "*EXPERIÊNCIA*",
+    valor("experiencia") || "Não informada",
+    "",
+    "*CONTATO DE EMERGÊNCIA DA INSCRIÇÃO*",
     "Nome: " + valor("emergencia"),
     "Telefone: " + valor("telefoneEmergencia"),
     "Relação: " + (valor("parentesco") || "Não informada"),
     "",
     "*DECLARAÇÕES*",
-    "Li o regulamento: SIM",
+    "Li o regulamento da prova: SIM",
     "Li o termo de responsabilidade: SIM",
     "Ciente da exigência de parecer cardiológico: SIM",
-    "Autorizo o uso dos dados para gestão da inscrição: SIM",
+    "Autorizo o uso dos dados para gestão da solicitação: SIM",
     "",
-    "Estou encaminhando esta solicitação de inscrição e aguardo as orientações da organização sobre os próximos procedimentos e a documentação."
+    "Estou encaminhando a solicitação de inscrição e aguardo a validação e as orientações da organização. Sei que o envio desta mensagem não confirma automaticamente a vaga."
   ].join("\n");
 
-  const url = "https://wa.me/" + whatsappOrganizacao +
-    "?text=" + encodeURIComponent(mensagem);
-
+  const url = "https://wa.me/" + whatsappOrganizacao + "?text=" + encodeURIComponent(mensagem);
   window.open(url, "_blank", "noopener,noreferrer");
 });
 </script>
 
 </body>
 </html>
-Exibindo 75K-2027-2.html… Página 1 de 30
-Exibindo 75K-2027-3.html…
+Exibindo 75K-2027-4.html…
