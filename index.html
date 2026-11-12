@@ -154,29 +154,29 @@ footer{padding:40px 0;background:#050505;border-top:1px solid #292929}
 footer p{color:#777;font-size:10px}
 .footer-tagline{color:var(--gold);letter-spacing:2px;text-transform:uppercase}
 @media(max-width:850px){
-  nav{gap:12px}nav a{font-size:9px}
-  .about-grid{grid-template-columns:1fr}
-  .info-grid{grid-template-columns:1fr 1fr}
-  .route-grid{grid-template-columns:1fr 1fr}
+ nav{gap:12px}nav a{font-size:9px}
+ .about-grid{grid-template-columns:1fr}
+ .info-grid{grid-template-columns:1fr 1fr}
+ .route-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
-  header{padding:13px 0}
-  .nav{flex-direction:column}
-  nav{flex-wrap:wrap;justify-content:center;gap:10px}
-  nav a{font-size:8px}
-  .hero{min-height:730px}
-  .hero h1{font-size:82px}
-  section{padding:65px 0}
-  .cards{grid-template-columns:1fr}
-  .route-options{grid-template-columns:1fr}
-  .route-map iframe{height:300px}
-  .safety-grid{grid-template-columns:1fr}
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-  .form-card{padding:20px 15px}
-  .info-grid{grid-template-columns:1fr 1fr}
-  .footer-content{flex-direction:column;text-align:center}
-  .admin-stats{grid-template-columns:1fr}
+ header{padding:13px 0}
+ .nav{flex-direction:column}
+ nav{flex-wrap:wrap;justify-content:center;gap:10px}
+ nav a{font-size:8px}
+ .hero{min-height:730px}
+ .hero h1{font-size:82px}
+ section{padding:65px 0}
+ .cards{grid-template-columns:1fr}
+ .route-options{grid-template-columns:1fr}
+ .route-map iframe{height:300px}
+ .safety-grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .form-card{padding:20px 15px}
+ .info-grid{grid-template-columns:1fr 1fr}
+ .footer-content{flex-direction:column;text-align:center}
+ .admin-stats{grid-template-columns:1fr}
 }
 </style>
 
@@ -340,63 +340,6 @@ footer p{color:#777;font-size:10px}
   </div>
 </section>
 
-<!-- SEÇÃO DE INSCRIÇÃO E FORMULÁRIO -->
-<section class="registration" id="inscricao">
-  <div class="container">
-    <span class="eyebrow">Faça parte da história</span>
-    <h2>Garanta sua <span class="gold">vaga.</span></h2>
-    <p>Preencha os dados abaixo para registrar sua inscrição na Ultramaratona 75K.</p>
-  </div>
-</section>
-
-<section class="registration-form-section">
-  <div class="container form-wrapper">
-    <div class="form-card">
-      <form id="formInscricao">
-        <div class="form-section-title">1. Escolha da Modalidade</div>
-        <div class="form-grid">
-          <div class="field full">
-            <label>Modalidade <span>*</span></label>
-            <select id="modality" required>
-              <option value="">Selecione a modalidade</option>
-              <option value="solo">Solo (75 km ou percurso alternativo) - R$ 250,00</option>
-              <option value="dupla">Dupla (Revezamento) - R$ 350,00 por equipe</option>
-              <option value="trio">Trio (Revezamento) - R$ 525,00 por equipe</option>
-              <option value="quarteto">Quarteto (Revezamento) - R$ 700,00 por equipe</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="atletasContainer"></div>
-
-        <div class="form-section-title">Termos e Condições</div>
-        <div class="check-area">
-          <div class="check-line">
-            <input type="checkbox" id="checkRegulamento" required>
-            <label for="checkRegulamento">Li e concordo com o Regulamento Oficial da prova e declaro estar apto(a) para este desafio de longa distância.</label>
-          </div>
-          <div class="check-line">
-            <input type="checkbox" id="checkSaude" required>
-            <label for="checkSaude">Declaro estar em pleno gozo de saúde física e mental, ciente de que a prova exige exames médicos prévios e responsabilidade pessoal.</label>
-          </div>
-        </div>
-
-        <div class="submit-area">
-          <button type="submit" class="btn" id="btnSubmit">Finalizar Inscrição</button>
-          <div class="submit-note">Ao enviar, sua inscrição será gerada como pendente de pagamento.</div>
-        </div>
-
-        <div class="result-box" id="resultBox">
-          <h3>Inscrição Registrada com Sucesso!</h3>
-          <p>Guarde o seu protocolo de inscrição:</p>
-          <p class="protocol" id="protocoloText"></p>
-          <p id="pagamentoInstrucoes" style="margin-top:15px;color:#ddd;"></p>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
 <section class="regulation" id="regulamento">
   <div class="container">
     <div class="heading">
@@ -489,136 +432,704 @@ footer p{color:#777;font-size:10px}
   </div>
 </section>
 
+<section>
+  <div class="container">
+    <div class="heading"><span class="eyebrow">Antes de encarar os 75 quilômetros</span><h2>Saúde, preparo e <span class="gold">responsabilidade.</span></h2></div>
+    <div class="safety-grid">
+      <div class="safety-card"><h3>01. Parecer cardiológico</h3><p>Todos os participantes deverão apresentar parecer cardiológico emitido por médico habilitado, conforme os critérios e o prazo de validade que serão definidos pela organização.</p></div>
+      <div class="safety-card"><h3>02. Termo de responsabilidade</h3><p>Cada atleta deverá ler, preencher e assinar o termo individual de ciência de riscos e responsabilidade antes da participação.</p><p>O documento registra a ciência dos riscos, mas não elimina responsabilidades legais da organização.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="registration" id="inscricao">
+  <div class="container">
+    <span class="eyebrow">Sua próxima grande história começa aqui</span>
+    <h2>75 KM.<br><span class="gold">Uma história para contar.</span></h2>
+    <p>Preencha seus dados e envie sua solicitação de inscrição. O cadastro será registrado no sistema da organização e o pagamento ficará pendente até a conferência manual do Pix.</p>
+    <a href="#formulario" class="btn">Preencher inscrição</a>
+  </div>
+</section>
+
+<section class="registration-form-section" id="formulario">
+  <div class="container form-wrapper">
+    <div class="heading">
+      <span class="eyebrow">Inscrição 75K 2027 · 04/04/2027</span>
+      <h2>Faça parte <span class="gold">dessa história.</span></h2>
+      <p>Primeiro lote até 31/12/2026: Solo R$ 250,00; Dupla, Trio e Quarteto R$ 175,00 por atleta. Nos revezamentos, o pagamento é único por equipe.</p>
+    </div>
+
+    <div class="form-card">
+      <form id="registrationForm">
+        <h3 class="form-section-title">01. Dados pessoais do responsável pela inscrição</h3>
+        <div class="form-grid">
+          <div class="field full"><label for="nome">Nome completo <span>*</span></label><input id="nome" name="nome" type="text" required maxlength="100" autocomplete="name" placeholder="Seu nome completo"></div>
+          <div class="field"><label for="cpf">CPF <span>*</span></label><input id="cpf" name="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00"></div>
+          <div class="field"><label for="nascimento">Data de nascimento <span>*</span></label><input id="nascimento" name="nascimento" type="date" required></div>
+          <div class="field"><label for="idade">Idade na data da prova (04/04/2027)</label><input id="idade" name="idade" type="text" readonly placeholder="Calculada automaticamente"></div>
+          <div class="field"><label for="sexo">Sexo <span>*</span></label><select id="sexo" name="sexo" required><option value="">Selecione</option><option value="Masculino">Masculino</option><option value="Feminino">Feminino</option></select></div>
+          <div class="field"><label for="telefone">WhatsApp do atleta <span>*</span></label><input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000"></div>
+          <div class="field"><label for="email">E-mail <span>*</span></label><input id="email" name="email" type="email" required autocomplete="email" placeholder="seuemail@email.com"></div>
+          <div class="field"><label for="cidade">Cidade <span>*</span></label><input id="cidade" name="cidade" type="text" required placeholder="Sua cidade"></div>
+          <div class="field"><label for="estado">Estado <span>*</span></label>
+            <select id="estado" name="estado" required>
+              <option value="">Selecione</option>
+              <option>PE</option><option>PB</option><option>AL</option><option>RN</option><option>CE</option><option>BA</option><option>SE</option><option>PI</option><option>MA</option><option>SP</option><option>RJ</option><option>MG</option><option>ES</option><option>PR</option><option>SC</option><option>RS</option><option>DF</option><option>GO</option><option>MT</option><option>MS</option><option>TO</option><option>PA</option><option>AP</option><option>AM</option><option>RR</option><option>RO</option><option>AC</option><option>Outra localidade</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 class="form-section-title">02. Dados esportivos</h3>
+        <div class="form-grid">
+          <div class="field"><label for="modalidade">Modalidade desejada <span>*</span></label>
+            <select id="modalidade" name="modalidade" required>
+              <option value="">Selecione sua modalidade</option>
+              <option>Solo</option><option>Revezamento Dupla</option><option>Revezamento Trio</option><option>Revezamento Quarteto</option>
+            </select>
+          </div>
+          <div class="field full"><label for="percursoEscolhido">Percurso de interesse <span>*</span></label>
+            <select id="percursoEscolhido" name="percursoEscolhido" required>
+              <option value="">Selecione uma opção</option>
+              <option>Percurso alternativo — retorno antecipado (distância a confirmar)</option>
+              <option>Percurso completo — aproximadamente 75 km</option>
+            </select>
+            <small class="form-note">A escolha é uma manifestação de interesse. A organização confirmará os formatos disponíveis no regulamento definitivo.</small>
+          </div>
+          <div class="field"><label for="camisa">Tamanho da camisa <span>*</span></label>
+            <select id="camisa" name="camisa" required><option value="">Selecione</option><option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>XG</option></select>
+            <small class="form-note">Referência de tamanho para a camisa Finisher e, se contemplado, camisa fitness.</small>
+          </div>
+          <div class="field"><label for="sandalia">Numeração da sandália (brinde) <span>*</span></label>
+            <select id="sandalia" name="sandalia" required><option value="">Selecione</option><option>33</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option></select>
+          </div>
+          <div id="teamMembers" class="field full" aria-live="polite"></div>
+          <div class="field full"><label for="experiencia">Experiência em provas de longa distância</label><textarea id="experiencia" name="experiencia" maxlength="500" placeholder="Conte brevemente sobre suas experiências em provas, ultramaratonas ou desafios de longa distância."></textarea></div>
+          <div class="field full"><label for="equipe">Nome da equipe ou assessoria (se houver)</label><input id="equipe" name="equipe" type="text" maxlength="100" placeholder="Nome da equipe"></div>
+        </div>
+
+        <h3 class="form-section-title">03. Contato para emergência</h3>
+        <div class="form-grid">
+          <div class="field"><label for="emergencia">Nome do contato <span>*</span></label><input id="emergencia" name="emergencia" type="text" required maxlength="100" placeholder="Nome da pessoa"></div>
+          <div class="field"><label for="telefoneEmergencia">Telefone do contato <span>*</span></label><input id="telefoneEmergencia" name="telefoneEmergencia" type="tel" required placeholder="(00) 00000-0000"></div>
+          <div class="field full"><label for="parentesco">Grau de parentesco ou relação</label><input id="parentesco" name="parentesco" type="text" maxlength="50" placeholder="Ex.: cônjuge, irmão, amigo"></div>
+        </div>
+
+        <h3 class="form-section-title">04. Documentação obrigatória</h3>
+        <div class="pdf-box">
+          <h3>Documentos da prova</h3>
+          <p>Leia o documento, faça o download, preencha e assine. A organização informará como deverá ser entregue para validação da inscrição.</p>
+          <a class="btn btn-outline" href="termo-responsabilidade-75k-rascunho.pdf" target="_blank" rel="noopener">Baixar termo em PDF</a>
+          <p class="form-note">O arquivo disponível é um modelo preliminar. A versão definitiva deverá ser aprovada pela organização antes da abertura oficial das inscrições.</p>
+        </div>
+
+        <div class="check-area">
+          <label class="check-line"><input type="checkbox" id="leuRegulamento" required><span>Declaro que li e estou ciente do regulamento da prova e dos comunicados técnicos oficiais. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="leuTermo" required><span>Declaro que li o Termo de Responsabilidade e Ciência de Riscos e estou ciente de que deverá ser preenchido e assinado. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="parecer" required><span>Estou ciente da exigência prevista de apresentação de parecer cardiológico conforme os critérios que serão publicados pela organização. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="dados" required><span>Autorizo o uso dos dados informados para contato, análise e gestão da minha solicitação de inscrição, conforme o aviso de privacidade. <strong>*</strong></span></label>
+        </div>
+
+        <p class="form-note">Seus dados pessoais serão armazenados no sistema da organização para gestão da inscrição. CPF e contato de emergência não serão enviados pelo WhatsApp. Não informe dados médicos detalhados neste formulário.</p>
+
+        <div class="submit-area">
+          <button type="submit" class="btn" id="submitButton">Enviar solicitação de inscrição</button>
+          <p class="submit-note">Ao enviar, seus dados serão registrados no sistema. A inscrição ficará pendente até a conferência do pagamento pela organização. O envio do formulário não confirma automaticamente a vaga.</p>
+        </div>
+        <div id="submissionResult" class="result-box" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="admin-section" id="painel-admin">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Área restrita da organização</span>
+      <h2>Painel <span class="gold">administrativo.</span></h2>
+      <p>Área exclusiva para consultar inscrições e confirmar pagamentos recebidos.</p>
+    </div>
+    <div class="admin-card">
+      <div id="adminLoginArea" class="admin-login">
+        <h3>Acesso da organização</h3>
+        <p class="form-note">Entre com o e-mail e a senha do usuário administrador já cadastrado no Supabase.</p>
+        <form id="adminLoginForm">
+          <input id="adminEmail" type="email" autocomplete="username" placeholder="E-mail do administrador" required>
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Senha" required>
+          <button class="btn" type="submit">Entrar no painel</button>
+        </form>
+      </div>
+      <div id="adminDashboard" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap">
+          <h3>Inscrições recebidas</h3>
+          <button type="button" class="btn btn-outline" id="adminLogout">Sair</button>
+        </div>
+        <p id="adminWelcome" class="admin-message"></p>
+        <div class="admin-stats">
+          <div class="admin-stat"><strong id="paidAthleteCount">0</strong><span>ATLETAS COM PAGAMENTO CONFIRMADO</span></div>
+          <div class="admin-stat"><strong id="pendingCount">0</strong><span>INSCRIÇÕES PENDENTES</span></div>
+          <div class="admin-stat"><strong id="paidRegistrationCount">0</strong><span>INSCRIÇÕES PAGAS</span></div>
+        </div>
+        <p class="form-note">A contagem dos 50 primeiros é feita pelo número de atletas em inscrições pagas. Uma equipe Quarteto confirmada conta como quatro atletas.</p>
+        <button type="button" class="btn" id="refreshAdmin">Atualizar inscrições</button>
+        <div id="adminMessage" class="admin-message"></div>
+        <div id="adminList" class="admin-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
 <footer>
   <div class="container footer-content">
-    <p>&copy; 2027 75K · Longas Distâncias. Grandes Histórias.</p>
-    <p class="footer-tagline">Recife · Vitória de Santo Antão</p>
+    <div>
+      <div class="logo">75K<span>.</span></div>
+      <p class="footer-tagline">Longas distâncias. Grandes histórias.</p>
+    </div>
+    <p>
+      Ultramaratona 75K — Recife ao Itamatamirim Parque — 04/04/2027<br>
+      © Todos os direitos reservados. <a href="#painel-admin" style="color:#777">Área da organização</a>
+    </p>
   </div>
 </footer>
 
 <script>
-  // CONFIGURAÇÃO DO SUPABASE (Insira suas chaves reais do projeto se necessário)
-  const SUPABASE_URL = 'SUA_SUPABASE_URL_AQUI';
-  const SUPABASE_ANON_KEY = 'SUA_SUPABASE_ANON_KEY_AQUI';
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+/* =========================================================
+   CONFIGURAÇÃO SUPABASE
+   Chave publishable: própria para uso no navegador.
+   Nunca colocar aqui uma chave service_role.
+========================================================= */
 
-  const modalitySelect = document.getElementById('modality');
-  const atletasContainer = document.getElementById('atletasContainer');
+const SUPABASE_URL = "https://fqvujfbqlqeczncwanwo.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_zeEfkWskCLGq7q3htsPQcg_96gG_Yr6";
 
-  modalitySelect.addEventListener('change', function() {
-    const val = this.value;
-    atletasContainer.innerHTML = '';
-    if (!val) return;
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
-    let qtd = 1;
-    if (val === 'dupla') qtd = 2;
-    if (val === 'trio') qtd = 3;
-    if (val === 'quarteto') qtd = 4;
+const whatsappOrganizacao = "5588994813384";
 
-    for (let i = 1; i <= qtd; i++) {
-      const card = document.createElement('div');
-      card.className = 'team-member-card';
-      card.innerHTML = `
-        <h4>Atleta ${i} ${i === 1 ? '(Responsável / Capitão)' : ''}</h4>
-        <div class="form-grid">
-          <div class="field full">
-            <label>Nome Completo <span>*</span></label>
-            <input type="text" name="nome_${i}" required placeholder="Nome completo do atleta">
-          </div>
-          <div class="field">
-            <label>E-mail <span>*</span></label>
-            <input type="email" name="email_${i}" required placeholder="seu@email.com">
-          </div>
-          <div class="field">
-            <label>Telefone / WhatsApp <span>*</span></label>
-            <input type="tel" name="telefone_${i}" required placeholder="(81) 99999-9999">
-          </div>
-          <div class="field">
-            <label>CPF <span>*</span></label>
-            <input type="text" name="cpf_${i}" required placeholder="000.000.000-00">
-          </div>
-          <div class="field">
-            <label>Tamanho da Camisa <span>*</span></label>
-            <select name="camisa_${i}" required>
-              <option value="">Selecione o tamanho</option>
-              <option value="P">P</option>
-              <option value="M">M</option>
-              <option value="G">G</option>
-              <option value="GG">GG</option>
-              <option value="XG">XG</option>
-            </select>
-          </div>
-        </div>
-      `;
-      atletasContainer.appendChild(card);
+const form = document.getElementById("registrationForm");
+const campoNascimento = document.getElementById("nascimento");
+const campoIdade = document.getElementById("idade");
+const modalidade = document.getElementById("modalidade");
+const teamMembers = document.getElementById("teamMembers");
+const submitButton = document.getElementById("submitButton");
+const submissionResult = document.getElementById("submissionResult");
+
+/* =========================================================
+   FUNÇÕES DO FORMULÁRIO
+========================================================= */
+
+function calcularIdadeNaProva(dataNascimento) {
+  if (!dataNascimento) return "";
+  const partes = dataNascimento.split("-").map(Number);
+  if (partes.length !== 3 || partes.some(Number.isNaN)) return "";
+
+  const nascimento = new Date(partes[0], partes[1] - 1, partes[2]);
+  const prova = new Date(2027, 3, 4);
+
+  let idade = prova.getFullYear() - nascimento.getFullYear();
+
+  const aindaNaoFezAniversario =
+    prova.getMonth() < nascimento.getMonth() ||
+    (prova.getMonth() === nascimento.getMonth() &&
+    prova.getDate() < nascimento.getDate());
+
+  if (aindaNaoFezAniversario) idade--;
+
+  return idade >= 0 ? String(idade) : "";
+}
+
+campoNascimento.addEventListener("change", () => {
+  campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
+});
+
+function quantidadeIntegrantes(valor) {
+  if (valor.includes("Dupla")) return 2;
+  if (valor.includes("Trio")) return 3;
+  if (valor.includes("Quarteto")) return 4;
+  return 1;
+}
+
+function opcoesCamisa() {
+  return ["PP","P","M","G","GG","XG"]
+    .map(v => `<option value="v">{v}</option>`).join("");
+}
+
+function opcoesSandalia() {
+  return Array.from({length:14},(_,i)=>33+i)
+    .map(v=>`<option value="v">{v}</option>`).join("");
+}
+
+function campoEquipe(i,label,type,required=true,options=null) {
+  const id = `membro${i}_${label}`;
+
+  const input = options
+    ? `<select id="id"name="{id}" required?"required":""><optionvalue="">Selecione</option>{options}</select>`
+    : `<input id="id"name="{id}" type="${type}" ${required?"required":""} ${type==="text"?'maxlength="100"':""}>`;
+
+  return `<div class="field"><label for="id">{label}required?'<span>*</span>':''</label>{input}</div>`;
+}
+
+function renderizarIntegrantes() {
+  const total = quantidadeIntegrantes(modalidade.value);
+  teamMembers.innerHTML = "";
+
+  if (total === 1) return;
+
+  const aviso = document.createElement("p");
+  aviso.className = "team-members-intro";
+  aviso.textContent = `A modalidade selecionada exige ${total} atletas. O cadastro principal já corresponde ao atleta 1. Preencha abaixo os dados dos outros ${total-1} integrantes.`;
+  teamMembers.appendChild(aviso);
+
+  for (let i=2;i<=total;i++) {
+    const card = document.createElement("div");
+    card.className = "team-member-card";
+
+    card.innerHTML = `
+      <h4>Atleta ${i} da equipe</h4>
+      <div class="form-grid">
+        ${campoEquipe(i,"Nome completo","text")}
+        ${campoEquipe(i,"CPF","text")}
+        ${campoEquipe(i,"Data de nascimento","date")}
+        ${campoEquipe(i,"Sexo","select",true,'<option value="Masculino">Masculino</option><option value="Feminino">Feminino</option>')}
+        ${campoEquipe(i,"WhatsApp","tel")}
+        ${campoEquipe(i,"E-mail","email")}
+        ${campoEquipe(i,"Tamanho da camisa","select",true,opcoesCamisa())}
+        ${campoEquipe(i,"Numeração da sandália","select",true,opcoesSandalia())}
+      </div>`;
+
+    teamMembers.appendChild(card);
+  }
+}
+
+modalidade.addEventListener("change",renderizarIntegrantes);
+
+function valor(id) {
+  const campo = document.getElementById(id);
+  return campo ? campo.value.trim() : "";
+}
+
+function dadosAtletaPrincipal() {
+  return {
+    nome:valor("nome"),
+    cpf:valor("cpf"),
+    nascimento:valor("nascimento"),
+    idade:calcularIdadeNaProva(valor("nascimento")),
+    sexo:valor("sexo"),
+    telefone:valor("telefone"),
+    email:valor("email"),
+    camisa:valor("camisa"),
+    sandalia:valor("sandalia")
+  };
+}
+
+function dadosAtletasEquipe() {
+  const total = quantidadeIntegrantes(modalidade.value);
+  const atletas = [];
+
+  for (let i=2;i<=total;i++) {
+    const get = key => {
+      const el = document.getElementById(`membro${i}_${key}`);
+      return el ? el.value.trim() : "";
+    };
+
+    atletas.push({
+      nome:get("Nome completo"),
+      cpf:get("CPF"),
+      nascimento:get("Data de nascimento"),
+      idade:calcularIdadeNaProva(get("Data de nascimento")),
+      sexo:get("Sexo"),
+      telefone:get("WhatsApp"),
+      email:get("E-mail"),
+      camisa:get("Tamanho da camisa"),
+      sandalia:get("Numeração da sandália")
+    });
+  }
+
+  return atletas;
+}
+
+function valorTotalInscricao(modalidadeSelecionada) {
+  if (modalidadeSelecionada === "Solo") return 250;
+  return quantidadeIntegrantes(modalidadeSelecionada) * 175;
+}
+
+function formatarMoeda(valor) {
+  return valor.toLocaleString("pt-BR",{
+    style:"currency",
+    currency:"BRL"
+  });
+}
+
+function formatarData(data) {
+  return data ? data.split("-").reverse().join("/") : "";
+}
+
+/* =========================================================
+   ENVIO DA INSCRIÇÃO PARA O SUPABASE
+========================================================= */
+
+form.addEventListener("submit",async function(event) {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
+
+  const modalidadeSelecionada = valor("modalidade");
+  const totalAtletas = quantidadeIntegrantes(modalidadeSelecionada);
+  const valorTotal = valorTotalInscricao(modalidadeSelecionada);
+
+  const atletaPrincipal = dadosAtletaPrincipal();
+  const atletasEquipe = dadosAtletasEquipe();
+  const atletas = [atletaPrincipal,...atletasEquipe];
+
+  if (atletas.length !== totalAtletas) {
+    alert("Confira os dados de todos os integrantes da equipe.");
+    return;
+  }
+
+  const formData = {
+    percurso:valor("percursoEscolhido"),
+    cidade:valor("cidade"),
+    estado:valor("estado"),
+    experiencia:valor("experiencia"),
+    equipe:valor("equipe"),
+    contato_emergencia:{
+      nome:valor("emergencia"),
+      telefone:valor("telefoneEmergencia"),
+      relacao:valor("parentesco")
+    },
+    declaracoes:{
+      regulamento:document.getElementById("leuRegulamento").checked,
+      termo:document.getElementById("leuTermo").checked,
+      parecer_cardiologico:document.getElementById("parecer").checked,
+      uso_dados:document.getElementById("dados").checked
+    },
+    origem:"site_75k_2027"
+  };
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Registrando inscrição...";
+  submissionResult.style.display = "none";
+
+  try {
+    const {data,error} = await supabaseClient
+      .from("registrations")
+      .insert([{
+        modality:modalidadeSelecionada,
+        athlete_count:1,
+        amount_cents:1,
+        payment_status:"pending",
+        payment_method:"pix",
+        athletes:atletas,
+        form_data:formData
+      }])
+      .select("id,modality,athlete_count,amount_cents,payment_status")
+      .single();
+
+    if (error) throw error;
+
+    const protocolo = data.id;
+    const mensagem = [
+      "*NOVA SOLICITAÇÃO DE INSCRIÇÃO — 75K 2027*",
+      "",
+      "Protocolo: " + protocolo,
+      "Modalidade: " + modalidadeSelecionada,
+      "Quantidade de atletas: " + totalAtletas,
+      "Valor total: " + formatarMoeda(valorTotal),
+      "Pagamento: aguardando orientação/validação",
+      "",
+      "O cadastro foi registrado no site. Solicito as orientações para pagamento e confirmação da inscrição."
+    ].join("\n");
+
+    const whatsappURL =
+      "https://wa.me/" + whatsappOrganizacao +
+      "?text=" + encodeURIComponent(mensagem);
+
+    submissionResult.innerHTML = `
+      <h3>Solicitação registrada!</h3>
+      <p>Seu cadastro foi recebido pelo sistema da organização.</p>
+      <p class="protocol">Protocolo: ${protocolo}</p>
+      <p><strong>Modalidade:</strong> ${modalidadeSelecionada}</p>
+      <p><strong>Atletas:</strong> ${totalAtletas}</p>
+      <p><strong>Valor total:</strong> ${formatarMoeda(valorTotal)}</p>
+      <p><strong>Status:</strong> aguardando confirmação do pagamento.</p>
+      <p>Para continuar, clique abaixo e envie a mensagem de confirmação pelo WhatsApp. Não envie CPF ou dados pessoais por essa mensagem.</p>
+      <a class="btn" href="${whatsappURL}" target="_blank" rel="noopener">Continuar pelo WhatsApp</a>
+    `;
+
+    submissionResult.style.display = "block";
+    submissionResult.scrollIntoView({behavior:"smooth",block:"center"});
+
+    form.reset();
+    campoIdade.value = "";
+    teamMembers.innerHTML = "";
+
+  } catch(error) {
+    console.error("Erro ao registrar inscrição:",error);
+
+    let mensagemErro = "Não foi possível registrar sua inscrição. Tente novamente.";
+
+    if (error.message) {
+      mensagemErro += "\n\nDetalhe: " + error.message;
     }
+
+    alert(mensagemErro);
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Enviar solicitação de inscrição";
+  }
+});
+
+/* =========================================================
+   PAINEL ADMINISTRATIVO
+========================================================= */
+
+const adminLoginForm = document.getElementById("adminLoginForm");
+const adminLoginArea = document.getElementById("adminLoginArea");
+const adminDashboard = document.getElementById("adminDashboard");
+const adminMessage = document.getElementById("adminMessage");
+const adminList = document.getElementById("adminList");
+
+function mostrarMensagemAdmin(texto) {
+  adminMessage.textContent = texto;
+}
+
+async function verificarAdmin() {
+  const {data:{session}} = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    adminLoginArea.style.display = "block";
+    adminDashboard.style.display = "none";
+    return false;
+  }
+
+  const {data:admin,error} = await supabaseClient
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id",session.user.id)
+    .maybeSingle();
+
+  if (error || !admin) {
+    await supabaseClient.auth.signOut();
+    adminLoginArea.style.display = "block";
+    adminDashboard.style.display = "none";
+    mostrarMensagemAdmin("Este usuário não possui autorização de administrador.");
+    return false;
+  }
+
+  adminLoginArea.style.display = "none";
+  adminDashboard.style.display = "block";
+  document.getElementById("adminWelcome").textContent =
+    "Acesso autorizado: " + session.user.email;
+
+  await carregarInscricoes();
+  return true;
+}
+
+adminLoginForm.addEventListener("submit",async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+
+  mostrarMensagemAdmin("Verificando acesso...");
+
+  const {error} = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
   });
 
-  document.getElementById('formInscricao').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = true;
-    btn.textContent = 'Enviando inscrição...';
+  if (error) {
+    mostrarMensagemAdmin("Não foi possível entrar. Confira o e-mail e a senha.");
+    return;
+  }
 
-    try {
-      const modalidadeSelecionada = modalitySelect.value;
-      const formData = new FormData(this);
-      const atletas = [];
-      
-      let qtd = 1;
-      if (modalidadeSelecionada === 'dupla') qtd = 2;
-      if (modalidadeSelecionada === 'trio') qtd = 3;
-      if (modalidadeSelecionada === 'quarteto') qtd = 4;
+  const autorizado = await verificarAdmin();
 
-      let amountCents = 25000;
-      if (modalidadeSelecionada === 'dupla') amountCents = 35000;
-      if (modalidadeSelecionada === 'trio') amountCents = 52500;
-      if (modalidadeSelecionada === 'quarteto') amountCents = 70000;
+  if (!autorizado) {
+    mostrarMensagemAdmin("Usuário sem permissão administrativa.");
+  } else {
+    mostrarMensagemAdmin("Login realizado com sucesso.");
+  }
+});
 
-      for (let i = 1; i <= qtd; i++) {
-        atletas.push({
-          nome: formData.get(`nome_${i}`),
-          email: formData.get(`email_${i}`),
-          telefone: formData.get(`telefone_${i}`),
-          cpf: formData.get(`cpf_${i}`),
-          camisa: formData.get(`camisa_${i}`)
-        });
+document.getElementById("adminLogout").addEventListener("click",async()=>{
+  await supabaseClient.auth.signOut();
+  adminLoginArea.style.display = "block";
+  adminDashboard.style.display = "none";
+  adminList.innerHTML = "";
+  mostrarMensagemAdmin("Você saiu do painel.");
+});
+
+document.getElementById("refreshAdmin").addEventListener("click",carregarInscricoes);
+
+function criarTexto(tag,texto,classe) {
+  const elemento = document.createElement(tag);
+  elemento.textContent = texto;
+  if (classe) elemento.className = classe;
+  return elemento;
+}
+
+async function carregarInscricoes() {
+  mostrarMensagemAdmin("Carregando inscrições...");
+  adminList.innerHTML = "";
+
+  const {data:inscricoes,error} = await supabaseClient
+    .from("registrations")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+  if (error) {
+    mostrarMensagemAdmin("Erro ao carregar inscrições: " + error.message);
+    return;
+  }
+
+  const lista = inscricoes || [];
+
+  const pagas = lista.filter(i=>i.payment_status==="paid");
+  const pendentes = lista.filter(i=>i.payment_status==="pending");
+
+  const totalAtletasPagos = pagas.reduce(
+    (total,inscricao)=>total + Number(inscricao.athlete_count || 0),0
+  );
+
+  document.getElementById("paidAthleteCount").textContent =
+    totalAtletasPagos + " / 50";
+
+  document.getElementById("pendingCount").textContent = pendentes.length;
+  document.getElementById("paidRegistrationCount").textContent = pagas.length;
+
+  mostrarMensagemAdmin(
+    lista.length + " inscrição(ões) encontrada(s). " +
+    totalAtletasPagos + " atleta(s) com pagamento confirmado."
+  );
+
+  if (!lista.length) {
+    adminList.appendChild(
+      criarTexto("p","Nenhuma inscrição recebida até o momento.")
+    );
+    return;
+  }
+
+  lista.forEach(inscricao=>{
+    const card = document.createElement("div");
+    card.className = "admin-item";
+
+    const titulo = criarTexto(
+      "h4",
+      (inscricao.modality || "Modalidade") +
+      " — " + (inscricao.athlete_count || 0) + " atleta(s)"
+    );
+
+    const status = inscricao.payment_status==="paid"
+      ? "PAGAMENTO CONFIRMADO"
+      : "PAGAMENTO PENDENTE";
+
+    card.appendChild(titulo);
+    card.appendChild(criarTexto("p","Protocolo: " + inscricao.id));
+    card.appendChild(criarTexto("p","Status: " + status));
+    card.appendChild(criarTexto("p","Valor: " + formatarMoeda((inscricao.amount_cents || 0)/100)));
+    card.appendChild(criarTexto("p","Data: " + new Date(inscricao.created_at).toLocaleString("pt-BR")));
+
+    const atletas = Array.isArray(inscricao.athletes)
+      ? inscricao.athletes
+      : [];
+
+    atletas.forEach((atleta,index)=>{
+      card.appendChild(criarTexto(
+        "p",
+        `Atleta ${index+1}: ${atleta.nome || "Nome não informado"} | CPF: ${atleta.cpf || ""} | WhatsApp: ${atleta.telefone || ""}`
+      ));
+    });
+
+    const dados = inscricao.form_data || {};
+    const emergencia = dados.contato_emergencia || {};
+
+    if (emergencia.nome) {
+      card.appendChild(criarTexto(
+        "p",
+        "Emergência: " + emergencia.nome + " — " +
+        (emergencia.telefone || "")
+      ));
+    }
+
+    if (dados.equipe) {
+      card.appendChild(criarTexto("p","Equipe/assessoria: " + dados.equipe));
+    }
+
+    if (inscricao.payment_status==="paid") {
+      card.appendChild(criarTexto(
+        "p",
+        "Confirmado em: " +
+        (inscricao.paid_at
+          ? new Date(inscricao.paid_at).toLocaleString("pt-BR")
+          : "Data não informada")
+      ));
+
+      if (inscricao.payment_notes) {
+        card.appendChild(criarTexto("p","Observação: " + inscricao.payment_notes));
       }
+    } else {
+      const observacao = document.createElement("input");
+      observacao.type = "text";
+      observacao.placeholder = "Observação do pagamento (opcional)";
+      observacao.style.cssText = "width:100%;padding:12px;background:#080808;color:white;border:1px solid #444;margin-top:12px";
 
-      // CORREÇÃO APLICADA AQUI: Geração de ID por crypto.randomUUID() e remoção do .select()
-      const protocolo = crypto.randomUUID();
+      const botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "btn";
+      botao.textContent = "Confirmar pagamento recebido";
 
-      const { error } = await supabaseClient
-        .from("registrations")
-        .insert([{
-          id: protocolo,
-          modality: modalidadeSelecionada,
-          athlete_count: qtd,
-          amount_cents: amountCents,
-          payment_status: "pending",
-          payment_method: "pix",
-          athletes: atletas,
-          form_data: Object.fromEntries(formData.entries())
-        }]);
+      botao.addEventListener("click",async()=>{
+        const confirmar = window.confirm(
+          "Confirma que o Pix desta inscrição foi recebido na conta da organização?"
+        );
 
-      if (error) throw error;
+        if (!confirmar) return;
 
-      // Exibir sucesso
-      document.getElementById('protocoloText').textContent = protocolo;
-      document.getElementById('pagamentoInstrucoes').textContent = `Valor total: R$ ${(amountCents/100).toFixed(2)}. Utilize o protocolo acima para identificar o seu pagamento via PIX.`;
-      document.getElementById('resultBox').style.display = 'block';
-      this.reset();
-      atletasContainer.innerHTML = '';
-      window.scrollTo({ top: document.getElementById('resultBox').offsetTop - 50, behavior: 'smooth' });
+        botao.disabled = true;
+        botao.textContent = "Confirmando...";
 
-    } catch (err) {
-      alert('Erro ao registrar inscrição: ' + (err.message || err));
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Finalizar Inscrição';
+        const {error:updateError} = await supabaseClient
+          .from("registrations")
+          .update({
+            payment_status:"paid",
+            paid_at:new Date().toISOString(),
+            payment_notes:observacao.value.trim() || null
+          })
+          .eq("id",inscricao.id)
+          .eq("payment_status","pending");
+
+        if (updateError) {
+          alert("Não foi possível confirmar: " + updateError.message);
+          botao.disabled = false;
+          botao.textContent = "Confirmar pagamento recebido";
+          return;
+        }
+
+        alert("Pagamento confirmado com sucesso!");
+        await carregarInscricoes();
+      });
+
+      card.appendChild(observacao);
+      card.appendChild(botao);
     }
+
+    adminList.appendChild(card);
   });
+}
+
+/* Verifica se já existe sessão administrativa */
+verificarAdmin();
 </script>
 
 </body>
 </html>
+
+
