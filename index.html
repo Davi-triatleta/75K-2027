@@ -1,6 +1,3 @@
-
-75K-2027-4.html
-100%
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,661 +13,115 @@
 
 <style>
 :root {
-  --gold: #d5ad62;
-  --gold-light: #f0d69b;
-  --black: #080808;
-  --dark: #111;
-  --gray: #aaa;
-  --white: #f5f5f5;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior:smooth; }
-
-body {
-  background:var(--black);
-  color:var(--white);
-  font-family:'Montserrat',sans-serif;
-  line-height:1.7;
-}
-
-a { color:inherit; text-decoration:none; }
-
-.container {
-  width:min(1160px,90%);
-  margin:auto;
-}
-
-.gold { color:var(--gold); }
-
-.eyebrow {
-  color:var(--gold);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:4px;
-  text-transform:uppercase;
-}
-
-h1,h2,h3 {
-  font-family:'Barlow Condensed',sans-serif;
-  text-transform:uppercase;
-  line-height:1.05;
-}
-
-header {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:10;
-  padding:20px 0;
-  border-bottom:1px solid #ffffff22;
-}
-
-.nav {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-
-.logo {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.logo span { color:var(--gold); }
-
-nav {
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-
-nav a {
-  font-size:10px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#ddd;
-}
-
-nav a:hover { color:var(--gold); }
-
-.nav-cta {
-  color:var(--gold);
-  border:1px solid var(--gold);
-  padding:9px 14px;
-}
-
-.btn {
-  display:inline-block;
-  padding:14px 23px;
-  background:var(--gold);
-  color:#111;
-  border:1px solid var(--gold);
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.btn:hover {
-  background:transparent;
-  color:var(--gold);
-}
-
-.btn-outline {
-  background:transparent;
-  color:var(--gold);
-}
-
-section { padding:90px 0; }
-
-.hero {
-  min-height:760px;
-  display:flex;
-  align-items:center;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.45)),
-    linear-gradient(0deg,#080808,transparent 35%),
-    url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=85') center/cover;
-}
-
-.hero-content {
-  max-width:750px;
-  padding-top:90px;
-}
-
-.hero h1 {
-  font-size:clamp(80px,13vw,150px);
-  margin:20px 0;
-  font-weight:900;
-  line-height:.9;
-}
-
-.hero h1 span {
-  display:block;
-  color:var(--gold);
-}
-
-.hero p {
-  max-width:560px;
-  color:#ddd;
-  font-size:14px;
-  margin-bottom:28px;
-}
-
-.hero-buttons {
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.hero-stats {
-  display:flex;
-  flex-wrap:wrap;
-  gap:40px;
-  margin-top:55px;
-}
-
-.hero-stats strong {
-  display:block;
-  color:var(--gold);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:38px;
-}
-
-.hero-stats small {
-  color:#ccc;
-  font-size:10px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-.heading {
-  max-width:720px;
-  margin-bottom:40px;
-}
-
-.heading h2 {
-  font-size:clamp(43px,7vw,70px);
-  margin:15px 0;
-}
-
-.heading p {
-  color:var(--gray);
-  font-size:13px;
-}
-
-.about-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:55px;
-  align-items:center;
-}
-
-.about-grid p {
-  color:var(--gray);
-  font-size:13px;
-  margin:15px 0;
-}
-
-.about-image {
-  min-height:430px;
-  background:url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1100&q=85') center/cover;
-}
-
-.concept { background:#111; }
-
-.cards {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.card {
-  padding:30px;
-  background:#191919;
-  border:1px solid #303030;
-}
-
-.card-number {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:42px;
-  color:var(--gold);
-}
-
-.card h3 {
-  font-size:27px;
-  margin:12px 0;
-}
-
-.card p {
-  font-size:12px;
-  color:var(--gray);
-}
-
-.route {
-  background:
-    linear-gradient(#080808df,#080808f5),
-    url('https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=1600&q=85') center/cover;
-}
-
-.route-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.route-point {
-  border-top:2px solid var(--gold);
-  padding-top:17px;
-}
-
-.route-point strong {
-  display:block;
-  color:var(--gold);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:32px;
-}
-
-.route-point span {
-  color:#ccc;
-  font-size:11px;
-}
-
-.info-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-
-.info-box {
-  padding:23px;
-  background:#171717;
-  border-bottom:2px solid var(--gold);
-}
-
-.info-box small {
-  color:#aaa;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.info-box strong {
-  display:block;
-  color:var(--gold);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:28px;
-  margin-top:8px;
-}
-
-.regulation { background:#111; }
-
-.notice {
-  padding:18px;
-  margin-bottom:30px;
-  border-left:3px solid var(--gold);
-  background:#d5ad6215;
-  color:#e6d5b6;
-  font-size:12px;
-}
-
-.regulation details {
-  border-bottom:1px solid #333;
-  padding:18px 0;
-}
-
-.regulation summary {
-  cursor:pointer;
-  color:var(--gold);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:24px;
-  text-transform:uppercase;
-}
-
-.regulation details p,
-.regulation details li {
-  color:#bbb;
-  font-size:12px;
-  margin:12px 0;
-}
-
-.regulation details ul { padding-left:20px; }
-
-.safety-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.safety-card {
-  padding:28px;
-  background:#171717;
-  border:1px solid #383838;
-}
-
-.safety-card h3 {
-  color:var(--gold);
-  font-size:27px;
-  margin-bottom:12px;
-}
-
-.safety-card p,
-.safety-card li {
-  color:#bbb;
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-.safety-card ul { padding-left:20px; }
-
-.registration {
-  background:
-    linear-gradient(#080808ed,#080808f5),
-    url('https://images.unsplash.com/photo-1502904550040-7534597429ae?auto=format&fit=crop&w=1600&q=85') center/cover;
-  text-align:center;
-}
-
-.registration h2 {
-  font-size:clamp(48px,8vw,82px);
-  margin:20px 0;
-}
-
-.registration p {
-  max-width:650px;
-  margin:0 auto 25px;
-  color:#ccc;
-  font-size:13px;
-}
-
-/* FORMULÁRIO */
-
-.registration-form-section {
-  background:#101010;
-}
-
-.form-wrapper {
-  max-width:900px;
-  margin:auto;
-}
-
-.form-intro {
-  margin-bottom:30px;
-  color:#aaa;
-  font-size:13px;
-}
-
-.form-card {
-  background:#171717;
-  border:1px solid #333;
-  padding:35px;
-}
-
-.form-section-title {
-  color:var(--gold);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:27px;
-  margin:28px 0 17px;
-  padding-bottom:10px;
-  border-bottom:1px solid #333;
-}
-
-.form-section-title:first-child { margin-top:0; }
-
-.form-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.field {
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-
-.field.full { grid-column:1/-1; }
-
-.field label {
-  color:#ddd;
-  font-size:11px;
-  font-weight:700;
-}
-
-.field label span { color:var(--gold); }
-
-.field input,
-.field select,
-.field textarea {
-  width:100%;
-  background:#0d0d0d;
-  border:1px solid #414141;
-  color:white;
-  padding:13px;
-  border-radius:0;
-  font-family:'Montserrat',sans-serif;
-  font-size:12px;
-  outline:none;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  border-color:var(--gold);
-}
-
-.field select option { background:#111; }
-
-.field textarea {
-  resize:vertical;
-  min-height:85px;
-}
-
-.form-note {
-  color:#999;
-  font-size:10px;
-  margin-top:7px;
-}
-
-.pdf-box {
-  padding:20px;
-  margin:25px 0;
-  background:#0e0e0e;
-  border:1px solid #4a3b23;
-}
-
-.pdf-box h3 {
-  color:var(--gold);
-  font-size:23px;
-  margin-bottom:8px;
-}
-
-.pdf-box p {
-  color:#bbb;
-  font-size:11px;
-  margin-bottom:15px;
-}
-
-.check-area {
-  margin:15px 0;
-  padding:15px;
-  background:#101010;
-  border:1px solid #333;
-}
-
-.check-line {
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  margin:12px 0;
-  color:#ccc;
-  font-size:11px;
-}
-
-.check-line input {
-  margin-top:3px;
-  accent-color:var(--gold);
-  flex-shrink:0;
-}
-
-.submit-area {
-  margin-top:28px;
-  text-align:center;
-}
-
-.submit-area button {
-  width:100%;
-  max-width:480px;
-  font-family:'Montserrat',sans-serif;
-  font-size:12px;
-}
-
-.submit-note {
-  max-width:600px;
-  margin:15px auto 0;
-  color:#888;
-  font-size:10px;
-}
-
-/* PERCURSOS E MAPA */
-.route-options {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:35px;
-}
-.route-option {
-  padding:28px;
-  background:#151515;
-  border:1px solid #383838;
-  border-top:3px solid var(--gold);
-}
-.route-option h3 {
-  color:var(--gold);
-  font-size:30px;
-  margin:10px 0;
-}
-.route-option p {
-  color:#bbb;
-  font-size:12px;
-  margin:10px 0 18px;
-}
-.route-option .route-distance {
-  display:block;
-  color:var(--white);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:38px;
-  margin:8px 0;
-}
-.route-map {
-  margin-top:35px;
-  border:1px solid #393939;
-  background:#111;
-}
-.route-map iframe {
-  display:block;
-  width:100%;
-  height:390px;
-  border:0;
-  filter:grayscale(1) invert(.88) contrast(.9);
-}
-.route-map-caption {
-  padding:18px 20px;
-  color:#aaa;
-  font-size:11px;
-}
-.route-map-links {
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:18px;
-}
-.event-date {
-  display:inline-block;
-  margin-top:20px;
-  padding:10px 15px;
-  border:1px solid var(--gold);
-  color:var(--gold);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-.route-warning {
-  padding:17px 20px;
-  margin-top:25px;
-  border-left:3px solid var(--gold);
-  background:#d5ad6215;
-  color:#d9c8a8;
-  font-size:11px;
-}
-
-footer {
-  padding:40px 0;
-  background:#050505;
-  border-top:1px solid #292929;
-}
-
-.footer-content {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-footer p {
-  color:#777;
-  font-size:10px;
-}
-
-.footer-tagline {
-  color:var(--gold);
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-@media(max-width:850px) {
-  nav { gap:12px; }
-  nav a { font-size:9px; }
-  .about-grid { grid-template-columns:1fr; }
-  .info-grid { grid-template-columns:1fr 1fr; }
-  .route-grid { grid-template-columns:1fr 1fr; }
-}
-
-@media(max-width:600px) {
-  header { padding:13px 0; }
-  .nav { flex-direction:column; }
-  nav {
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-  }
-  nav a { font-size:8px; }
-  .hero { min-height:730px; }
-  .hero h1 { font-size:82px; }
-  section { padding:65px 0; }
-  .cards { grid-template-columns:1fr; }
-  .route-options { grid-template-columns:1fr; }
-  .route-map iframe { height:300px; }
-  .safety-grid { grid-template-columns:1fr; }
-  .form-grid { grid-template-columns:1fr; }
-  .field.full { grid-column:auto; }
-  .form-card { padding:20px 15px; }
-  .info-grid { grid-template-columns:1fr 1fr; }
-  .footer-content {
-    flex-direction:column;
-    text-align:center;
-  }
-}
-
+  --gold:#d5ad62;
+  --gold-light:#f0d69b;
+  --black:#080808;
+  --dark:#111;
+  --gray:#aaa;
+  --white:#f5f5f5;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Montserrat',sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,90%);margin:auto}
+.gold{color:var(--gold)}
+.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;line-height:1.05}
+header{position:absolute;top:0;left:0;width:100%;z-index:10;padding:20px 0;border-bottom:1px solid #ffffff22}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--gold)}
+nav{display:flex;align-items:center;gap:22px}
+nav a{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#ddd}
+nav a:hover{color:var(--gold)}
+.nav-cta{color:var(--gold);border:1px solid var(--gold);padding:9px 14px}
+.btn{display:inline-block;padding:14px 23px;background:var(--gold);color:#111;border:1px solid var(--gold);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:.3s}
+.btn:hover{background:transparent;color:var(--gold)}
+.btn-outline{background:transparent;color:var(--gold)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+section{padding:90px 0}
+.hero{min-height:760px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.45)),linear-gradient(0deg,#080808,transparent 35%),url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=85') center/cover}
+.hero-content{max-width:750px;padding-top:90px}
+.hero h1{font-size:clamp(80px,13vw,150px);margin:20px 0;font-weight:900;line-height:.9}
+.hero h1 span{display:block;color:var(--gold)}
+.hero p{max-width:560px;color:#ddd;font-size:14px;margin-bottom:28px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:40px;margin-top:55px}
+.hero-stats strong{display:block;color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:38px}
+.hero-stats small{color:#ccc;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.heading{max-width:720px;margin-bottom:40px}
+.heading h2{font-size:clamp(43px,7vw,70px);margin:15px 0}
+.heading p{color:var(--gray);font-size:13px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.about-grid p{color:var(--gray);font-size:13px;margin:15px 0}
+.about-image{min-height:430px;background:url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1100&q=85') center/cover}
+.concept{background:#111}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:30px;background:#191919;border:1px solid #303030}
+.card-number{font-family:'Barlow Condensed',sans-serif;font-size:42px;color:var(--gold)}
+.card h3{font-size:27px;margin:12px 0}
+.card p{font-size:12px;color:var(--gray)}
+.route{background:linear-gradient(#080808df,#080808f5),url('https://images.unsplash.com/photo-1533561052604-c3beb6d55b8d?auto=format&fit=crop&w=1600&q=85') center/cover}
+.route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.route-point{border-top:2px solid var(--gold);padding-top:17px}
+.route-point strong{display:block;color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:32px}
+.route-point span{color:#ccc;font-size:11px}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.info-box{padding:23px;background:#171717;border-bottom:2px solid var(--gold)}
+.info-box small{color:#aaa;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.info-box strong{display:block;color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:28px;margin-top:8px}
+.info-box p{font-size:10px;color:#aaa}
+.regulation{background:#111}
+.notice{padding:18px;margin-bottom:30px;border-left:3px solid var(--gold);background:#d5ad6215;color:#e6d5b6;font-size:12px}
+.regulation details{border-bottom:1px solid #333;padding:18px 0}
+.regulation summary{cursor:pointer;color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:24px;text-transform:uppercase}
+.regulation details p,.regulation details li{color:#bbb;font-size:12px;margin:12px 0}
+.regulation details ul{padding-left:20px}
+.safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.safety-card{padding:28px;background:#171717;border:1px solid #383838}
+.safety-card h3{color:var(--gold);font-size:27px;margin-bottom:12px}
+.safety-card p,.safety-card li{color:#bbb;font-size:12px;margin-bottom:10px}
+.safety-card ul{padding-left:20px}
+.registration{background:linear-gradient(#080808ed,#080808f5),url('https://images.unsplash.com/photo-1502904550040-7534597429ae?auto=format&fit=crop&w=1600&q=85') center/cover;text-align:center}
+.registration h2{font-size:clamp(48px,8vw,82px);margin:20px 0}
+.registration p{max-width:650px;margin:0 auto 25px;color:#ccc;font-size:13px}
+.registration-form-section{background:#101010}
+.form-wrapper{max-width:900px;margin:auto}
+.form-intro{margin-bottom:30px;color:#aaa;font-size:13px}
+.form-card{background:#171717;border:1px solid #333;padding:35px}
+.form-section-title{color:var(--gold);font-family:'Barlow Condensed',sans-serif;font-size:27px;margin:28px 0 17px;padding-bottom:10px;border-bottom:1px solid #333}
+.form-section-title:first-child{margin-top:0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{color:#ddd;font-size:11px;font-weight:700}
+.field label span{color:var(--gold)}
+.field input,.field select,.field textarea{width:100%;background:#0d0d0d;border:1px solid #414141;color:white;padding:13px;border-radius:0;font-family:'Montserrat',sans-serif;font-size:12px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field select option{background:#111}
+.field textarea{resize:vertical;min-height:85px}
+.form-note{color:#999;font-size:10px;margin-top:7px}
+.pdf-box{padding:20px;margin:25px 0;background:#0e0e0e;border:1px solid #4a3b23}
+.pdf-box h3{color:var(--gold);font-size:23px;margin-bottom:8px}
+.pdf-box p{color:#bbb;font-size:11px;margin-bottom:15px}
+.check-area{margin:15px 0;padding:15px;background:#101010;border:1px solid #333}
+.check-line{display:flex;align-items:flex-start;gap:10px;margin:12px 0;color:#ccc;font-size:11px}
+.check-line input{margin-top:3px;accent-color:var(--gold);flex-shrink:0}
+.submit-area{margin-top:28px;text-align:center}
+.submit-area button{width:100%;max-width:480px;font-family:'Montserrat',sans-serif;font-size:12px}
+.submit-note{max-width:600px;margin:15px auto 0;color:#888;font-size:10px}
+.route-options{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:35px}
+.route-option{padding:28px;background:#151515;border:1px solid #383838;border-top:3px solid var(--gold)}
+.route-option h3{color:var(--gold);font-size:30px;margin:10px 0}
+.route-option p{color:#bbb;font-size:12px;margin:10px 0 18px}
+.route-option .route-distance{display:block;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-size:38px;margin:8px 0}
+.route-map{margin-top:35px;border:1px solid #393939;background:#111}
+.route-map iframe{display:block;width:100%;height:390px;border:0;filter:grayscale(1) invert(.88) contrast(.9)}
+.route-map-caption{padding:18px 20px;color:#aaa;font-size:11px}
+.route-map-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.event-date{display:inline-block;margin-top:20px;padding:10px 15px;border:1px solid var(--gold);color:var(--gold);font-size:12px;font-weight:800;letter-spacing:2px}
+.route-warning{padding:17px 20px;margin-top:25px;border-left:3px solid var(--gold);background:#d5ad6215;color:#d9c8a8;font-size:11px}
 .team-member-card{grid-column:1/-1;padding:22px;background:#101010;border:1px solid #4a3b23;border-top:2px solid var(--gold);margin-top:12px}
 .team-member-card h4{font-family:'Barlow Condensed',sans-serif;color:var(--gold);font-size:23px;text-transform:uppercase;margin-bottom:15px}
 .team-member-card .form-grid{margin-top:10px}
@@ -679,8 +130,57 @@ footer p {
 .reg-download p{color:#ccc;font-size:12px;max-width:620px;margin:8px 0 0}
 .reg-download h3{font-size:26px;color:var(--gold)}
 .reg-small{color:#999;font-size:10px;margin-top:12px}
-
+.result-box{display:none;margin-top:25px;padding:24px;background:#101010;border:1px solid var(--gold);text-align:left}
+.result-box h3{color:var(--gold);font-size:25px;margin-bottom:10px}
+.result-box p{color:#ccc;font-size:12px;margin:8px 0}
+.result-box .protocol{font-size:11px;color:var(--gold);overflow-wrap:anywhere}
+.admin-section{background:#090909;border-top:1px solid #333}
+.admin-card{max-width:1000px;margin:auto;padding:25px;background:#151515;border:1px solid #383838}
+.admin-card h3{color:var(--gold);font-size:27px;margin-bottom:15px}
+.admin-login{max-width:450px}
+.admin-login input{width:100%;margin:7px 0;padding:13px;background:#080808;color:white;border:1px solid #444}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.admin-stat{padding:18px;background:#0d0d0d;border-bottom:2px solid var(--gold)}
+.admin-stat strong{display:block;font-family:'Barlow Condensed',sans-serif;color:var(--gold);font-size:32px}
+.admin-stat span{font-size:10px;color:#aaa}
+.admin-list{display:grid;gap:12px;margin-top:20px}
+.admin-item{padding:18px;background:#0c0c0c;border:1px solid #383838}
+.admin-item h4{color:var(--gold);font-size:17px;margin-bottom:8px}
+.admin-item p{font-size:11px;color:#bbb;margin:4px 0;overflow-wrap:anywhere}
+.admin-item button{margin-top:12px}
+.admin-message{font-size:12px;color:#d9c8a8;margin:12px 0}
+footer{padding:40px 0;background:#050505;border-top:1px solid #292929}
+.footer-content{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer p{color:#777;font-size:10px}
+.footer-tagline{color:var(--gold);letter-spacing:2px;text-transform:uppercase}
+@media(max-width:850px){
+ nav{gap:12px}nav a{font-size:9px}
+ .about-grid{grid-template-columns:1fr}
+ .info-grid{grid-template-columns:1fr 1fr}
+ .route-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ header{padding:13px 0}
+ .nav{flex-direction:column}
+ nav{flex-wrap:wrap;justify-content:center;gap:10px}
+ nav a{font-size:8px}
+ .hero{min-height:730px}
+ .hero h1{font-size:82px}
+ section{padding:65px 0}
+ .cards{grid-template-columns:1fr}
+ .route-options{grid-template-columns:1fr}
+ .route-map iframe{height:300px}
+ .safety-grid{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .form-card{padding:20px 15px}
+ .info-grid{grid-template-columns:1fr 1fr}
+ .footer-content{flex-direction:column;text-align:center}
+ .admin-stats{grid-template-columns:1fr}
+}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
@@ -706,11 +206,7 @@ footer p {
     <div class="hero-content">
       <span class="eyebrow">Uma jornada além dos limites</span>
       <h1>75<span>KM</span></h1>
-      <p>
-        Do Marco Zero do Recife ao Itamatamirim Parque, em Vitória de Santo Antão.
-        Uma jornada de resistência, coragem e superação pela BR-232, com
-        opções de retorno para diferentes desafios.
-      </p>
+      <p>Do Marco Zero do Recife ao Itamatamirim Parque, em Vitória de Santo Antão. Uma jornada de resistência, coragem e superação pela BR-232, com opções de retorno para diferentes desafios.</p>
       <div class="hero-buttons">
         <a href="#inscricao" class="btn">Quero me inscrever</a>
         <a href="#regulamento" class="btn btn-outline">Ver regulamento</a>
@@ -729,19 +225,9 @@ footer p {
   <div class="container about-grid">
     <div>
       <span class="eyebrow">Longas distâncias. Grandes histórias.</span>
-      <h2 style="font-size:clamp(42px,6vw,65px);margin:15px 0;">
-        Uma experiência que vai <span class="gold">além da corrida.</span>
-      </h2>
-      <p>
-        Existem desafios que não são medidos apenas em quilômetros.
-        São medidos em coragem, persistência e na capacidade de continuar
-        quando o corpo pede para parar.
-      </p>
-      <p>
-        A Ultramaratona 75K nasce com o propósito de reunir atletas
-        apaixonados pelas longas distâncias em uma jornada de resistência
-        entre o Recife e o Itamatamirim Parque, em Vitória de Santo Antão.
-      </p>
+      <h2 style="font-size:clamp(42px,6vw,65px);margin:15px 0;">Uma experiência que vai <span class="gold">além da corrida.</span></h2>
+      <p>Existem desafios que não são medidos apenas em quilômetros. São medidos em coragem, persistência e na capacidade de continuar quando o corpo pede para parar.</p>
+      <p>A Ultramaratona 75K nasce com o propósito de reunir atletas apaixonados pelas longas distâncias em uma jornada de resistência entre o Recife e o Itamatamirim Parque, em Vitória de Santo Antão.</p>
     </div>
     <div class="about-image" role="img" aria-label="Imagem ilustrativa de corrida"></div>
   </div>
@@ -755,21 +241,9 @@ footer p {
       <p>Uma experiência construída para celebrar a resistência humana.</p>
     </div>
     <div class="cards">
-      <article class="card">
-        <div class="card-number">01</div>
-        <h3>Superação</h3>
-        <p>Enfrentar os próprios limites e descobrir a força que existe em cada passo.</p>
-      </article>
-      <article class="card">
-        <div class="card-number">02</div>
-        <h3>Experiência</h3>
-        <p>Compartilhar uma jornada única com atletas apaixonados pelas longas distâncias.</p>
-      </article>
-      <article class="card">
-        <div class="card-number">03</div>
-        <h3>Conquista</h3>
-        <p>Cruzar a linha de chegada e levar para sempre uma história para contar.</p>
-      </article>
+      <article class="card"><div class="card-number">01</div><h3>Superação</h3><p>Enfrentar os próprios limites e descobrir a força que existe em cada passo.</p></article>
+      <article class="card"><div class="card-number">02</div><h3>Experiência</h3><p>Compartilhar uma jornada única com atletas apaixonados pelas longas distâncias.</p></article>
+      <article class="card"><div class="card-number">03</div><h3>Conquista</h3><p>Cruzar a linha de chegada e levar para sempre uma história para contar.</p></article>
     </div>
   </div>
 </section>
@@ -781,74 +255,45 @@ footer p {
       <h2>Do Recife <span class="gold">ao Itamatamirim.</span></h2>
       <p>04 de abril de 2027 · Largada às 03h00 no Marco Zero · Chegada no Itamatamirim Parque.</p>
     </div>
-
     <div class="route-grid">
       <div class="route-point"><strong>KM 00</strong><span>Marco Zero — Recife/PE · Largada</span></div>
       <div class="route-point"><strong>BR-232</strong><span>Trajeto rodoviário em direção ao interior</span></div>
       <div class="route-point"><strong>RETORNO</strong><span>Opção de retorno antecipado ou retorno avançado</span></div>
       <div class="route-point"><strong>CHEGADA</strong><span>Itamatamirim Parque — Vitória de Santo Antão/PE</span></div>
     </div>
-
     <div class="route-options">
       <article class="route-option">
         <span class="eyebrow">Opção 01 · percurso alternativo</span>
         <h3>Retorno antecipado</h3>
         <span class="route-distance">DISTÂNCIA REDUZIDA</span>
-        <p>
-          Para o atleta que, durante a prova, optar por não seguir até o retorno
-          mais distante. Nesse formato, o participante realiza o primeiro retorno
-          previsto e segue de volta para a chegada no Itamatamirim Parque.
-        </p>
+        <p>Para o atleta que, durante a prova, optar por não seguir até o retorno mais distante. Nesse formato, o participante realiza o primeiro retorno previsto e segue de volta para a chegada no Itamatamirim Parque.</p>
         <p><strong>Quilometragem final:</strong> será confirmada após medição técnica do percurso.</p>
       </article>
-
       <article class="route-option">
         <span class="eyebrow">Opção 02 · desafio principal</span>
         <h3>Percurso completo</h3>
         <span class="route-distance">75 KM</span>
-        <p>
-          Para quem deseja cumprir o desafio integral: seguir além do primeiro
-          retorno, alcançar o retorno mais avançado indicado no planejamento e
-          retornar pela rota prevista até a linha de chegada no Itamatamirim Parque.
-        </p>
+        <p>Para quem deseja cumprir o desafio integral: seguir além do primeiro retorno, alcançar o retorno mais avançado indicado no planejamento e retornar pela rota prevista até a linha de chegada no Itamatamirim Parque.</p>
         <p><strong>Distância planejada:</strong> aproximadamente 75 km, sujeita à aferição oficial.</p>
       </article>
     </div>
-
     <div class="route-map">
-      <iframe
-        title="Mapa de localização do Itamatamirim Parque"
-        src="https://www.google.com/maps?q=Itamatamirim%20Parque%2C%20BR-232%2C%20km%2038%2C%20Vit%C3%B3ria%20de%20Santo%20Ant%C3%A3o%2C%20PE&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
+      <iframe title="Mapa de localização do Itamatamirim Parque" src="https://www.google.com/maps?q=Itamatamirim%20Parque%2C%20BR-232%2C%20km%2038%2C%20Vit%C3%B3ria%20de%20Santo%20Ant%C3%A3o%2C%20PE&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       <div class="route-map-caption">
-        Mapa de localização da chegada — Itamatamirim Parque, Rodovia BR-232, km 38,
-        Zona Rural, Vitória de Santo Antão/PE. Os links abaixo abrem os mapas de referência
-        fornecidos para conferência dos trechos.
+        Mapa de localização da chegada — Itamatamirim Parque, Rodovia BR-232, km 38, Zona Rural, Vitória de Santo Antão/PE.
         <div class="route-map-links">
           <a class="btn btn-outline" href="https://www.google.com/maps/dir/?api=1&origin=Marco%20Zero%2C%20Recife%2C%20PE&destination=Itamatamirim%20Parque%2C%20BR-232%2C%20km%2038%2C%20Vit%C3%B3ria%20de%20Santo%20Ant%C3%A3o%2C%20PE" target="_blank" rel="noopener">Abrir mapa base Recife → Itamatamirim</a>
-          <a class="btn" href="https://www.google.com/maps/dir/Cabana+de+Taipa,+BR+232,+KM+40+-+ZONA+RURAL+zona+rural,+Vit%C3%B3ria+de+Santo+Ant%C3%A3o+-+PE,+55604-340/Itamatamirim+Parque,+Rodovia+BR-232,+Km+38+Zona+Rural,+Vit%C3%B3ria+de+Santo+Ant%C3%A3o+-+PE,+54800-000/@-8.1155487,-35.2408693,14.25z/data=!4m19!4m18!1m10!1m1!1s0x7aa5552d79b8353:0xcfc649f54617904!2m2!1d-35.2229991!2d-8.1161343!3m4!1m2!1d-35.2558573!2d-8.1163063!3s0x7aa552bc1fd3061:0x3e06b70ffd519e0!1m5!1m1!1s0x7ab0004024bf365:0x77237af967939e65!2m2!1d-35.2248715!2d-8.1186141!3e9?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Abrir referência do retorno avançado</a>
+          <a class="btn" href="https://www.google.com/maps/dir/Cabana+de+Taipa,+BR+232,+KM+40+-+ZONA+RURAL+zona+rural,+Vit%C3%B3ria+de+Santo+Ant%C3%A3o+-+PE,+55604-340/Itamatamirim+Parque,+Rodovia+BR-232,+Km+38+Zona+Rural,+Vit%C3%B3ria+de+Santo+Ant%C3%A3o+-+PE,+54800-000/@-8.1155487,-35.2408693,14.25z/data=!4m19!4m18!1m10!1m1!1s0x7aa5552d79b8353:0xcfc649f54617904!2m2!1d-35.2229991!2d-8.1161343!3m4!1m2!1d-35.2558573!2d-8.1163063!3s0x7aa552bc1fd3061:0x3e06b70ffd519e0!1m5!1m1!1s0x7ab0004024bf365:0x77237af967939e65!2m2!1d-35.2248715!2d-8.1186141!3e9?entry=ttu" target="_blank" rel="noopener">Abrir referência do retorno avançado</a>
         </div>
       </div>
     </div>
-
-    <div class="route-warning">
-      <strong>Importante:</strong> os dois formatos de percurso estão apresentados como planejamento
-      preliminar. A quilometragem do retorno antecipado, os pontos exatos de retorno, a rota final,
-      os pontos de apoio e a operação na BR-232 ainda dependem de medição, validação técnica,
-      autorizações dos órgãos competentes e publicação do regulamento definitivo.
-    </div>
+    <div class="route-warning"><strong>Importante:</strong> os dois formatos de percurso estão apresentados como planejamento preliminar. A quilometragem do retorno antecipado, os pontos exatos de retorno, a rota final, os pontos de apoio e a operação na BR-232 ainda dependem de medição, validação técnica, autorizações dos órgãos competentes e publicação do regulamento definitivo.</div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="heading">
-      <span class="eyebrow">Informações gerais</span>
-      <h2>O desafio em <span class="gold">números.</span></h2>
-    </div>
+    <div class="heading"><span class="eyebrow">Informações gerais</span><h2>O desafio em <span class="gold">números.</span></h2></div>
     <div class="info-grid">
       <div class="info-box"><small>Data prevista</small><strong>04/04/2027</strong></div>
       <div class="info-box"><small>Percurso completo</small><strong>75 KM</strong></div>
@@ -866,45 +311,31 @@ footer p {
       <h2>Garanta sua vaga <span class="gold">no 75K.</span></h2>
       <p>Valores válidos para inscrições realizadas até 31 de dezembro de 2026.</p>
     </div>
-
     <div class="info-grid">
       <div class="info-box"><small>Solo</small><strong>R$ 250,00</strong><p>Por atleta</p></div>
       <div class="info-box"><small>Dupla</small><strong>R$ 175,00</strong><p>Por atleta · R$ 350,00 por equipe</p></div>
       <div class="info-box"><small>Trio</small><strong>R$ 175,00</strong><p>Por atleta · R$ 525,00 por equipe</p></div>
       <div class="info-box"><small>Quarteto</small><strong>R$ 175,00</strong><p>Por atleta · R$ 700,00 por equipe</p></div>
     </div>
-    <p class="form-note">Primeiro lote até 31/12/2026. Nos formatos de revezamento, o valor de R$ 175,00 é individual, cobrado de cada integrante da equipe.</p>
+    <p class="form-note">Primeiro lote até 31/12/2026. Nos formatos de revezamento, o valor de R$ 175,00 é individual, cobrado de cada integrante da equipe. A equipe realiza um único pagamento pelo valor total.</p>
 
     <div class="heading" style="margin-top:55px;">
       <span class="eyebrow">Reconhecimento a quem supera o desafio</span>
       <h2>Premiação <span class="gold">75K.</span></h2>
     </div>
     <div class="cards">
-      <article class="card">
-        <div class="card-number">01</div>
-        <h3>Geral masculino</h3>
-        <p>Troféus do 1º ao 5º colocado.</p>
-      </article>
-      <article class="card">
-        <div class="card-number">02</div>
-        <h3>Geral feminino</h3>
-        <p>Troféus do 1º ao 5º colocado.</p>
-      </article>
-      <article class="card">
-        <div class="card-number">03</div>
-        <h3>Faixas etárias</h3>
-        <p>Troféu para o 1º colocado de cada faixa: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais.</p>
-      </article>
+      <article class="card"><div class="card-number">01</div><h3>Geral masculino</h3><p>Troféus do 1º ao 5º colocado.</p></article>
+      <article class="card"><div class="card-number">02</div><h3>Geral feminino</h3><p>Troféus do 1º ao 5º colocado.</p></article>
+      <article class="card"><div class="card-number">03</div><h3>Faixas etárias</h3><p>Troféu para o 1º colocado de cada faixa: 18 a 29 anos, 30 a 49 anos, e 50 anos ou mais.</p></article>
     </div>
     <div class="route-warning" style="margin-top:20px;">
       <strong>Premiação por equipes:</strong> troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.
-      <br><br><strong>Todos os concluintes:</strong> medalha finisher para quem completar a prova de acordo com o regulamento.
+      <br><br><strong>Todos os concluintes:</strong> medalha finisher e camisa Finisher para quem completar a prova de acordo com o regulamento.
     </div>
-
     <div class="heading" style="margin-top:55px;">
       <span class="eyebrow">Kit do atleta</span>
       <h2>Uma lembrança <span class="gold">dessa história.</span></h2>
-      <p>Todos os atletas inscritos receberão camisa oficial e uma sandália como brinde, conforme grade de tamanhos e disponibilidade. Os primeiros inscritos também poderão receber itens promocionais adicionais, conforme divulgação da organização.</p>
+      <p>Todos os atletas inscritos receberão uma sandália como brinde. Os 50 primeiros atletas com pagamento confirmado também receberão meia personalizada e camisa fitness. Todos os atletas que concluírem a prova dentro das regras receberão camisa Finisher e medalha Finisher.</p>
     </div>
   </div>
 </section>
@@ -920,21 +351,17 @@ footer p {
       <div>
         <h3>Regulamento da prova em PDF</h3>
         <p>Baixe o documento para consultar as regras, modalidades, kit do atleta, segurança e condições de participação.</p>
-        <div class="reg-small">Versão 1.0 · 11 de novembro de 2026 · Documento sujeito à validação final do percurso e das autorizações operacionais.</div>
+        <div class="reg-small">Versão sujeita à validação final do percurso e das autorizações operacionais.</div>
       </div>
       <a class="btn" href="regulamento-oficial-75k-2027.pdf" target="_blank" rel="noopener" download>Baixar regulamento PDF</a>
     </div>
-    <div class="notice">
-      <strong>INFORMAÇÃO OPERACIONAL IMPORTANTE.</strong>
-      A largada geral está programada para 03h00 no Marco Zero do Recife. A realização do trajeto rodoviário depende da aferição final, do plano de segurança e das autorizações dos órgãos competentes. Pontos de troca, pontos de apoio, percurso alternativo e cortes serão detalhados em comunicado técnico antes da prova.
-    </div>
-    <details open>
-      <summary>1. Da prova, data e finalidade</summary>
+    <div class="notice"><strong>INFORMAÇÃO OPERACIONAL IMPORTANTE.</strong> A largada geral está programada para 03h00 no Marco Zero do Recife. A realização do trajeto rodoviário depende da aferição final, do plano de segurança e das autorizações dos órgãos competentes. Pontos de troca, pontos de apoio, percurso alternativo e cortes serão detalhados em comunicado técnico antes da prova.</div>
+
+    <details open><summary>1. Da prova, data e finalidade</summary>
       <p>A Ultramaratona 75K — Longas Distâncias, Grandes Histórias será realizada em 04 de abril de 2027, com largada prevista para 03h00, no Marco Zero, Recife/PE, e chegada no Itamatamirim Parque, em Vitória de Santo Antão/PE.</p>
       <p>O desafio principal tem distância planejada de aproximadamente 75 km. A prova tem caráter esportivo, competitivo e de superação, devendo ser disputada com respeito às regras, às autoridades, aos demais participantes e à segurança viária.</p>
     </details>
-    <details>
-      <summary>2. Modalidades e percurso</summary>
+    <details><summary>2. Modalidades e percurso</summary>
       <ul>
         <li>Solo: participação individual durante todo o percurso escolhido.</li>
         <li>Revezamento Dupla: equipe formada por dois atletas.</li>
@@ -943,29 +370,23 @@ footer p {
         <li>Percurso completo: distância planejada de aproximadamente 75 km.</li>
         <li>Percurso alternativo: opção de retorno antecipado, com distância final a ser aferida e comunicada pela organização.</li>
       </ul>
-      <p>A quilometragem oficial, o traçado definitivo e os pontos de troca dos revezamentos serão confirmados em comunicado técnico. A equipe deverá realizar as trocas exclusivamente nos locais autorizados, sem obstruir a via ou colocar terceiros em risco.</p>
+      <p>A quilometragem oficial, o traçado definitivo e os pontos de troca dos revezamentos serão confirmados em comunicado técnico. A equipe deverá realizar as trocas exclusivamente nos locais autorizados.</p>
     </details>
-    <details>
-      <summary>3. Inscrições, valores e confirmação</summary>
+    <details><summary>3. Inscrições, valores e confirmação</summary>
       <ul>
         <li>Primeiro lote: até 31 de dezembro de 2026.</li>
         <li>Solo: R$ 250,00 por atleta.</li>
         <li>Dupla, Trio e Quarteto: R$ 175,00 por atleta.</li>
       </ul>
-      <p>Nas modalidades de revezamento, cada integrante deverá possuir cadastro individual completo, incluindo identificação, data de nascimento, sexo, contato, tamanho de camisa e numeração da sandália. O envio do formulário pelo WhatsApp constitui solicitação de inscrição e não garante vaga automaticamente. A inscrição somente será considerada confirmada após validação e orientação da organização quanto ao pagamento e aos documentos exigidos.</p>
-      <p>As vagas, prazos, eventuais alterações e procedimentos de confirmação serão comunicados pelos canais oficiais do evento.</p>
+      <p>Nas modalidades de revezamento, cada integrante deverá possuir cadastro individual completo. A equipe realizará um único pagamento pelo valor total. O envio do formulário constitui solicitação de inscrição e não garante vaga automaticamente. A inscrição somente será considerada confirmada após validação do pagamento pela organização.</p>
     </details>
-    <details>
-      <summary>4. Kit do atleta e brinde</summary>
-      <p>O kit previsto inclui camisa oficial e uma sandália como brinde, conforme disponibilidade e grade de tamanhos informada no cadastro. O atleta é responsável por selecionar corretamente o tamanho da camisa e a numeração da sandália. A organização poderá solicitar confirmação dos tamanhos antes da produção e entrega dos itens.</p>
-      <p>Itens adicionais, quantidades promocionais e critérios de distribuição serão divulgados nos canais oficiais, quando aplicáveis.</p>
+    <details><summary>4. Kit do atleta e brinde</summary>
+      <p>Todos os atletas inscritos receberão uma sandália como brinde. Os 50 primeiros atletas com pagamento confirmado também receberão meia personalizada e camisa fitness. Os concluintes que cumprirem o regulamento receberão camisa Finisher e medalha Finisher. A organização poderá solicitar confirmação dos tamanhos antes da produção e entrega dos itens.</p>
     </details>
-    <details>
-      <summary>5. Horário, concentração e largada</summary>
+    <details><summary>5. Horário, concentração e largada</summary>
       <p>A largada geral está programada para 03h00 da manhã de 04/04/2027, no Marco Zero do Recife. Os atletas deverão comparecer com antecedência suficiente para identificação, conferência de documentos, orientações e procedimentos de largada. O horário de concentração e o cronograma detalhado serão publicados em comunicado pré-prova.</p>
     </details>
-    <details>
-      <summary>6. Saúde, aptidão e responsabilidade</summary>
+    <details><summary>6. Saúde, aptidão e responsabilidade</summary>
       <ul>
         <li>O participante deverá estar apto à prática de atividade física de longa duração.</li>
         <li>Será exigido parecer cardiológico conforme critérios, prazo de validade e formato definidos pela organização.</li>
@@ -974,43 +395,37 @@ footer p {
       </ul>
       <p>A organização poderá impedir a largada ou interromper a participação de atleta que apresente sinais de risco à própria saúde ou à segurança de terceiros, observados os procedimentos de atendimento e as orientações médicas disponíveis.</p>
     </details>
-    <details>
-      <summary>7. Segurança e equipamentos</summary>
+    <details><summary>7. Segurança e equipamentos</summary>
       <p>Por se tratar de percurso com trechos rodoviários e largada em período noturno, os participantes deverão cumprir integralmente o plano de segurança e as instruções dos fiscais e autoridades. A lista final de equipamentos obrigatórios será publicada em comunicado técnico.</p>
       <ul>
-        <li>Elemento refletivo/coleto refletivo em condições de baixa luminosidade, conforme orientação técnica.</li>
+        <li>Elemento refletivo/colete refletivo em condições de baixa luminosidade, conforme orientação técnica.</li>
         <li>Lanterna funcional para os atletas que estiverem em atividade no período noturno, conforme exigência operacional.</li>
         <li>Meio individual de hidratação, conforme especificação que será informada pela organização.</li>
         <li>Documento de identificação e número de peito em local visível durante a prova.</li>
       </ul>
       <p>É proibido correr em sentido contrário ao fluxo determinado, ignorar bloqueios, atravessar em locais não autorizados ou desobedecer orientações de segurança.</p>
     </details>
-    <details>
-      <summary>8. Apoio, hidratação e assistência</summary>
-      <p>Os pontos oficiais de apoio, hidratação, alimentação, atendimento e eventuais áreas de troca serão divulgados antes da prova. Apoio externo, veículos e assistência particular somente poderão atuar nos locais e condições autorizados pela organização e pelos órgãos competentes. É vedado qualquer apoio que comprometa a segurança do tráfego ou favoreça irregularmente um participante.</p>
+    <details><summary>8. Apoio, hidratação e assistência</summary>
+      <p>Os pontos oficiais de apoio, hidratação, alimentação, atendimento e eventuais áreas de troca serão divulgados antes da prova. Apoio externo, veículos e assistência particular somente poderão atuar nos locais e condições autorizados pela organização e pelos órgãos competentes.</p>
     </details>
-    <details>
-      <summary>9. Tempo limite, pontos de controle e interrupção</summary>
+    <details><summary>9. Tempo limite, pontos de controle e interrupção</summary>
       <p>O planejamento operacional considera tempo limite global de até 12 horas, ainda sujeito à validação do percurso, dos pontos de controle e das autorizações. Os horários oficiais de corte e os locais dos postos de controle serão publicados em comunicado técnico. O atleta que ultrapassar o horário de corte deverá seguir a orientação da organização e poderá ser retirado da classificação.</p>
       <p>A organização poderá interromper, neutralizar, alterar ou cancelar a prova por condições climáticas, riscos viários, determinações de autoridades, emergência ou força maior.</p>
     </details>
-    <details>
-      <summary>10. Classificação e premiação</summary>
+    <details><summary>10. Classificação e premiação</summary>
       <ul>
         <li>Geral masculino: troféus do 1º ao 5º colocado.</li>
         <li>Geral feminino: troféus do 1º ao 5º colocado.</li>
-        <li>Faixas etárias: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais, com troféu para o primeiro colocado de cada faixa, conforme critérios de classificação.</li>
+        <li>Faixas etárias: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais, com troféu para o primeiro colocado de cada faixa.</li>
         <li>Revezamentos: troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.</li>
-        <li>Todos os concluintes que cumprirem as regras e o percurso válido receberão medalha finisher.</li>
+        <li>Todos os concluintes que cumprirem as regras e o percurso válido receberão camisa Finisher e medalha Finisher.</li>
       </ul>
-      <p>Os critérios de desempate, validação de voltas/trechos e eventuais categorias adicionais serão detalhados pela organização antes do evento.</p>
+      <p>Os critérios de desempate, validação de trechos e eventuais categorias adicionais serão detalhados pela organização antes do evento.</p>
     </details>
-    <details>
-      <summary>11. Penalidades e desclassificação</summary>
+    <details><summary>11. Penalidades e desclassificação</summary>
       <p>Poderão resultar em advertência, retirada da prova ou desclassificação: uso de transporte ou apoio não autorizado; corte ou alteração indevida do percurso; troca fora dos locais permitidos; ausência de identificação; descumprimento das instruções de fiscais e autoridades; conduta antidesportiva; descarte irregular de resíduos; e descumprimento das regras de segurança ou dos horários de corte.</p>
     </details>
-    <details>
-      <summary>12. Imagem, dados e disposições finais</summary>
+    <details><summary>12. Imagem, dados e disposições finais</summary>
       <p>O tratamento dos dados fornecidos na inscrição será limitado às finalidades de contato, organização, segurança, classificação e gestão do evento, observada a legislação aplicável. A autorização de uso de imagem deverá ser apresentada em termo próprio, quando aplicável.</p>
       <p>Casos omissos serão analisados pela organização, respeitada a legislação vigente. Este regulamento deverá ser lido em conjunto com os comunicados técnicos oficiais publicados antes da prova. Em caso de atualização, prevalecerá a versão mais recente divulgada pelos canais oficiais.</p>
     </details>
@@ -1019,148 +434,60 @@ footer p {
 
 <section>
   <div class="container">
-    <div class="heading">
-      <span class="eyebrow">Antes de encarar os 75 quilômetros</span>
-      <h2>Saúde, preparo e <span class="gold">responsabilidade.</span></h2>
-    </div>
+    <div class="heading"><span class="eyebrow">Antes de encarar os 75 quilômetros</span><h2>Saúde, preparo e <span class="gold">responsabilidade.</span></h2></div>
     <div class="safety-grid">
-      <div class="safety-card">
-        <h3>01. Parecer cardiológico</h3>
-        <p>
-          Todos os participantes deverão apresentar parecer cardiológico
-          emitido por médico habilitado, conforme os critérios e o prazo
-          de validade que serão definidos pela organização.
-        </p>
-      </div>
-      <div class="safety-card">
-        <h3>02. Termo de responsabilidade</h3>
-        <p>
-          Cada atleta deverá ler, preencher e assinar o termo individual
-          de ciência de riscos e responsabilidade antes da participação.
-        </p>
-        <p>
-          O documento registra a ciência dos riscos, mas não elimina
-          responsabilidades legais da organização.
-        </p>
-      </div>
+      <div class="safety-card"><h3>01. Parecer cardiológico</h3><p>Todos os participantes deverão apresentar parecer cardiológico emitido por médico habilitado, conforme os critérios e o prazo de validade que serão definidos pela organização.</p></div>
+      <div class="safety-card"><h3>02. Termo de responsabilidade</h3><p>Cada atleta deverá ler, preencher e assinar o termo individual de ciência de riscos e responsabilidade antes da participação.</p><p>O documento registra a ciência dos riscos, mas não elimina responsabilidades legais da organização.</p></div>
     </div>
   </div>
 </section>
-
-<!-- INSCRIÇÃO -->
 
 <section class="registration" id="inscricao">
   <div class="container">
     <span class="eyebrow">Sua próxima grande história começa aqui</span>
     <h2>75 KM.<br><span class="gold">Uma história para contar.</span></h2>
-    <p>
-      Preencha seus dados e envie sua solicitação de inscrição
-      diretamente para a organização pelo WhatsApp.
-    </p>
+    <p>Preencha seus dados e envie sua solicitação de inscrição. O cadastro será registrado no sistema da organização e o pagamento ficará pendente até a conferência manual do Pix.</p>
     <a href="#formulario" class="btn">Preencher inscrição</a>
   </div>
 </section>
 
 <section class="registration-form-section" id="formulario">
   <div class="container form-wrapper">
-
     <div class="heading">
       <span class="eyebrow">Inscrição 75K 2027 · 04/04/2027</span>
       <h2>Faça parte <span class="gold">dessa história.</span></h2>
-      <p>
-        Preencha todos os campos obrigatórios com atenção. Primeiro lote até 31/12/2026:
-        Solo R$ 250,00 por atleta; Dupla, Trio e Quarteto R$ 175,00 por atleta.
-        Seus dados serão organizados em uma mensagem para o WhatsApp da organização.
-      </p>
+      <p>Primeiro lote até 31/12/2026: Solo R$ 250,00; Dupla, Trio e Quarteto R$ 175,00 por atleta. Nos revezamentos, o pagamento é único por equipe.</p>
     </div>
 
     <div class="form-card">
       <form id="registrationForm">
-
-        <h3 class="form-section-title">01. Dados pessoais</h3>
-
+        <h3 class="form-section-title">01. Dados pessoais do responsável pela inscrição</h3>
         <div class="form-grid">
-
-          <div class="field full">
-            <label for="nome">Nome completo <span>*</span></label>
-            <input id="nome" name="nome" type="text" required maxlength="100" autocomplete="name" placeholder="Seu nome completo">
-          </div>
-
-          <div class="field">
-            <label for="cpf">CPF <span>*</span></label>
-            <input id="cpf" name="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00">
-          </div>
-
-          <div class="field">
-            <label for="nascimento">Data de nascimento <span>*</span></label>
-            <input id="nascimento" name="nascimento" type="date" required>
-          </div>
-
-          <div class="field">
-            <label for="idade">Idade na data da prova (04/04/2027)</label>
-            <input id="idade" name="idade" type="text" readonly placeholder="Calculada automaticamente">
-          </div>
-
-          <div class="field">
-            <label for="sexo">Sexo <span>*</span></label>
-            <select id="sexo" name="sexo" required>
-              <option value="">Selecione</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Feminino">Feminino</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="telefone">WhatsApp do atleta <span>*</span></label>
-            <input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000">
-          </div>
-
-          <div class="field">
-            <label for="email">E-mail <span>*</span></label>
-            <input id="email" name="email" type="email" required autocomplete="email" placeholder="seuemail@email.com">
-          </div>
-
-          <div class="field">
-            <label for="cidade">Cidade <span>*</span></label>
-            <input id="cidade" name="cidade" type="text" required placeholder="Sua cidade">
-          </div>
-
-          <div class="field">
-            <label for="estado">Estado <span>*</span></label>
+          <div class="field full"><label for="nome">Nome completo <span>*</span></label><input id="nome" name="nome" type="text" required maxlength="100" autocomplete="name" placeholder="Seu nome completo"></div>
+          <div class="field"><label for="cpf">CPF <span>*</span></label><input id="cpf" name="cpf" type="text" required inputmode="numeric" maxlength="14" placeholder="000.000.000-00"></div>
+          <div class="field"><label for="nascimento">Data de nascimento <span>*</span></label><input id="nascimento" name="nascimento" type="date" required></div>
+          <div class="field"><label for="idade">Idade na data da prova (04/04/2027)</label><input id="idade" name="idade" type="text" readonly placeholder="Calculada automaticamente"></div>
+          <div class="field"><label for="sexo">Sexo <span>*</span></label><select id="sexo" name="sexo" required><option value="">Selecione</option><option value="Masculino">Masculino</option><option value="Feminino">Feminino</option></select></div>
+          <div class="field"><label for="telefone">WhatsApp do atleta <span>*</span></label><input id="telefone" name="telefone" type="tel" required autocomplete="tel" placeholder="(00) 00000-0000"></div>
+          <div class="field"><label for="email">E-mail <span>*</span></label><input id="email" name="email" type="email" required autocomplete="email" placeholder="seuemail@email.com"></div>
+          <div class="field"><label for="cidade">Cidade <span>*</span></label><input id="cidade" name="cidade" type="text" required placeholder="Sua cidade"></div>
+          <div class="field"><label for="estado">Estado <span>*</span></label>
             <select id="estado" name="estado" required>
               <option value="">Selecione</option>
-              <option>PE</option><option>PB</option><option>AL</option>
-              <option>RN</option><option>CE</option><option>BA</option>
-              <option>SE</option><option>PI</option><option>MA</option>
-              <option>SP</option><option>RJ</option><option>MG</option>
-              <option>ES</option><option>PR</option><option>SC</option>
-              <option>RS</option><option>DF</option><option>GO</option>
-              <option>MT</option><option>MS</option><option>TO</option>
-              <option>PA</option><option>AP</option><option>AM</option>
-              <option>RR</option><option>RO</option><option>AC</option>
-              <option>Outra localidade</option>
+              <option>PE</option><option>PB</option><option>AL</option><option>RN</option><option>CE</option><option>BA</option><option>SE</option><option>PI</option><option>MA</option><option>SP</option><option>RJ</option><option>MG</option><option>ES</option><option>PR</option><option>SC</option><option>RS</option><option>DF</option><option>GO</option><option>MT</option><option>MS</option><option>TO</option><option>PA</option><option>AP</option><option>AM</option><option>RR</option><option>RO</option><option>AC</option><option>Outra localidade</option>
             </select>
           </div>
-
         </div>
 
         <h3 class="form-section-title">02. Dados esportivos</h3>
-
         <div class="form-grid">
-
-          <div class="field">
-            <label for="modalidade">Modalidade desejada <span>*</span></label>
+          <div class="field"><label for="modalidade">Modalidade desejada <span>*</span></label>
             <select id="modalidade" name="modalidade" required>
               <option value="">Selecione sua modalidade</option>
-              <option>Solo</option>
-              <option>Revezamento Dupla</option>
-              <option>Revezamento Trio</option>
-              <option>Revezamento Quarteto</option>
+              <option>Solo</option><option>Revezamento Dupla</option><option>Revezamento Trio</option><option>Revezamento Quarteto</option>
             </select>
           </div>
-
-          <div class="field full">
-            <label for="percursoEscolhido">Percurso de interesse <span>*</span></label>
+          <div class="field full"><label for="percursoEscolhido">Percurso de interesse <span>*</span></label>
             <select id="percursoEscolhido" name="percursoEscolhido" required>
               <option value="">Selecione uma opção</option>
               <option>Percurso alternativo — retorno antecipado (distância a confirmar)</option>
@@ -1168,130 +495,85 @@ footer p {
             </select>
             <small class="form-note">A escolha é uma manifestação de interesse. A organização confirmará os formatos disponíveis no regulamento definitivo.</small>
           </div>
-
-          <div class="field">
-            <label for="camisa">Tamanho da camisa <span>*</span></label>
-            <select id="camisa" name="camisa" required>
-              <option value="">Selecione</option>
-              <option>PP</option>
-              <option>P</option>
-              <option>M</option>
-              <option>G</option>
-              <option>GG</option>
-              <option>XG</option>
-            </select>
+          <div class="field"><label for="camisa">Tamanho da camisa <span>*</span></label>
+            <select id="camisa" name="camisa" required><option value="">Selecione</option><option>PP</option><option>P</option><option>M</option><option>G</option><option>GG</option><option>XG</option></select>
+            <small class="form-note">Referência de tamanho para a camisa Finisher e, se contemplado, camisa fitness.</small>
           </div>
-
-          <div class="field">
-            <label for="sandalia">Numeração da sandália (brinde) <span>*</span></label>
-            <select id="sandalia" name="sandalia" required>
-              <option value="">Selecione</option>
-              <option>33</option><option>34</option><option>35</option><option>36</option>
-              <option>37</option><option>38</option><option>39</option><option>40</option>
-              <option>41</option><option>42</option><option>43</option><option>44</option>
-              <option>45</option><option>46</option>
-            </select>
+          <div class="field"><label for="sandalia">Numeração da sandália (brinde) <span>*</span></label>
+            <select id="sandalia" name="sandalia" required><option value="">Selecione</option><option>33</option><option>34</option><option>35</option><option>36</option><option>37</option><option>38</option><option>39</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option></select>
           </div>
-
           <div id="teamMembers" class="field full" aria-live="polite"></div>
-
-          <div class="field full">
-            <label for="experiencia">Experiência em provas de longa distância</label>
-            <textarea id="experiencia" name="experiencia" maxlength="500" placeholder="Conte brevemente sobre suas experiências em provas, ultramaratonas ou desafios de longa distância."></textarea>
-          </div>
-
-          <div class="field full">
-            <label for="equipe">Nome da equipe ou assessoria (se houver)</label>
-            <input id="equipe" name="equipe" type="text" maxlength="100" placeholder="Nome da equipe">
-          </div>
-
+          <div class="field full"><label for="experiencia">Experiência em provas de longa distância</label><textarea id="experiencia" name="experiencia" maxlength="500" placeholder="Conte brevemente sobre suas experiências em provas, ultramaratonas ou desafios de longa distância."></textarea></div>
+          <div class="field full"><label for="equipe">Nome da equipe ou assessoria (se houver)</label><input id="equipe" name="equipe" type="text" maxlength="100" placeholder="Nome da equipe"></div>
         </div>
 
         <h3 class="form-section-title">03. Contato para emergência</h3>
-
         <div class="form-grid">
-
-          <div class="field">
-            <label for="emergencia">Nome do contato <span>*</span></label>
-            <input id="emergencia" name="emergencia" type="text" required maxlength="100" placeholder="Nome da pessoa">
-          </div>
-
-          <div class="field">
-            <label for="telefoneEmergencia">Telefone do contato <span>*</span></label>
-            <input id="telefoneEmergencia" name="telefoneEmergencia" type="tel" required placeholder="(00) 00000-0000">
-          </div>
-
-          <div class="field full">
-            <label for="parentesco">Grau de parentesco ou relação</label>
-            <input id="parentesco" name="parentesco" type="text" maxlength="50" placeholder="Ex.: cônjuge, irmão, amigo">
-          </div>
-
+          <div class="field"><label for="emergencia">Nome do contato <span>*</span></label><input id="emergencia" name="emergencia" type="text" required maxlength="100" placeholder="Nome da pessoa"></div>
+          <div class="field"><label for="telefoneEmergencia">Telefone do contato <span>*</span></label><input id="telefoneEmergencia" name="telefoneEmergencia" type="tel" required placeholder="(00) 00000-0000"></div>
+          <div class="field full"><label for="parentesco">Grau de parentesco ou relação</label><input id="parentesco" name="parentesco" type="text" maxlength="50" placeholder="Ex.: cônjuge, irmão, amigo"></div>
         </div>
 
         <h3 class="form-section-title">04. Documentação obrigatória</h3>
-
         <div class="pdf-box">
           <h3>Documentos da prova</h3>
-          <p>
-            Leia o documento, faça o download, preencha e assine.
-            A organização informará como deverá ser entregue para
-            validação da inscrição.
-          </p>
-          <a class="btn btn-outline"
-             href="termo-responsabilidade-75k-rascunho.pdf"
-             target="_blank"
-             rel="noopener">
-            Baixar termo em PDF
-          </a>
-          <p class="form-note">
-            O arquivo disponível é um modelo preliminar. A versão definitiva
-            deverá ser aprovada pela organização antes da abertura oficial
-            das inscrições.
-          </p>
+          <p>Leia o documento, faça o download, preencha e assine. A organização informará como deverá ser entregue para validação da inscrição.</p>
+          <a class="btn btn-outline" href="termo-responsabilidade-75k-rascunho.pdf" target="_blank" rel="noopener">Baixar termo em PDF</a>
+          <p class="form-note">O arquivo disponível é um modelo preliminar. A versão definitiva deverá ser aprovada pela organização antes da abertura oficial das inscrições.</p>
         </div>
 
         <div class="check-area">
-
-          <label class="check-line">
-            <input type="checkbox" id="leuRegulamento" required>
-            <span>Declaro que li e estou ciente do regulamento da prova e dos comunicados técnicos oficiais. <strong>*</strong></span>
-          </label>
-
-          <label class="check-line">
-            <input type="checkbox" id="leuTermo" required>
-            <span>Declaro que li o Termo de Responsabilidade e Ciência de Riscos e estou ciente de que deverá ser preenchido e assinado. <strong>*</strong></span>
-          </label>
-
-          <label class="check-line">
-            <input type="checkbox" id="parecer" required>
-            <span>Estou ciente da exigência prevista de apresentação de parecer cardiológico conforme os critérios que serão publicados pela organização. <strong>*</strong></span>
-          </label>
-
-          <label class="check-line">
-            <input type="checkbox" id="dados" required>
-            <span>Autorizo o uso dos dados informados para contato, análise e gestão da minha solicitação de inscrição, conforme o aviso de privacidade. <strong>*</strong></span>
-          </label>
-
+          <label class="check-line"><input type="checkbox" id="leuRegulamento" required><span>Declaro que li e estou ciente do regulamento da prova e dos comunicados técnicos oficiais. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="leuTermo" required><span>Declaro que li o Termo de Responsabilidade e Ciência de Riscos e estou ciente de que deverá ser preenchido e assinado. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="parecer" required><span>Estou ciente da exigência prevista de apresentação de parecer cardiológico conforme os critérios que serão publicados pela organização. <strong>*</strong></span></label>
+          <label class="check-line"><input type="checkbox" id="dados" required><span>Autorizo o uso dos dados informados para contato, análise e gestão da minha solicitação de inscrição, conforme o aviso de privacidade. <strong>*</strong></span></label>
         </div>
 
-        <p class="form-note">
-          Seus dados serão encaminhados pelo WhatsApp para a organização.
-          Não informe dados médicos detalhados neste formulário.
-        </p>
+        <p class="form-note">Seus dados pessoais serão armazenados no sistema da organização para gestão da inscrição. CPF e contato de emergência não serão enviados pelo WhatsApp. Não informe dados médicos detalhados neste formulário.</p>
 
         <div class="submit-area">
-          <button type="submit" class="btn">
-            Enviar inscrição pelo WhatsApp
-          </button>
-
-          <p class="submit-note">
-            Ao clicar, o WhatsApp será aberto com os dados preenchidos.
-            Você deverá conferir e enviar a mensagem no próprio WhatsApp.
-            O envio não confirma automaticamente uma vaga.
-          </p>
+          <button type="submit" class="btn" id="submitButton">Enviar solicitação de inscrição</button>
+          <p class="submit-note">Ao enviar, seus dados serão registrados no sistema. A inscrição ficará pendente até a conferência do pagamento pela organização. O envio do formulário não confirma automaticamente a vaga.</p>
         </div>
-
+        <div id="submissionResult" class="result-box" aria-live="polite"></div>
       </form>
+    </div>
+  </div>
+</section>
+
+<section class="admin-section" id="painel-admin">
+  <div class="container">
+    <div class="heading">
+      <span class="eyebrow">Área restrita da organização</span>
+      <h2>Painel <span class="gold">administrativo.</span></h2>
+      <p>Área exclusiva para consultar inscrições e confirmar pagamentos recebidos.</p>
+    </div>
+    <div class="admin-card">
+      <div id="adminLoginArea" class="admin-login">
+        <h3>Acesso da organização</h3>
+        <p class="form-note">Entre com o e-mail e a senha do usuário administrador já cadastrado no Supabase.</p>
+        <form id="adminLoginForm">
+          <input id="adminEmail" type="email" autocomplete="username" placeholder="E-mail do administrador" required>
+          <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Senha" required>
+          <button class="btn" type="submit">Entrar no painel</button>
+        </form>
+      </div>
+      <div id="adminDashboard" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap">
+          <h3>Inscrições recebidas</h3>
+          <button type="button" class="btn btn-outline" id="adminLogout">Sair</button>
+        </div>
+        <p id="adminWelcome" class="admin-message"></p>
+        <div class="admin-stats">
+          <div class="admin-stat"><strong id="paidAthleteCount">0</strong><span>ATLETAS COM PAGAMENTO CONFIRMADO</span></div>
+          <div class="admin-stat"><strong id="pendingCount">0</strong><span>INSCRIÇÕES PENDENTES</span></div>
+          <div class="admin-stat"><strong id="paidRegistrationCount">0</strong><span>INSCRIÇÕES PAGAS</span></div>
+        </div>
+        <p class="form-note">A contagem dos 50 primeiros é feita pelo número de atletas em inscrições pagas. Uma equipe Quarteto confirmada conta como quatro atletas.</p>
+        <button type="button" class="btn" id="refreshAdmin">Atualizar inscrições</button>
+        <div id="adminMessage" class="admin-message"></div>
+        <div id="adminList" class="admin-list"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1306,30 +588,57 @@ footer p {
     </div>
     <p>
       Ultramaratona 75K — Recife ao Itamatamirim Parque — 04/04/2027<br>
-      © Todos os direitos reservados.
+      © Todos os direitos reservados. <a href="#painel-admin" style="color:#777">Área da organização</a>
     </p>
   </div>
 </footer>
 
 <script>
-const form = document.getElementById("registrationForm");
+/* =========================================================
+   CONFIGURAÇÃO SUPABASE
+   Chave publishable: própria para uso no navegador.
+   Nunca colocar aqui uma chave service_role.
+========================================================= */
+
+const SUPABASE_URL = "https://fqvujfbqlqeczncwanwo.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_zeEfkWskCLGq7q3htsPQcg_96gG_Yr6";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
 const whatsappOrganizacao = "5588994813384";
+
+const form = document.getElementById("registrationForm");
 const campoNascimento = document.getElementById("nascimento");
 const campoIdade = document.getElementById("idade");
 const modalidade = document.getElementById("modalidade");
 const teamMembers = document.getElementById("teamMembers");
+const submitButton = document.getElementById("submitButton");
+const submissionResult = document.getElementById("submissionResult");
+
+/* =========================================================
+   FUNÇÕES DO FORMULÁRIO
+========================================================= */
 
 function calcularIdadeNaProva(dataNascimento) {
   if (!dataNascimento) return "";
   const partes = dataNascimento.split("-").map(Number);
   if (partes.length !== 3 || partes.some(Number.isNaN)) return "";
+
   const nascimento = new Date(partes[0], partes[1] - 1, partes[2]);
   const prova = new Date(2027, 3, 4);
+
   let idade = prova.getFullYear() - nascimento.getFullYear();
+
   const aindaNaoFezAniversario =
     prova.getMonth() < nascimento.getMonth() ||
-    (prova.getMonth() === nascimento.getMonth() && prova.getDate() < nascimento.getDate());
+    (prova.getMonth() === nascimento.getMonth() &&
+    prova.getDate() < nascimento.getDate());
+
   if (aindaNaoFezAniversario) idade--;
+
   return idade >= 0 ? String(idade) : "";
 }
 
@@ -1345,132 +654,480 @@ function quantidadeIntegrantes(valor) {
 }
 
 function opcoesCamisa() {
-  return ["PP", "P", "M", "G", "GG", "XG"].map(v => `<option value="${v}">${v}</option>`).join("");
+  return ["PP","P","M","G","GG","XG"]
+    .map(v => `<option value="${v}">${v}</option>`).join("");
 }
+
 function opcoesSandalia() {
-  return Array.from({length:14}, (_,i) => 33+i).map(v => `<option value="${v}">${v}</option>`).join("");
+  return Array.from({length:14},(_,i)=>33+i)
+    .map(v=>`<option value="${v}">${v}</option>`).join("");
 }
-function campoEquipe(i, label, type, required=true, options=null) {
+
+function campoEquipe(i,label,type,required=true,options=null) {
   const id = `membro${i}_${label}`;
+
   const input = options
-    ? `<select id="${id}" name="${id}" ${required ? "required" : ""}><option value="">Selecione</option>${options}</select>`
-    : `<input id="${id}" name="${id}" type="${type}" ${required ? "required" : ""} ${type==="date" ? 'max="2009-12-31"' : ""} ${type==="text" ? 'maxlength="100"' : ""}>`;
-  return `<div class="field"><label for="${id}">${label}${required ? ' <span>*</span>' : ''}</label>${input}</div>`;
+    ? `<select id="${id}" name="${id}" ${required?"required":""}><option value="">Selecione</option>${options}</select>`
+    : `<input id="${id}" name="${id}" type="${type}" ${required?"required":""} ${type==="text"?'maxlength="100"':""}>`;
+
+  return `<div class="field"><label for="${id}">${label}${required?' <span>*</span>':''}</label>${input}</div>`;
 }
+
 function renderizarIntegrantes() {
   const total = quantidadeIntegrantes(modalidade.value);
   teamMembers.innerHTML = "";
+
   if (total === 1) return;
+
   const aviso = document.createElement("p");
   aviso.className = "team-members-intro";
-  aviso.textContent = `A modalidade selecionada exige ${total} atletas. O cadastro principal já corresponde ao atleta 1. Preencha abaixo os dados individuais dos outros ${total-1} integrantes.`;
+  aviso.textContent = `A modalidade selecionada exige ${total} atletas. O cadastro principal já corresponde ao atleta 1. Preencha abaixo os dados dos outros ${total-1} integrantes.`;
   teamMembers.appendChild(aviso);
-  for (let i=2; i<=total; i++) {
+
+  for (let i=2;i<=total;i++) {
     const card = document.createElement("div");
     card.className = "team-member-card";
+
     card.innerHTML = `
       <h4>Atleta ${i} da equipe</h4>
       <div class="form-grid">
-        ${campoEquipe(i, "Nome completo", "text")}
-        ${campoEquipe(i, "CPF", "text")}
-        ${campoEquipe(i, "Data de nascimento", "date")}
-        ${campoEquipe(i, "Sexo", "select", true, '<option value="Masculino">Masculino</option><option value="Feminino">Feminino</option>')}
-        ${campoEquipe(i, "WhatsApp", "tel")}
-        ${campoEquipe(i, "E-mail", "email")}
-        ${campoEquipe(i, "Tamanho da camisa", "select", true, opcoesCamisa())}
-        ${campoEquipe(i, "Numeração da sandália", "select", true, opcoesSandalia())}
+        ${campoEquipe(i,"Nome completo","text")}
+        ${campoEquipe(i,"CPF","text")}
+        ${campoEquipe(i,"Data de nascimento","date")}
+        ${campoEquipe(i,"Sexo","select",true,'<option value="Masculino">Masculino</option><option value="Feminino">Feminino</option>')}
+        ${campoEquipe(i,"WhatsApp","tel")}
+        ${campoEquipe(i,"E-mail","email")}
+        ${campoEquipe(i,"Tamanho da camisa","select",true,opcoesCamisa())}
+        ${campoEquipe(i,"Numeração da sandália","select",true,opcoesSandalia())}
       </div>`;
+
     teamMembers.appendChild(card);
   }
 }
-modalidade.addEventListener("change", renderizarIntegrantes);
+
+modalidade.addEventListener("change",renderizarIntegrantes);
 
 function valor(id) {
   const campo = document.getElementById(id);
   return campo ? campo.value.trim() : "";
 }
-function formatarData(data) {
-  return data ? data.split("-").reverse().join("/") : "Não informada";
-}
+
 function dadosAtletaPrincipal() {
   return {
-    nome: valor("nome"), cpf: valor("cpf"), nascimento: valor("nascimento"),
-    idade: calcularIdadeNaProva(valor("nascimento")), sexo: valor("sexo"),
-    telefone: valor("telefone"), email: valor("email"),
-    camisa: valor("camisa"), sandalia: valor("sandalia")
+    nome:valor("nome"),
+    cpf:valor("cpf"),
+    nascimento:valor("nascimento"),
+    idade:calcularIdadeNaProva(valor("nascimento")),
+    sexo:valor("sexo"),
+    telefone:valor("telefone"),
+    email:valor("email"),
+    camisa:valor("camisa"),
+    sandalia:valor("sandalia")
   };
 }
+
 function dadosAtletasEquipe() {
   const total = quantidadeIntegrantes(modalidade.value);
   const atletas = [];
-  for (let i=2; i<=total; i++) {
+
+  for (let i=2;i<=total;i++) {
     const get = key => {
       const el = document.getElementById(`membro${i}_${key}`);
       return el ? el.value.trim() : "";
     };
+
     atletas.push({
-      nome:get("Nome completo"), cpf:get("CPF"), nascimento:get("Data de nascimento"),
-      idade:calcularIdadeNaProva(get("Data de nascimento")), sexo:get("Sexo"),
-      telefone:get("WhatsApp"), email:get("E-mail"),
-      camisa:get("Tamanho da camisa"), sandalia:get("Numeração da sandália")
+      nome:get("Nome completo"),
+      cpf:get("CPF"),
+      nascimento:get("Data de nascimento"),
+      idade:calcularIdadeNaProva(get("Data de nascimento")),
+      sexo:get("Sexo"),
+      telefone:get("WhatsApp"),
+      email:get("E-mail"),
+      camisa:get("Tamanho da camisa"),
+      sandalia:get("Numeração da sandália")
     });
   }
+
   return atletas;
 }
-form.addEventListener("submit", function(event) {
+
+function valorTotalInscricao(modalidadeSelecionada) {
+  if (modalidadeSelecionada === "Solo") return 250;
+  return quantidadeIntegrantes(modalidadeSelecionada) * 175;
+}
+
+function formatarMoeda(valor) {
+  return valor.toLocaleString("pt-BR",{
+    style:"currency",
+    currency:"BRL"
+  });
+}
+
+function formatarData(data) {
+  return data ? data.split("-").reverse().join("/") : "";
+}
+
+/* =========================================================
+   ENVIO DA INSCRIÇÃO PARA O SUPABASE
+========================================================= */
+
+form.addEventListener("submit",async function(event) {
   event.preventDefault();
+
   if (!form.reportValidity()) return;
+
   campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
 
-  const atleta1 = dadosAtletaPrincipal();
-  const atletas = [atleta1, ...dadosAtletasEquipe()];
-  const linhasAtletas = atletas.map((a, index) => [
-    `*ATLETA ${index+1}*`,
-    `Nome: ${a.nome}`,
-    `CPF: ${a.cpf}`,
-    `Nascimento: ${formatarData(a.nascimento)}`,
-    `Idade na data da prova: ${a.idade ? a.idade + " anos" : "Não calculada"}`,
-    `Sexo: ${a.sexo}`,
-    `WhatsApp: ${a.telefone}`,
-    `E-mail: ${a.email}`,
-    `Camisa: ${a.camisa}`,
-    `Sandália (brinde): ${a.sandalia}`
-  ].join("\n"));
+  const modalidadeSelecionada = valor("modalidade");
+  const totalAtletas = quantidadeIntegrantes(modalidadeSelecionada);
+  const valorTotal = valorTotalInscricao(modalidadeSelecionada);
 
-  const mensagem = [
-    "*SOLICITAÇÃO DE INSCRIÇÃO — ULTRAMARATONA 75K*",
-    "04/04/2027 — Largada programada: 03h00 — Marco Zero, Recife/PE",
-    "",
-    "*MODALIDADE E PERCURSO*",
-    "Modalidade: " + valor("modalidade"),
-    "Percurso de interesse: " + valor("percursoEscolhido"),
-    "Equipe/assessoria: " + (valor("equipe") || "Não informada"),
-    "",
-    "*CADASTRO INDIVIDUAL DOS ATLETAS*",
-    ...linhasAtletas,
-    "",
-    "*EXPERIÊNCIA*",
-    valor("experiencia") || "Não informada",
-    "",
-    "*CONTATO DE EMERGÊNCIA DA INSCRIÇÃO*",
-    "Nome: " + valor("emergencia"),
-    "Telefone: " + valor("telefoneEmergencia"),
-    "Relação: " + (valor("parentesco") || "Não informada"),
-    "",
-    "*DECLARAÇÕES*",
-    "Li o regulamento da prova: SIM",
-    "Li o termo de responsabilidade: SIM",
-    "Ciente da exigência de parecer cardiológico: SIM",
-    "Autorizo o uso dos dados para gestão da solicitação: SIM",
-    "",
-    "Estou encaminhando a solicitação de inscrição e aguardo a validação e as orientações da organização. Sei que o envio desta mensagem não confirma automaticamente a vaga."
-  ].join("\n");
+  const atletaPrincipal = dadosAtletaPrincipal();
+  const atletasEquipe = dadosAtletasEquipe();
+  const atletas = [atletaPrincipal,...atletasEquipe];
 
-  const url = "https://wa.me/" + whatsappOrganizacao + "?text=" + encodeURIComponent(mensagem);
-  window.open(url, "_blank", "noopener,noreferrer");
+  if (atletas.length !== totalAtletas) {
+    alert("Confira os dados de todos os integrantes da equipe.");
+    return;
+  }
+
+  const formData = {
+    percurso:valor("percursoEscolhido"),
+    cidade:valor("cidade"),
+    estado:valor("estado"),
+    experiencia:valor("experiencia"),
+    equipe:valor("equipe"),
+    contato_emergencia:{
+      nome:valor("emergencia"),
+      telefone:valor("telefoneEmergencia"),
+      relacao:valor("parentesco")
+    },
+    declaracoes:{
+      regulamento:document.getElementById("leuRegulamento").checked,
+      termo:document.getElementById("leuTermo").checked,
+      parecer_cardiologico:document.getElementById("parecer").checked,
+      uso_dados:document.getElementById("dados").checked
+    },
+    origem:"site_75k_2027"
+  };
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Registrando inscrição...";
+  submissionResult.style.display = "none";
+
+  try {
+    const {data,error} = await supabaseClient
+      .from("registrations")
+      .insert([{
+        modality:modalidadeSelecionada,
+        athlete_count:1,
+        amount_cents:1,
+        payment_status:"pending",
+        payment_method:"pix",
+        athletes:atletas,
+        form_data:formData
+      }])
+      .select("id,modality,athlete_count,amount_cents,payment_status")
+      .single();
+
+    if (error) throw error;
+
+    const protocolo = data.id;
+    const mensagem = [
+      "*NOVA SOLICITAÇÃO DE INSCRIÇÃO — 75K 2027*",
+      "",
+      "Protocolo: " + protocolo,
+      "Modalidade: " + modalidadeSelecionada,
+      "Quantidade de atletas: " + totalAtletas,
+      "Valor total: " + formatarMoeda(valorTotal),
+      "Pagamento: aguardando orientação/validação",
+      "",
+      "O cadastro foi registrado no site. Solicito as orientações para pagamento e confirmação da inscrição."
+    ].join("\n");
+
+    const whatsappURL =
+      "https://wa.me/" + whatsappOrganizacao +
+      "?text=" + encodeURIComponent(mensagem);
+
+    submissionResult.innerHTML = `
+      <h3>Solicitação registrada!</h3>
+      <p>Seu cadastro foi recebido pelo sistema da organização.</p>
+      <p class="protocol">Protocolo: ${protocolo}</p>
+      <p><strong>Modalidade:</strong> ${modalidadeSelecionada}</p>
+      <p><strong>Atletas:</strong> ${totalAtletas}</p>
+      <p><strong>Valor total:</strong> ${formatarMoeda(valorTotal)}</p>
+      <p><strong>Status:</strong> aguardando confirmação do pagamento.</p>
+      <p>Para continuar, clique abaixo e envie a mensagem de confirmação pelo WhatsApp. Não envie CPF ou dados pessoais por essa mensagem.</p>
+      <a class="btn" href="${whatsappURL}" target="_blank" rel="noopener">Continuar pelo WhatsApp</a>
+    `;
+
+    submissionResult.style.display = "block";
+    submissionResult.scrollIntoView({behavior:"smooth",block:"center"});
+
+    form.reset();
+    campoIdade.value = "";
+    teamMembers.innerHTML = "";
+
+  } catch(error) {
+    console.error("Erro ao registrar inscrição:",error);
+
+    let mensagemErro = "Não foi possível registrar sua inscrição. Tente novamente.";
+
+    if (error.message) {
+      mensagemErro += "\n\nDetalhe: " + error.message;
+    }
+
+    alert(mensagemErro);
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Enviar solicitação de inscrição";
+  }
 });
+
+/* =========================================================
+   PAINEL ADMINISTRATIVO
+========================================================= */
+
+const adminLoginForm = document.getElementById("adminLoginForm");
+const adminLoginArea = document.getElementById("adminLoginArea");
+const adminDashboard = document.getElementById("adminDashboard");
+const adminMessage = document.getElementById("adminMessage");
+const adminList = document.getElementById("adminList");
+
+function mostrarMensagemAdmin(texto) {
+  adminMessage.textContent = texto;
+}
+
+async function verificarAdmin() {
+  const {data:{session}} = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    adminLoginArea.style.display = "block";
+    adminDashboard.style.display = "none";
+    return false;
+  }
+
+  const {data:admin,error} = await supabaseClient
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id",session.user.id)
+    .maybeSingle();
+
+  if (error || !admin) {
+    await supabaseClient.auth.signOut();
+    adminLoginArea.style.display = "block";
+    adminDashboard.style.display = "none";
+    mostrarMensagemAdmin("Este usuário não possui autorização de administrador.");
+    return false;
+  }
+
+  adminLoginArea.style.display = "none";
+  adminDashboard.style.display = "block";
+  document.getElementById("adminWelcome").textContent =
+    "Acesso autorizado: " + session.user.email;
+
+  await carregarInscricoes();
+  return true;
+}
+
+adminLoginForm.addEventListener("submit",async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("adminEmail").value.trim();
+  const password = document.getElementById("adminPassword").value;
+
+  mostrarMensagemAdmin("Verificando acesso...");
+
+  const {error} = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    mostrarMensagemAdmin("Não foi possível entrar. Confira o e-mail e a senha.");
+    return;
+  }
+
+  const autorizado = await verificarAdmin();
+
+  if (!autorizado) {
+    mostrarMensagemAdmin("Usuário sem permissão administrativa.");
+  } else {
+    mostrarMensagemAdmin("Login realizado com sucesso.");
+  }
+});
+
+document.getElementById("adminLogout").addEventListener("click",async()=>{
+  await supabaseClient.auth.signOut();
+  adminLoginArea.style.display = "block";
+  adminDashboard.style.display = "none";
+  adminList.innerHTML = "";
+  mostrarMensagemAdmin("Você saiu do painel.");
+});
+
+document.getElementById("refreshAdmin").addEventListener("click",carregarInscricoes);
+
+function criarTexto(tag,texto,classe) {
+  const elemento = document.createElement(tag);
+  elemento.textContent = texto;
+  if (classe) elemento.className = classe;
+  return elemento;
+}
+
+async function carregarInscricoes() {
+  mostrarMensagemAdmin("Carregando inscrições...");
+  adminList.innerHTML = "";
+
+  const {data:inscricoes,error} = await supabaseClient
+    .from("registrations")
+    .select("*")
+    .order("created_at",{ascending:false});
+
+  if (error) {
+    mostrarMensagemAdmin("Erro ao carregar inscrições: " + error.message);
+    return;
+  }
+
+  const lista = inscricoes || [];
+
+  const pagas = lista.filter(i=>i.payment_status==="paid");
+  const pendentes = lista.filter(i=>i.payment_status==="pending");
+
+  const totalAtletasPagos = pagas.reduce(
+    (total,inscricao)=>total + Number(inscricao.athlete_count || 0),0
+  );
+
+  document.getElementById("paidAthleteCount").textContent =
+    totalAtletasPagos + " / 50";
+
+  document.getElementById("pendingCount").textContent = pendentes.length;
+  document.getElementById("paidRegistrationCount").textContent = pagas.length;
+
+  mostrarMensagemAdmin(
+    lista.length + " inscrição(ões) encontrada(s). " +
+    totalAtletasPagos + " atleta(s) com pagamento confirmado."
+  );
+
+  if (!lista.length) {
+    adminList.appendChild(
+      criarTexto("p","Nenhuma inscrição recebida até o momento.")
+    );
+    return;
+  }
+
+  lista.forEach(inscricao=>{
+    const card = document.createElement("div");
+    card.className = "admin-item";
+
+    const titulo = criarTexto(
+      "h4",
+      (inscricao.modality || "Modalidade") +
+      " — " + (inscricao.athlete_count || 0) + " atleta(s)"
+    );
+
+    const status = inscricao.payment_status==="paid"
+      ? "PAGAMENTO CONFIRMADO"
+      : "PAGAMENTO PENDENTE";
+
+    card.appendChild(titulo);
+    card.appendChild(criarTexto("p","Protocolo: " + inscricao.id));
+    card.appendChild(criarTexto("p","Status: " + status));
+    card.appendChild(criarTexto("p","Valor: " + formatarMoeda((inscricao.amount_cents || 0)/100)));
+    card.appendChild(criarTexto("p","Data: " + new Date(inscricao.created_at).toLocaleString("pt-BR")));
+
+    const atletas = Array.isArray(inscricao.athletes)
+      ? inscricao.athletes
+      : [];
+
+    atletas.forEach((atleta,index)=>{
+      card.appendChild(criarTexto(
+        "p",
+        `Atleta ${index+1}: ${atleta.nome || "Nome não informado"} | CPF: ${atleta.cpf || ""} | WhatsApp: ${atleta.telefone || ""}`
+      ));
+    });
+
+    const dados = inscricao.form_data || {};
+    const emergencia = dados.contato_emergencia || {};
+
+    if (emergencia.nome) {
+      card.appendChild(criarTexto(
+        "p",
+        "Emergência: " + emergencia.nome + " — " +
+        (emergencia.telefone || "")
+      ));
+    }
+
+    if (dados.equipe) {
+      card.appendChild(criarTexto("p","Equipe/assessoria: " + dados.equipe));
+    }
+
+    if (inscricao.payment_status==="paid") {
+      card.appendChild(criarTexto(
+        "p",
+        "Confirmado em: " +
+        (inscricao.paid_at
+          ? new Date(inscricao.paid_at).toLocaleString("pt-BR")
+          : "Data não informada")
+      ));
+
+      if (inscricao.payment_notes) {
+        card.appendChild(criarTexto("p","Observação: " + inscricao.payment_notes));
+      }
+    } else {
+      const observacao = document.createElement("input");
+      observacao.type = "text";
+      observacao.placeholder = "Observação do pagamento (opcional)";
+      observacao.style.cssText = "width:100%;padding:12px;background:#080808;color:white;border:1px solid #444;margin-top:12px";
+
+      const botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "btn";
+      botao.textContent = "Confirmar pagamento recebido";
+
+      botao.addEventListener("click",async()=>{
+        const confirmar = window.confirm(
+          "Confirma que o Pix desta inscrição foi recebido na conta da organização?"
+        );
+
+        if (!confirmar) return;
+
+        botao.disabled = true;
+        botao.textContent = "Confirmando...";
+
+        const {error:updateError} = await supabaseClient
+          .from("registrations")
+          .update({
+            payment_status:"paid",
+            paid_at:new Date().toISOString(),
+            payment_notes:observacao.value.trim() || null
+          })
+          .eq("id",inscricao.id)
+          .eq("payment_status","pending");
+
+        if (updateError) {
+          alert("Não foi possível confirmar: " + updateError.message);
+          botao.disabled = false;
+          botao.textContent = "Confirmar pagamento recebido";
+          return;
+        }
+
+        alert("Pagamento confirmado com sucesso!");
+        await carregarInscricoes();
+      });
+
+      card.appendChild(observacao);
+      card.appendChild(botao);
+    }
+
+    adminList.appendChild(card);
+  });
+}
+
+/* Verifica se já existe sessão administrativa */
+verificarAdmin();
 </script>
 
 </body>
 </html>
-Exibindo 75K-2027-4.html…
