@@ -1,6 +1,3 @@
-
-admin - 1.html
-100%
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -58,9 +55,9 @@ admin - 1.html
     .num{color:var(--green);font-weight:800}
     .muted{color:var(--muted)}
     .status{display:inline-flex;align-items:center;border-radius:99px;padding:6px 9px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
-    .status.pendente{color:var(--yellow);background:#382d16}
-    .status.confirmado{color:#c9f58a;background:#203019}
-    .status.cancelado{color:#ffaaaa;background:#3b1d1d}
+    .status.pending{color:var(--yellow);background:#382d16}
+    .status.confirmed{color:#c9f58a;background:#203019}
+    .status.cancelled{color:#ffaaaa;background:#3b1d1d}
     .empty{padding:38px 18px;text-align:center;color:var(--muted)}
     .notice{padding:12px 14px;border-radius:10px;margin:0 0 14px;font-size:13px;line-height:1.5;display:none}
     .notice.error{display:block;background:#351b1b;border:1px solid #713b3b;color:#ffd0d0}
@@ -234,6 +231,9 @@ admin - 1.html
       const parts = String(value).split('-');
       return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : value;
     }
+    function statusLabel(value) {
+      return ({ pending: 'Pendente', confirmed: 'Confirmado', cancelled: 'Cancelado' })[value] || value || '—';
+    }
     function showNotice(target, message, type='info') {
       const el = $(target);
       el.className = `notice ${type}`;
@@ -372,7 +372,7 @@ admin - 1.html
           <td>${escapeHtml(r.modality || '—')}</td>
           <td>${escapeHtml(r.athlete_count || group.length || 0)}</td>
           <td><strong>${money(r.amount_due_cents)}</strong></td>
-          <td><span class="status ${{pending:'pendente',confirmed:'confirmado',cancelled:'cancelado'}[r.payment_status] || 'pendente'}">${{pending:'Pendente',confirmed:'Confirmado',cancelled:'Cancelado'}[r.payment_status] || 'Pendente'}</span></td>
+          <td><span class="status ${escapeHtml(r.payment_status || 'pending')}">${escapeHtml(statusLabel(r.payment_status))}</span></td>
           <td><button class="btn small" type="button" data-open="${escapeHtml(r.id)}">Ver / editar</button></td>
         </tr>`;
       }).join('');
@@ -417,7 +417,7 @@ admin - 1.html
           ${detail('Valor total', money(r.amount_due_cents))}
           ${detail('Percurso', r.route_choice)}
           ${detail('Experiência', r.experience)}
-          ${detail('Status do pagamento', ({pending:'Pendente',confirmed:'Confirmado',cancelled:'Cancelado'})[r.payment_status] || r.payment_status)}
+          ${detail('Status do pagamento', statusLabel(r.payment_status))}
           ${detail('Data do pagamento', dateTime(r.paid_at))}
           ${detail('Contato de emergência', r.emergency_contact_name)}
           ${detail('Telefone de emergência', r.emergency_contact_phone)}
@@ -506,4 +506,3 @@ admin - 1.html
   </script>
 </body>
 </html>
-Exibindo admin - 1.html…
