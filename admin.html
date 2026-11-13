@@ -162,9 +162,9 @@
       <input id="searchInput" class="field search" type="search" placeholder="Buscar por número, atleta, equipe ou CPF...">
       <select id="statusFilter" class="field filter">
         <option value="">Todos os status</option>
-        <option value="pendente">Pendentes</option>
-        <option value="confirmado">Confirmados</option>
-        <option value="cancelado">Cancelados</option>
+        <option value="pending">Pendentes</option>
+        <option value="confirmed">Confirmados</option>
+        <option value="cancelled">Cancelados</option>
       </select>
       <select id="modalityFilter" class="field filter">
         <option value="">Todas as modalidades</option>
@@ -328,9 +328,9 @@
     function updateStats() {
       $('statRegistrations').textContent = registrations.length;
       $('statAthletes').textContent = registrations.reduce((sum, r) => sum + Number(r.athlete_count || 0), 0);
-      $('statPending').textContent = registrations.filter(r => r.payment_status === 'pendente').length;
-      $('statConfirmed').textContent = registrations.filter(r => r.payment_status === 'confirmado').length;
-      $('statCancelled').textContent = registrations.filter(r => r.payment_status === 'cancelado').length;
+      $('statPending').textContent = registrations.filter(r => r.payment_status === 'pending').length;
+      $('statConfirmed').textContent = registrations.filter(r => r.payment_status === 'confirmed').length;
+      $('statCancelled').textContent = registrations.filter(r => r.payment_status === 'cancelled').length;
     }
 
     function getAthletes(registrationId) {
@@ -344,12 +344,12 @@
       const modality = $('modalityFilter').value;
       const filtered = registrations.filter(r => {
         if (status && r.payment_status !== status) return false;
-        if (modality && r.modalidade !== modality) return false;
+        if (modality && r.modality !== modality) return false;
         if (!query) return true;
         const teamAthletes = getAthletes(r.id);
         const searchable = [
-          r.registration_number, r.team_name, r.modalidade, r.payment_status,
-          ...teamAthletes.flatMap(a => [a.full_name, a.CPF, a['e-mail'], a.WhatsApp, a.cidade])
+          r.registration_number, r.team_name, r.modality, r.payment_status,
+          ...teamAthletes.flatMap(a => [a.full_name, a.cpf, a.email, a.whatsapp, a.city])
         ].join(' ').toLocaleLowerCase('pt-BR');
         return searchable.includes(query);
       });
@@ -366,10 +366,10 @@
         return `<tr>
           <td><span class="num">#${escapeHtml(r.registration_number)}</span><br><small class="muted">${escapeHtml(dateTime(r.created_at))}</small></td>
           <td><strong>${escapeHtml(displayName)}</strong><br><small class="muted">${escapeHtml(secondary)}</small></td>
-          <td>${escapeHtml(r.modalidade || '—')}</td>
+          <td>${escapeHtml(r.modality || '—')}</td>
           <td>${escapeHtml(r.athlete_count || group.length || 0)}</td>
           <td><strong>${money(r.amount_due_cents)}</strong></td>
-          <td><span class="status ${escapeHtml(r.payment_status || 'pendente')}">${escapeHtml(r.payment_status || 'pendente')}</span></td>
+          <td><span class="status ${{pending:'pendente',confirmed:'confirmado',cancelled:'cancelado'}[r.payment_status] || 'pendente'}">${{pending:'Pendente',confirmed:'Confirmado',cancelled:'Cancelado'}[r.payment_status] || 'Pendente'}</span></td>
           <td><button class="btn small" type="button" data-open="${escapeHtml(r.id)}">Ver / editar</button></td>
         </tr>`;
       }).join('');
@@ -388,18 +388,18 @@
       activeRegistration = r;
       const group = getAthletes(r.id);
       $('detailTitle').textContent = `Inscrição #${r.registration_number}`;
-      $('detailSubtitle').textContent = `${r.modalidade || '—'} · criada em ${dateTime(r.created_at)}`;
+      $('detailSubtitle').textContent = `${r.modality || '—'} · criada em ${dateTime(r.created_at)}`;
       const athleteHtml = group.length ? group.map((a, index) => `
         <div class="athlete">
           <h3>${index + 1}. ${escapeHtml(a.full_name)} ${a.is_team_leader ? '<span class="muted">(responsável)</span>' : ''}</h3>
           <div class="athlete-grid">
-            <div><span>CPF:</span> ${escapeHtml(a.CPF || '—')}</div>
+            <div><span>CPF:</span> ${escapeHtml(a.cpf || '—')}</div>
             <div><span>Nascimento:</span> ${escapeHtml(dateOnly(a.birth_date))}</div>
             <div><span>Idade na prova:</span> ${escapeHtml(a.age_on_race_day ?? '—')}</div>
-            <div><span>Sexo:</span> ${escapeHtml(a.sexo || '—')}</div>
-            <div><span>WhatsApp:</span> ${escapeHtml(a.WhatsApp || '—')}</div>
-            <div><span>E-mail:</span> ${escapeHtml(a['e-mail'] || '—')}</div>
-            <div><span>Cidade/UF:</span> ${escapeHtml([a.cidade,a.estado].filter(Boolean).join('/')) || '—'}</div>
+            <div><span>Sexo:</span> ${escapeHtml(a.sex || '—')}</div>
+            <div><span>WhatsApp:</span> ${escapeHtml(a.whatsapp || '—')}</div>
+            <div><span>E-mail:</span> ${escapeHtml(a.email || '—')}</div>
+            <div><span>Cidade/UF:</span> ${escapeHtml([a.city,a.state].filter(Boolean).join('/')) || '—'}</div>
             <div><span>Camisa:</span> ${escapeHtml(a.shirt_size || '—')}</div>
             <div><span>Sandália:</span> ${escapeHtml(a.sandal_size || '—')}</div>
             <div><span>Nº atleta:</span> ${escapeHtml(a.athlete_number || '—')}</div>
@@ -409,12 +409,12 @@
       $('detailContent').innerHTML = `
         <div class="modal-grid">
           ${detail('Equipe', r.team_name)}
-          ${detail('Modalidade', r.modalidade)}
+          ${detail('Modalidade', r.modality)}
           ${detail('Quantidade de atletas', r.athlete_count)}
           ${detail('Valor total', money(r.amount_due_cents))}
           ${detail('Percurso', r.route_choice)}
-          ${detail('Experiência', r.experiência)}
-          ${detail('Status do pagamento', r.payment_status)}
+          ${detail('Experiência', r.experience)}
+          ${detail('Status do pagamento', ({pending:'Pendente',confirmed:'Confirmado',cancelled:'Cancelado'})[r.payment_status] || r.payment_status)}
           ${detail('Data do pagamento', dateTime(r.paid_at))}
           ${detail('Contato de emergência', r.emergency_contact_name)}
           ${detail('Telefone de emergência', r.emergency_contact_phone)}
@@ -426,9 +426,9 @@
           <div class="form-row">
             <label for="editPaymentStatus">Status do pagamento</label>
             <select id="editPaymentStatus" class="field">
-              <option value="pendente" ${r.payment_status === 'pendente' ? 'selected' : ''}>Pendente</option>
-              <option value="confirmado" ${r.payment_status === 'confirmado' ? 'selected' : ''}>Confirmado</option>
-              <option value="cancelado" ${r.payment_status === 'cancelado' ? 'selected' : ''}>Cancelado</option>
+              <option value="pending" ${r.payment_status === 'pending' ? 'selected' : ''}>Pendente</option>
+              <option value="confirmed" ${r.payment_status === 'confirmed' ? 'selected' : ''}>Confirmado</option>
+              <option value="cancelled" ${r.payment_status === 'cancelled' ? 'selected' : ''}>Cancelado</option>
             </select>
           </div>
           <div class="form-row">
