@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080808">
+  <title>Painel Administrativo | 75K – 2027</title>
+  <meta name="description" content="Painel administrativo de inscrições da prova 75K – 2027.">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --bg:#080a0a; --panel:#111515; --panel2:#171d1c; --line:#293230;
+      --text:#f3f5f2; --muted:#9ba7a1; --green:#c5f36b; --green2:#9dcc43;
+      --red:#ff7777; --yellow:#f4cc70; --blue:#8fc7ff; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .wrap{width:min(1240px,calc(100% - 32px));margin:0 auto}
+    .topbar{border-bottom:1px solid var(--line);background:#0c1010;position:sticky;top:0;z-index:10}
+    .topinner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .mark{width:42px;height:42px;border-radius:12px;background:var(--green);color:#101510;display:grid;place-items:center;font-weight:900;font-size:18px}
+    .brand strong{display:block;letter-spacing:.08em;font-size:14px}
+    .brand small{display:block;color:var(--muted);margin-top:4px;font-size:11px;letter-spacing:.12em}
+    .top-actions{display:flex;align-items:center;gap:10px}
+    .user-email{color:var(--muted);font-size:12px;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:11px 15px;font-weight:700}
+    .btn:hover{border-color:#63736b}
+    .btn.primary{background:var(--green);border-color:var(--green);color:#11170b}
+    .btn.primary:hover{background:var(--green2)}
+    .btn.danger{color:#ffd1d1;border-color:#713b3b;background:#281616}
+    .btn.small{padding:8px 10px;font-size:12px}
+    main{padding:30px 0 60px}
+    .page-title{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}
+    h1{font-size:clamp(25px,4vw,36px);margin:0;letter-spacing:-.04em}
+    .sub{color:var(--muted);margin:8px 0 0;font-size:14px;line-height:1.5}
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:22px 0}
+    .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px}
+    .stat span{display:block;color:var(--muted);font-size:12px}
+    .stat strong{display:block;font-size:27px;margin-top:9px;letter-spacing:-.04em}
+    .stat.total strong{color:var(--green)}
+    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);padding:14px;border-radius:14px;margin-bottom:14px}
+    .field{background:#090d0c;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;outline:none;min-width:0}
+    .field:focus{border-color:var(--green2)}
+    .search{flex:1;min-width:220px}
+    .filter{min-width:175px}
+    .table-wrap{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+    table{border-collapse:collapse;width:100%;min-width:850px}
+    th,td{text-align:left;padding:14px 15px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+    th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;background:#151b19}
+    tr:last-child td{border-bottom:0}
+    tbody tr:hover{background:#171e1b}
+    .num{color:var(--green);font-weight:800}
+    .muted{color:var(--muted)}
+    .status{display:inline-flex;align-items:center;border-radius:99px;padding:6px 9px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+    .status.pendente{color:var(--yellow);background:#382d16}
+    .status.confirmado{color:#c9f58a;background:#203019}
+    .status.cancelado{color:#ffaaaa;background:#3b1d1d}
+    .empty{padding:38px 18px;text-align:center;color:var(--muted)}
+    .notice{padding:12px 14px;border-radius:10px;margin:0 0 14px;font-size:13px;line-height:1.5;display:none}
+    .notice.error{display:block;background:#351b1b;border:1px solid #713b3b;color:#ffd0d0}
+    .notice.success{display:block;background:#1c2b18;border:1px solid #456333;color:#d9f6bf}
+    .notice.info{display:block;background:#172630;border:1px solid #34566b;color:#c8e8ff}
+    .login-screen{min-height:calc(100vh - 73px);display:grid;place-items:center;padding:28px 0}
+    .login-card{width:min(430px,100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}
+    .login-card h1{font-size:26px}
+    .login-card p{color:var(--muted);font-size:14px;line-height:1.6}
+    .form-row{display:grid;gap:7px;margin:16px 0}
+    label{font-size:12px;color:#c7d0ca;font-weight:700}
+    .form-row .field{width:100%}
+    .wide{width:100%}
+    .hint{font-size:11px!important;color:var(--muted)!important;margin-top:16px!important}
+    .hidden{display:none!important}
+    .modal-backdrop{position:fixed;inset:0;background:#000b;z-index:30;display:none;align-items:center;justify-content:center;padding:18px}
+    .modal-backdrop.open{display:flex}
+    .modal{width:min(760px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid #3a4540;border-radius:18px;padding:22px;box-shadow:0 20px 80px #000a}
+    .modal-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:16px}
+    .modal-head h2{margin:0;font-size:22px}
+    .modal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .detail{background:#0b100e;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}
+    .detail small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}
+    .detail strong{font-size:13px;overflow-wrap:anywhere}
+    .section-title{font-size:14px;margin:22px 0 10px}
+    .athlete{border:1px solid var(--line);border-radius:12px;padding:14px;margin:9px 0;background:#0b100e}
+    .athlete h3{font-size:14px;margin:0 0 10px}
+    .athlete-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;color:#d8dfda;font-size:12px}
+    .athlete-grid span{color:var(--muted)}
+    .edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .edit-grid .form-row{margin:0}
+    textarea.field{width:100%;min-height:85px;resize:vertical}
+    .modal-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:16px}
+    .loading{opacity:.6;pointer-events:none}
+    .footer-note{text-align:center;color:#6f7c75;font-size:11px;margin-top:18px}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:620px){
+      .wrap{width:min(100% - 22px,1240px)}
+      .topinner{min-height:64px}.user-email{display:none}
+      main{padding-top:22px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}
+      .stat{padding:13px}.stat strong{font-size:23px}
+      .page-title{align-items:flex-start;flex-direction:column}
+      .login-card{padding:22px}
+      .modal{padding:16px}.modal-grid,.edit-grid,.athlete-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topinner">
+      <div class="brand">
+        <div class="mark">75</div>
+        <div><strong>75K — 2027</strong><small>PAINEL ADMINISTRATIVO</small></div>
+      </div>
+      <div class="top-actions">
+        <span id="userEmail" class="user-email"></span>
+        <button id="logoutBtn" class="btn small hidden" type="button">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <section id="loginScreen" class="login-screen">
+    <div class="wrap" style="display:grid;place-items:center">
+      <div class="login-card">
+        <h1>Acesso administrativo</h1>
+        <p>Entre com o e-mail e a senha cadastrados no Supabase para gerenciar as inscrições da 75K – 2027.</p>
+        <div id="loginNotice" class="notice"></div>
+        <form id="loginForm">
+          <div class="form-row">
+            <label for="loginEmail">E-mail</label>
+            <input id="loginEmail" class="field" type="email" autocomplete="username" required placeholder="seuemail@exemplo.com">
+          </div>
+          <div class="form-row">
+            <label for="loginPassword">Senha</label>
+            <input id="loginPassword" class="field" type="password" autocomplete="current-password" required placeholder="Sua senha do Supabase">
+          </div>
+          <button id="loginBtn" class="btn primary wide" type="submit">Entrar no painel</button>
+        </form>
+        <p class="hint">Acesso restrito. O painel verifica a autorização de administrador no banco de dados.</p>
+      </div>
+    </div>
+  </section>
+
+  <main id="dashboard" class="wrap hidden">
+    <div class="page-title">
+      <div>
+        <h1>Inscrições</h1>
+        <p class="sub">Gerencie os atletas, equipes e confirmações de pagamento da 75K – 2027.</p>
+      </div>
+      <button id="refreshBtn" class="btn" type="button">↻ Atualizar dados</button>
+    </div>
+    <div id="mainNotice" class="notice"></div>
+    <section class="stats">
+      <div class="stat total"><span>Inscrições</span><strong id="statRegistrations">—</strong></div>
+      <div class="stat"><span>Atletas inscritos</span><strong id="statAthletes">—</strong></div>
+      <div class="stat"><span>Pix pendentes</span><strong id="statPending">—</strong></div>
+      <div class="stat"><span>Pagamentos confirmados</span><strong id="statConfirmed">—</strong></div>
+      <div class="stat"><span>Canceladas</span><strong id="statCancelled">—</strong></div>
+    </section>
+
+    <section class="toolbar">
+      <input id="searchInput" class="field search" type="search" placeholder="Buscar por número, atleta, equipe ou CPF...">
+      <select id="statusFilter" class="field filter">
+        <option value="">Todos os status</option>
+        <option value="pendente">Pendentes</option>
+        <option value="confirmado">Confirmados</option>
+        <option value="cancelado">Cancelados</option>
+      </select>
+      <select id="modalityFilter" class="field filter">
+        <option value="">Todas as modalidades</option>
+        <option value="Solo">Solo</option>
+        <option value="Dupla">Dupla</option>
+        <option value="Trio">Trio</option>
+        <option value="Quarteto">Quarteto</option>
+      </select>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nº / Data</th><th>Atleta / Equipe</th><th>Modalidade</th>
+            <th>Atletas</th><th>Valor</th><th>Pagamento</th><th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="registrationsBody">
+          <tr><td colspan="7" class="empty">Carregando inscrições...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footer-note">75K – 2027 · Longas Distâncias. Grandes Histórias.</p>
+  </main>
+
+  <div id="detailBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal">
+      <div class="modal-head">
+        <div><h2 id="detailTitle">Detalhes da inscrição</h2><div id="detailSubtitle" class="sub"></div></div>
+        <button id="closeModalBtn" class="btn small" type="button">Fechar ✕</button>
+      </div>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // Configuração pública do projeto Supabase 75K.
+    // A chave publishable pode ser usada no navegador; nunca coloque aqui uma service_role/secret key.
+    const SUPABASE_URL = 'https://fqvujfbqlqeczncwanwo.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_zeEfkWskCLGq7q3htsPQcg_96gG_Yr6';
+
+    const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    const $ = (id) => document.getElementById(id);
+    let registrations = [];
+    let athletes = [];
+    let activeRegistration = null;
+
+    function escapeHtml(value) {
+      return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+      })[char]);
+    }
+    function money(cents) {
+      return (Number(cents || 0) / 100).toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+    }
+    function dateTime(value) {
+      if (!value) return '—';
+      const d = new Date(value);
+      return Number.isNaN(d.getTime()) ? '—' : d.toLocaleString('pt-BR');
+    }
+    function dateOnly(value) {
+      if (!value) return '—';
+      const parts = String(value).split('-');
+      return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : value;
+    }
+    function showNotice(target, message, type='info') {
+      const el = $(target);
+      el.className = `notice ${type}`;
+      el.textContent = message;
+    }
+    function hideNotice(target) {
+      const el = $(target);
+      el.className = 'notice';
+      el.textContent = '';
+    }
+    function setLoggedIn(email) {
+      $('loginScreen').classList.add('hidden');
+      $('dashboard').classList.remove('hidden');
+      $('logoutBtn').classList.remove('hidden');
+      $('userEmail').textContent = email || '';
+    }
+    function setLoggedOut() {
+      $('loginScreen').classList.remove('hidden');
+      $('dashboard').classList.add('hidden');
+      $('logoutBtn').classList.add('hidden');
+      $('userEmail').textContent = '';
+    }
+
+    async function verifyAdmin() {
+      const { data, error } = await client.rpc('is_ultra75k_admin');
+      if (error) {
+        throw new Error('Não foi possível verificar seu acesso administrativo. Confira se a função is_ultra75k_admin está disponível para usuários autenticados. Detalhe: ' + error.message);
+      }
+      if (data !== true) throw new Error('Seu usuário está autenticado, mas não está cadastrado como administrador da 75K.');
+    }
+
+    async function enterWithSession(session) {
+      if (!session) { setLoggedOut(); return; }
+      try {
+        await verifyAdmin();
+        setLoggedIn(session.user.email);
+        await loadData();
+      } catch (err) {
+        await client.auth.signOut();
+        setLoggedOut();
+        showNotice('loginNotice', err.message, 'error');
+      }
+    }
+
+    $('loginForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      hideNotice('loginNotice');
+      const btn = $('loginBtn');
+      btn.disabled = true;
+      btn.textContent = 'Verificando acesso...';
+      try {
+        const { data, error } = await client.auth.signInWithPassword({
+          email: $('loginEmail').value.trim(),
+          password: $('loginPassword').value
+        });
+        if (error) throw error;
+        await enterWithSession(data.session);
+      } catch (err) {
+        showNotice('loginNotice', err.message || 'Não foi possível entrar.', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Entrar no painel';
+      }
+    });
+
+    $('logoutBtn').addEventListener('click', async () => {
+      await client.auth.signOut();
+      registrations = []; athletes = [];
+      setLoggedOut();
+      hideNotice('loginNotice');
+    });
+
+    async function loadData() {
+      $('dashboard').classList.add('loading');
+      showNotice('mainNotice', 'Atualizando inscrições...', 'info');
+      try {
+        const [regResult, athleteResult] = await Promise.all([
+          client.from('ultra75k_registrations').select('*').order('created_at', {ascending:false}).range(0, 999),
+          client.from('ultra75k_athletes').select('*').order('athlete_number', {ascending:true}).range(0, 4999)
+        ]);
+        if (regResult.error) throw regResult.error;
+        if (athleteResult.error) throw athleteResult.error;
+        registrations = regResult.data || [];
+        athletes = athleteResult.data || [];
+        updateStats();
+        renderRegistrations();
+        hideNotice('mainNotice');
+      } catch (err) {
+        showNotice('mainNotice', 'Erro ao carregar os dados: ' + err.message, 'error');
+      } finally {
+        $('dashboard').classList.remove('loading');
+      }
+    }
+
+    function updateStats() {
+      $('statRegistrations').textContent = registrations.length;
+      $('statAthletes').textContent = registrations.reduce((sum, r) => sum + Number(r.athlete_count || 0), 0);
+      $('statPending').textContent = registrations.filter(r => r.payment_status === 'pendente').length;
+      $('statConfirmed').textContent = registrations.filter(r => r.payment_status === 'confirmado').length;
+      $('statCancelled').textContent = registrations.filter(r => r.payment_status === 'cancelado').length;
+    }
+
+    function getAthletes(registrationId) {
+      return athletes.filter(a => a.registration_id === registrationId)
+        .sort((a,b) => Number(a.athlete_order || 0) - Number(b.athlete_order || 0));
+    }
+
+    function renderRegistrations() {
+      const query = $('searchInput').value.trim().toLocaleLowerCase('pt-BR');
+      const status = $('statusFilter').value;
+      const modality = $('modalityFilter').value;
+      const filtered = registrations.filter(r => {
+        if (status && r.payment_status !== status) return false;
+        if (modality && r.modalidade !== modality) return false;
+        if (!query) return true;
+        const teamAthletes = getAthletes(r.id);
+        const searchable = [
+          r.registration_number, r.team_name, r.modalidade, r.payment_status,
+          ...teamAthletes.flatMap(a => [a.full_name, a.CPF, a['e-mail'], a.WhatsApp, a.cidade])
+        ].join(' ').toLocaleLowerCase('pt-BR');
+        return searchable.includes(query);
+      });
+      const body = $('registrationsBody');
+      if (!filtered.length) {
+        body.innerHTML = '<tr><td colspan="7" class="empty">Nenhuma inscrição encontrada com esses filtros.</td></tr>';
+        return;
+      }
+      body.innerHTML = filtered.map(r => {
+        const group = getAthletes(r.id);
+        const leader = group.find(a => a.is_team_leader) || group[0];
+        const displayName = leader?.full_name || r.team_name || 'Cadastro sem nome';
+        const secondary = r.team_name && r.team_name !== displayName ? r.team_name : (group.length > 1 ? `${group.length} integrantes` : 'Inscrição individual');
+        return `<tr>
+          <td><span class="num">#${escapeHtml(r.registration_number)}</span><br><small class="muted">${escapeHtml(dateTime(r.created_at))}</small></td>
+          <td><strong>${escapeHtml(displayName)}</strong><br><small class="muted">${escapeHtml(secondary)}</small></td>
+          <td>${escapeHtml(r.modalidade || '—')}</td>
+          <td>${escapeHtml(r.athlete_count || group.length || 0)}</td>
+          <td><strong>${money(r.amount_due_cents)}</strong></td>
+          <td><span class="status ${escapeHtml(r.payment_status || 'pendente')}">${escapeHtml(r.payment_status || 'pendente')}</span></td>
+          <td><button class="btn small" type="button" data-open="${escapeHtml(r.id)}">Ver / editar</button></td>
+        </tr>`;
+      }).join('');
+      body.querySelectorAll('[data-open]').forEach(button => {
+        button.addEventListener('click', () => openDetails(button.getAttribute('data-open')));
+      });
+    }
+
+    function detail(label, value) {
+      return `<div class="detail"><small>${escapeHtml(label)}</small><strong>${escapeHtml(value || '—')}</strong></div>`;
+    }
+
+    function openDetails(id) {
+      const r = registrations.find(item => item.id === id);
+      if (!r) return;
+      activeRegistration = r;
+      const group = getAthletes(r.id);
+      $('detailTitle').textContent = `Inscrição #${r.registration_number}`;
+      $('detailSubtitle').textContent = `${r.modalidade || '—'} · criada em ${dateTime(r.created_at)}`;
+      const athleteHtml = group.length ? group.map((a, index) => `
+        <div class="athlete">
+          <h3>${index + 1}. ${escapeHtml(a.full_name)} ${a.is_team_leader ? '<span class="muted">(responsável)</span>' : ''}</h3>
+          <div class="athlete-grid">
+            <div><span>CPF:</span> ${escapeHtml(a.CPF || '—')}</div>
+            <div><span>Nascimento:</span> ${escapeHtml(dateOnly(a.birth_date))}</div>
+            <div><span>Idade na prova:</span> ${escapeHtml(a.age_on_race_day ?? '—')}</div>
+            <div><span>Sexo:</span> ${escapeHtml(a.sexo || '—')}</div>
+            <div><span>WhatsApp:</span> ${escapeHtml(a.WhatsApp || '—')}</div>
+            <div><span>E-mail:</span> ${escapeHtml(a['e-mail'] || '—')}</div>
+            <div><span>Cidade/UF:</span> ${escapeHtml([a.cidade,a.estado].filter(Boolean).join('/')) || '—'}</div>
+            <div><span>Camisa:</span> ${escapeHtml(a.shirt_size || '—')}</div>
+            <div><span>Sandália:</span> ${escapeHtml(a.sandal_size || '—')}</div>
+            <div><span>Nº atleta:</span> ${escapeHtml(a.athlete_number || '—')}</div>
+          </div>
+        </div>`).join('') : '<p class="muted">Nenhum atleta encontrado para esta inscrição.</p>';
+
+      $('detailContent').innerHTML = `
+        <div class="modal-grid">
+          ${detail('Equipe', r.team_name)}
+          ${detail('Modalidade', r.modalidade)}
+          ${detail('Quantidade de atletas', r.athlete_count)}
+          ${detail('Valor total', money(r.amount_due_cents))}
+          ${detail('Percurso', r.route_choice)}
+          ${detail('Experiência', r.experiência)}
+          ${detail('Status do pagamento', r.payment_status)}
+          ${detail('Data do pagamento', dateTime(r.paid_at))}
+          ${detail('Contato de emergência', r.emergency_contact_name)}
+          ${detail('Telefone de emergência', r.emergency_contact_phone)}
+          ${detail('Parentesco', r.emergency_contact_relation)}
+        </div>
+        <h3 class="section-title">Atletas vinculados (${group.length})</h3>
+        ${athleteHtml}
+        <div class="edit-grid">
+          <div class="form-row">
+            <label for="editPaymentStatus">Status do pagamento</label>
+            <select id="editPaymentStatus" class="field">
+              <option value="pendente" ${r.payment_status === 'pendente' ? 'selected' : ''}>Pendente</option>
+              <option value="confirmado" ${r.payment_status === 'confirmado' ? 'selected' : ''}>Confirmado</option>
+              <option value="cancelado" ${r.payment_status === 'cancelado' ? 'selected' : ''}>Cancelado</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="editNotes">Observações administrativas</label>
+            <textarea id="editNotes" class="field" placeholder="Anotações internas sobre esta inscrição...">${escapeHtml(r.admin_notes || '')}</textarea>
+          </div>
+        </div>
+        <div id="saveNotice" class="notice"></div>
+        <div class="modal-actions">
+          <button id="saveChangesBtn" class="btn primary" type="button">Salvar alterações</button>
+        </div>`;
+      $('detailBackdrop').classList.add('open');
+      $('saveChangesBtn').addEventListener('click', saveChanges);
+    }
+
+    async function saveChanges() {
+      if (!activeRegistration) return;
+      const button = $('saveChangesBtn');
+      button.disabled = true;
+      button.textContent = 'Salvando...';
+      hideNotice('saveNotice');
+      const newStatus = $('editPaymentStatus').value;
+      const notes = $('editNotes').value.trim() || null;
+      try {
+        const { data, error } = await client.from('ultra75k_registrations')
+          .update({ payment_status: newStatus, admin_notes: notes })
+          .eq('id', activeRegistration.id)
+          .select('*')
+          .single();
+        if (error) throw error;
+        activeRegistration = data;
+        const index = registrations.findIndex(r => r.id === data.id);
+        if (index >= 0) registrations[index] = data;
+        updateStats();
+        renderRegistrations();
+        showNotice('saveNotice', 'Alterações salvas com sucesso.', 'success');
+        // Atualiza os detalhes para exibir a nova data paid_at calculada pelo gatilho.
+        setTimeout(() => {
+          if (activeRegistration && activeRegistration.id === data.id) openDetails(data.id);
+        }, 500);
+      } catch (err) {
+        showNotice('saveNotice', 'Não foi possível salvar: ' + err.message, 'error');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Salvar alterações';
+      }
+    }
+
+    $('closeModalBtn').addEventListener('click', () => $('detailBackdrop').classList.remove('open'));
+    $('detailBackdrop').addEventListener('click', (event) => {
+      if (event.target === $('detailBackdrop')) $('detailBackdrop').classList.remove('open');
+    });
+    $('refreshBtn').addEventListener('click', loadData);
+    $('searchInput').addEventListener('input', renderRegistrations);
+    $('statusFilter').addEventListener('change', renderRegistrations);
+    $('modalityFilter').addEventListener('change', renderRegistrations);
+
+    async function init() {
+      const { data, error } = await client.auth.getSession();
+      if (error) {
+        showNotice('loginNotice', error.message, 'error');
+        return;
+      }
+      if (data.session) await enterWithSession(data.session);
+      else setLoggedOut();
+
+      client.auth.onAuthStateChange((event, session) => {
+        if (event === 'SIGNED_OUT') setLoggedOut();
+      });
+    }
+    init();
+  </script>
+</body>
+</html>
