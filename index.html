@@ -1,5 +1,5 @@
 
-75K-2027-4.html
+75K-2027-5.html
 100%
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -9,6 +9,7 @@
 <meta name="theme-color" content="#080808">
 <meta name="description" content="75K 2027 — ultramaratona com largada no Recife e chegada no Itamatamirim Parque, em Vitória de Santo Antão. 04 de abril de 2027.">
 <title>75K 2027 | Recife ao Itamatamirim Parque</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -540,6 +541,21 @@ section { padding:90px 0; }
   font-size:10px;
 }
 
+.form-feedback {
+  display:none;
+  max-width:680px;
+  margin:18px auto 0;
+  padding:14px 16px;
+  text-align:left;
+  font-size:12px;
+  line-height:1.6;
+  overflow-wrap:anywhere;
+}
+.form-feedback.success { display:block; background:#182516; border:1px solid #55743c; color:#d8f2bd; }
+.form-feedback.error { display:block; background:#321919; border:1px solid #854343; color:#ffd2d2; }
+.form-feedback.info { display:block; background:#17242d; border:1px solid #3d647a; color:#d0eaff; }
+.form-feedback a { color:#f0d69b; text-decoration:underline; font-weight:800; }
+
 /* PERCURSOS E MAPA */
 .route-options {
   display:grid;
@@ -1000,7 +1016,7 @@ footer p {
         <li>Geral masculino: troféus do 1º ao 5º colocado.</li>
         <li>Geral feminino: troféus do 1º ao 5º colocado.</li>
         <li>Faixas etárias: 18 a 29 anos, 30 a 49 anos e 50 anos ou mais, com troféu para o primeiro colocado de cada faixa, conforme critérios de classificação.</li>
-        <li>Revezamentos: troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.</li>
+        <li>Revezamentos: troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.</li><li>Revezamentos: troféu individual para cada integrante da equipe campeã nas categorias Dupla, Trio e Quarteto.</li>
         <li>Todos os concluintes que cumprirem as regras e o percurso válido receberão medalha finisher.</li>
       </ul>
       <p>Os critérios de desempate, validação de voltas/trechos e eventuais categorias adicionais serão detalhados pela organização antes do evento.</p>
@@ -1054,8 +1070,7 @@ footer p {
     <span class="eyebrow">Sua próxima grande história começa aqui</span>
     <h2>75 KM.<br><span class="gold">Uma história para contar.</span></h2>
     <p>
-      Preencha seus dados e envie sua solicitação de inscrição
-      diretamente para a organização pelo WhatsApp.
+      Preencha seus dados. O sistema registrará sua solicitação no banco de dados e, em seguida, abrirá o WhatsApp da organização.
     </p>
     <a href="#formulario" class="btn">Preencher inscrição</a>
   </div>
@@ -1070,7 +1085,7 @@ footer p {
       <p>
         Preencha todos os campos obrigatórios com atenção. Primeiro lote até 31/12/2026:
         Solo R$ 250,00 por atleta; Dupla, Trio e Quarteto R$ 175,00 por atleta.
-        Seus dados serão organizados em uma mensagem para o WhatsApp da organização.
+        Seus dados serão gravados no sistema e enviados em uma mensagem para o WhatsApp da organização.
       </p>
     </div>
 
@@ -1275,19 +1290,17 @@ footer p {
         </div>
 
         <p class="form-note">
-          Seus dados serão encaminhados pelo WhatsApp para a organização.
-          Não informe dados médicos detalhados neste formulário.
+          Seus dados serão registrados no sistema da 75K e também organizados em uma mensagem para o WhatsApp da organização. Não informe dados médicos detalhados neste formulário.
         </p>
 
         <div class="submit-area">
-          <button type="submit" class="btn">
-            Enviar inscrição pelo WhatsApp
+          <button type="submit" class="btn" id="submitRegistrationBtn">
+            Enviar inscrição e abrir WhatsApp
           </button>
+          <div id="formFeedback" class="form-feedback" role="status" aria-live="polite"></div>
 
           <p class="submit-note">
-            Ao clicar, o WhatsApp será aberto com os dados preenchidos.
-            Você deverá conferir e enviar a mensagem no próprio WhatsApp.
-            O envio não confirma automaticamente uma vaga.
+            Ao clicar, primeiro salvaremos a solicitação no sistema. Depois, o WhatsApp será aberto para você conferir e enviar a mensagem. A inscrição ficará pendente até a conferência do pagamento pela organização.
           </p>
         </div>
 
@@ -1417,60 +1430,156 @@ function dadosAtletasEquipe() {
   }
   return atletas;
 }
-form.addEventListener("submit", function(event) {
+const SUPABASE_URL = "https://fqvujfbqlqeczncwanwo.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_zeEfkWskCLGq7q3htsPQcg_96gG_Yr6";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+function mostrarRetornoFormulario(tipo, mensagem, link=null) {
+  const area = document.getElementById("formFeedback");
+  area.className = "form-feedback " + tipo;
+  area.textContent = mensagem;
+  if (link) {
+    const ancora = document.createElement("a");
+    ancora.href = link;
+    ancora.target = "_blank";
+    ancora.rel = "noopener noreferrer";
+    ancora.textContent = " Abrir WhatsApp";
+    area.appendChild(document.createElement("br"));
+    area.appendChild(ancora);
+  }
+  area.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function modalidadeBanco(valorModalidade) {
+  if (valorModalidade.includes("Dupla")) return "Dupla";
+  if (valorModalidade.includes("Trio")) return "Trio";
+  if (valorModalidade.includes("Quarteto")) return "Quarteto";
+  return "Solo";
+}
+
+form.addEventListener("submit", async function(event) {
   event.preventDefault();
   if (!form.reportValidity()) return;
   campoIdade.value = calcularIdadeNaProva(campoNascimento.value);
 
-  const atleta1 = dadosAtletaPrincipal();
-  const atletas = [atleta1, ...dadosAtletasEquipe()];
-  const linhasAtletas = atletas.map((a, index) => [
-    `*ATLETA ${index+1}*`,
-    `Nome: ${a.nome}`,
-    `CPF: ${a.cpf}`,
-    `Nascimento: ${formatarData(a.nascimento)}`,
-    `Idade na data da prova: ${a.idade ? a.idade + " anos" : "Não calculada"}`,
-    `Sexo: ${a.sexo}`,
-    `WhatsApp: ${a.telefone}`,
-    `E-mail: ${a.email}`,
-    `Camisa: ${a.camisa}`,
-    `Sandália (brinde): ${a.sandalia}`
-  ].join("\n"));
+  const botao = document.getElementById("submitRegistrationBtn");
+  const janelaWhatsApp = window.open("about:blank", "_blank");
+  if (janelaWhatsApp) {
+    try { janelaWhatsApp.document.title = "Registrando inscrição 75K..."; } catch (_) {}
+  }
 
-  const mensagem = [
-    "*SOLICITAÇÃO DE INSCRIÇÃO — ULTRAMARATONA 75K*",
-    "04/04/2027 — Largada programada: 03h00 — Marco Zero, Recife/PE",
-    "",
-    "*MODALIDADE E PERCURSO*",
-    "Modalidade: " + valor("modalidade"),
-    "Percurso de interesse: " + valor("percursoEscolhido"),
-    "Equipe/assessoria: " + (valor("equipe") || "Não informada"),
-    "",
-    "*CADASTRO INDIVIDUAL DOS ATLETAS*",
-    ...linhasAtletas,
-    "",
-    "*EXPERIÊNCIA*",
-    valor("experiencia") || "Não informada",
-    "",
-    "*CONTATO DE EMERGÊNCIA DA INSCRIÇÃO*",
-    "Nome: " + valor("emergencia"),
-    "Telefone: " + valor("telefoneEmergencia"),
-    "Relação: " + (valor("parentesco") || "Não informada"),
-    "",
-    "*DECLARAÇÕES*",
-    "Li o regulamento da prova: SIM",
-    "Li o termo de responsabilidade: SIM",
-    "Ciente da exigência de parecer cardiológico: SIM",
-    "Autorizo o uso dos dados para gestão da solicitação: SIM",
-    "",
-    "Estou encaminhando a solicitação de inscrição e aguardo a validação e as orientações da organização. Sei que o envio desta mensagem não confirma automaticamente a vaga."
-  ].join("\n");
+  botao.disabled = true;
+  botao.textContent = "Registrando inscrição...";
+  mostrarRetornoFormulario("info", "Estamos salvando seus dados com segurança. Aguarde; não feche esta página.");
 
-  const url = "https://wa.me/" + whatsappOrganizacao + "?text=" + encodeURIComponent(mensagem);
-  window.open(url, "_blank", "noopener,noreferrer");
+  try {
+    const atleta1 = dadosAtletaPrincipal();
+    const atletasForm = [atleta1, ...dadosAtletasEquipe()];
+    const modalidadeSelecionada = modalidadeBanco(valor("modalidade"));
+
+    const atletasParaBanco = atletasForm.map((a, index) => ({
+      name: a.nome,
+      cpf: a.cpf,
+      birth_date: a.nascimento || null,
+      age_on_race_day: a.idade ? Number(a.idade) : null,
+      sex: a.sexo,
+      whatsapp: a.telefone,
+      email: a.email,
+      city: index === 0 ? valor("cidade") : null,
+      state: index === 0 ? valor("estado") : null,
+      shirt_size: a.camisa,
+      sandal_size: a.sandalia,
+      is_team_leader: index === 0
+    }));
+
+    const cadastro = {
+      modalidade: modalidadeSelecionada,
+      athlete_count: atletasParaBanco.length,
+      team_name: valor("equipe") || null,
+      route_choice: valor("percursoEscolhido"),
+      experience: valor("experiencia") || null,
+      emergency_contact_name: valor("emergencia"),
+      emergency_contact_phone: valor("telefoneEmergencia"),
+      emergency_contact_relation: valor("parentesco") || null
+    };
+
+    const { data, error } = await supabaseClient.rpc("submit_ultra75k_registration", {
+      p_registration: cadastro,
+      p_athletes: atletasParaBanco
+    });
+
+    if (error) throw new Error(error.message || "O Supabase não conseguiu registrar a inscrição.");
+    if (!data || data.success !== true) {
+      throw new Error((data && data.message) || "O banco não confirmou o cadastro da inscrição.");
+    }
+
+    const numeroInscricao = data.registration_number || "—";
+    const valorInscricao = (Number(data.amount_due_cents || 0) / 100).toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+    const linhasAtletas = atletasForm.map((a, index) => [
+      `*ATLETA ${index+1}*`,
+      `Nome: ${a.nome}`,
+      `CPF: ${a.cpf}`,
+      `Nascimento: ${formatarData(a.nascimento)}`,
+      `Idade na data da prova: ${a.idade ? a.idade + " anos" : "Não calculada"}`,
+      `Sexo: ${a.sexo}`,
+      `WhatsApp: ${a.telefone}`,
+      `E-mail: ${a.email}`,
+      `Cidade/UF: ${index === 0 ? (valor("cidade") + "/" + valor("estado")) : "Não informado"}`,
+      `Camisa: ${a.camisa}`,
+      `Sandália (brinde): ${a.sandalia}`
+    ].join("\n"));
+
+    const mensagem = [
+      "*SOLICITAÇÃO DE INSCRIÇÃO — ULTRAMARATONA 75K*",
+      "Número da solicitação: " + numeroInscricao,
+      "Status inicial: PENDENTE — aguardando conferência do pagamento",
+      "Valor total: " + valorInscricao,
+      "04/04/2027 — Largada programada: 03h00 — Marco Zero, Recife/PE",
+      "",
+      "*MODALIDADE E PERCURSO*",
+      "Modalidade: " + valor("modalidade"),
+      "Percurso de interesse: " + valor("percursoEscolhido"),
+      "Equipe/assessoria: " + (valor("equipe") || "Não informada"),
+      "",
+      "*CADASTRO INDIVIDUAL DOS ATLETAS*",
+      ...linhasAtletas,
+      "",
+      "*EXPERIÊNCIA*",
+      valor("experiencia") || "Não informada",
+      "",
+      "*CONTATO DE EMERGÊNCIA DA INSCRIÇÃO*",
+      "Nome: " + valor("emergencia"),
+      "Telefone: " + valor("telefoneEmergencia"),
+      "Relação: " + (valor("parentesco") || "Não informada"),
+      "",
+      "*DECLARAÇÕES*",
+      "Li o regulamento da prova: SIM",
+      "Li o termo de responsabilidade: SIM",
+      "Ciente da exigência de parecer cardiológico: SIM",
+      "Autorizo o uso dos dados para gestão da solicitação: SIM",
+      "",
+      "A solicitação já foi registrada no sistema da organização. Estou encaminhando esta mensagem para conferência e continuidade do atendimento. Sei que a vaga somente será confirmada após validação do pagamento."
+    ].join("\n");
+
+    const url = "https://wa.me/" + whatsappOrganizacao + "?text=" + encodeURIComponent(mensagem);
+    mostrarRetornoFormulario("success", `Inscrição nº ${numeroInscricao} registrada com sucesso! Status: pendente. Valor: ${valorInscricao}. Agora confira e envie a mensagem no WhatsApp.`);
+
+    if (janelaWhatsApp && !janelaWhatsApp.closed) {
+      janelaWhatsApp.location.href = url;
+    } else {
+      mostrarRetornoFormulario("success", `Inscrição nº ${numeroInscricao} registrada com sucesso! Status: pendente. Valor: ${valorInscricao}. O navegador bloqueou a abertura automática do WhatsApp; use o link abaixo para continuar.`, url);
+    }
+  } catch (error) {
+    if (janelaWhatsApp && !janelaWhatsApp.closed) janelaWhatsApp.close();
+    console.error("Falha ao registrar inscrição 75K:", error);
+    mostrarRetornoFormulario("error", "Não foi possível registrar sua inscrição no banco de dados. Nenhuma confirmação foi enviada. Detalhe: " + (error.message || "Erro desconhecido") + ". Revise os dados ou entre em contato com a organização.");
+  } finally {
+    botao.disabled = false;
+    botao.textContent = "Enviar inscrição e abrir WhatsApp";
+  }
 });
 </script>
 
 </body>
 </html>
-Exibindo Cópia de 75K-2027-4.html…
+Exibindo 75K-2027-5.html…
