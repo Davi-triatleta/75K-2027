@@ -1,5 +1,5 @@
 
-75K-2027-5.html
+75K-2027-4-atualizado.html
 100%
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -1569,6 +1569,13 @@ form.addEventListener("submit", async function(event) {
     } else {
       mostrarRetornoFormulario("success", `Inscrição nº ${numeroInscricao} registrada com sucesso! Status: pendente. Valor: ${valorInscricao}. O navegador bloqueou a abertura automática do WhatsApp; use o link abaixo para continuar.`, url);
     }
+
+    // Só limpa o formulário depois que o Supabase confirmou a gravação.
+    // Se houver erro antes deste ponto, os dados permanecem preenchidos.
+    form.reset();
+    campoIdade.value = "";
+    renderizarIntegrantes();
+
   } catch (error) {
     if (janelaWhatsApp && !janelaWhatsApp.closed) janelaWhatsApp.close();
     console.error("Falha ao registrar inscrição 75K:", error);
@@ -1582,4 +1589,5 @@ form.addEventListener("submit", async function(event) {
 
 </body>
 </html>
-Exibindo 75K-2027-5.html…
+Carregando os comentários, aguarde
+Exibindo 75K-2027-4-atualizado.html…
