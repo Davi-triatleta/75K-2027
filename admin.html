@@ -231,8 +231,49 @@
       const parts = String(value).split('-');
       return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : value;
     }
+    function normalizeStatus(value) {
+      const status = String(value ?? '').trim().toLowerCase();
+      const aliases = {
+        pending: 'pending', pendente: 'pending',
+        confirmed: 'confirmed', confirmado: 'confirmed',
+        cancelled: 'cancelled', canceled: 'cancelled', cancelado: 'cancelled', cancelada: 'cancelled'
+      };
+      return aliases[status] || status;
+    }
     function statusLabel(value) {
-      return ({ pending: 'Pendente', confirmed: 'Confirmado', cancelled: 'Cancelado' })[value] || value || '—';
+      return ({ pending: 'Pendente', confirmed: 'Confirmado', cancelled: 'Cancelado' })[normalizeStatus(value)] || value || '—';
+    }
+
+    // Lê campos de versões antigas e atuais do formulário, inclusive quando
+    // os dados foram preservados dentro de form_data (JSONB).
+    function readValue(row, ...keys) {
+      if (!row) return '';
+      const sources = [row, row.form_data, row.formData];
+      for (const source of sources) {
+        if (!source || typeof source !== 'object') continue;
+        for (const key of keys) {
+          const value = source[key];
+          if (value !== undefined && value !== null && String(value).trim() !== '') return value;
+        }
+      }
+      return '';
+    }
+    function registrationModality(registration) {
+      return readValue(registration, 'modality', 'modalidade', 'tipo_modalidade', 'tipoModalidade', 'category') || '—';
+    }
+    function registrationExperience(registration) {
+      return readValue(registration, 'experience', 'experiencia', 'experiência', 'experience_level', 'nivel_experiencia', 'nivelExperiencia') || '—';
+    }
+    function athleteField(athlete, field) {
+      const aliases = {
+        cpf: ['cpf', 'CPF', 'documento', 'document'],
+        sex: ['sex', 'sexo', 'gender'],
+        whatsapp: ['whatsapp', 'WhatsApp', 'telefone', 'phone', 'celular'],
+        email: ['email', 'e-mail', 'e_mail'],
+        city: ['city', 'cidade'],
+        state: ['state', 'estado', 'uf']
+      };
+      return readValue(athlete, ...(aliases[field] || [field])) || '—';
     }
     function showNotice(target, message, type='info') {
       const el = $(target);
@@ -331,9 +372,9 @@
     function updateStats() {
       $('statRegistrations').textContent = registrations.length;
       $('statAthletes').textContent = registrations.reduce((sum, r) => sum + Number(r.athlete_count || 0), 0);
-      $('statPending').textContent = registrations.filter(r => r.payment_status === 'pending').length;
-      $('statConfirmed').textContent = registrations.filter(r => r.payment_status === 'confirmed').length;
-      $('statCancelled').textContent = registrations.filter(r => r.payment_status === 'cancelled').length;
+      $('statPending').textContent = registrations.filter(r => normalizeStatus(r.payment_status) === 'pending').length;
+      $('statConfirmed').textContent = registrations.filter(r => normalizeStatus(r.payment_status) === 'confirmed').length;
+      $('statCancelled').textContent = registrations.filter(r => normalizeStatus(r.payment_status) === 'cancelled').length;
     }
 
     function getAthletes(registrationId) {
@@ -346,12 +387,12 @@
       const status = $('statusFilter').value;
       const modality = $('modalityFilter').value;
       const filtered = registrations.filter(r => {
-        if (status && r.payment_status !== status) return false;
-        if (modality && r.modality !== modality) return false;
+        if (status && normalizeStatus(r.payment_status) !== normalizeStatus(status)) return false;
+        if (modality && registrationModality(r) !== modality) return false;
         if (!query) return true;
         const teamAthletes = getAthletes(r.id);
         const searchable = [
-          r.registration_number, r.team_name, r.modality, r.payment_status,
+          r.registration_number, r.team_name, registrationModality(r), statusLabel(r.payment_status), registrationExperience(r),
           ...teamAthletes.flatMap(a => [a.full_name, a.cpf, a.email, a.whatsapp, a.city])
         ].join(' ').toLocaleLowerCase('pt-BR');
         return searchable.includes(query);
@@ -369,10 +410,10 @@
         return `<tr>
           <td><span class="num">#${escapeHtml(r.registration_number)}</span><br><small class="muted">${escapeHtml(dateTime(r.created_at))}</small></td>
           <td><strong>${escapeHtml(displayName)}</strong><br><small class="muted">${escapeHtml(secondary)}</small></td>
-          <td>${escapeHtml(r.modality || '—')}</td>
+          <td>${escapeHtml(registrationModality(r))}</td>
           <td>${escapeHtml(r.athlete_count || group.length || 0)}</td>
           <td><strong>${money(r.amount_due_cents)}</strong></td>
-          <td><span class="status ${escapeHtml(r.payment_status || 'pending')}">${escapeHtml(statusLabel(r.payment_status))}</span></td>
+          <td><span class="status ${escapeHtml(normalizeStatus(r.payment_status) || 'pending')}">${escapeHtml(statusLabel(r.payment_status))}</span></td>
           <td><button class="btn small" type="button" data-open="${escapeHtml(r.id)}">Ver / editar</button></td>
         </tr>`;
       }).join('');
@@ -391,18 +432,18 @@
       activeRegistration = r;
       const group = getAthletes(r.id);
       $('detailTitle').textContent = `Inscrição #${r.registration_number}`;
-      $('detailSubtitle').textContent = `${r.modality || '—'} · criada em ${dateTime(r.created_at)}`;
+      $('detailSubtitle').textContent = `${registrationModality(r)} · criada em ${dateTime(r.created_at)}`;
       const athleteHtml = group.length ? group.map((a, index) => `
         <div class="athlete">
           <h3>${index + 1}. ${escapeHtml(a.full_name)} ${a.is_team_leader ? '<span class="muted">(responsável)</span>' : ''}</h3>
           <div class="athlete-grid">
-            <div><span>CPF:</span> ${escapeHtml(a.cpf || '—')}</div>
+            <div><span>CPF:</span> ${escapeHtml(athleteField(a, 'cpf'))}</div>
             <div><span>Nascimento:</span> ${escapeHtml(dateOnly(a.birth_date))}</div>
             <div><span>Idade na prova:</span> ${escapeHtml(a.age_on_race_day ?? '—')}</div>
-            <div><span>Sexo:</span> ${escapeHtml(a.sex || '—')}</div>
-            <div><span>WhatsApp:</span> ${escapeHtml(a.whatsapp || '—')}</div>
-            <div><span>E-mail:</span> ${escapeHtml(a.email || '—')}</div>
-            <div><span>Cidade/UF:</span> ${escapeHtml([a.city,a.state].filter(Boolean).join('/')) || '—'}</div>
+            <div><span>Sexo:</span> ${escapeHtml(athleteField(a, 'sex'))}</div>
+            <div><span>WhatsApp:</span> ${escapeHtml(athleteField(a, 'whatsapp'))}</div>
+            <div><span>E-mail:</span> ${escapeHtml(athleteField(a, 'email'))}</div>
+            <div><span>Cidade/UF:</span> ${escapeHtml([athleteField(a, 'city'), athleteField(a, 'state')].filter(v => v && v !== '—').join(' / ') || '—')}</div>
             <div><span>Camisa:</span> ${escapeHtml(a.shirt_size || '—')}</div>
             <div><span>Sandália:</span> ${escapeHtml(a.sandal_size || '—')}</div>
             <div><span>Nº atleta:</span> ${escapeHtml(a.athlete_number || '—')}</div>
@@ -412,11 +453,11 @@
       $('detailContent').innerHTML = `
         <div class="modal-grid">
           ${detail('Equipe', r.team_name)}
-          ${detail('Modalidade', r.modality)}
+          ${detail('Modalidade', registrationModality(r))}
           ${detail('Quantidade de atletas', r.athlete_count)}
           ${detail('Valor total', money(r.amount_due_cents))}
           ${detail('Percurso', r.route_choice)}
-          ${detail('Experiência', r.experience)}
+          ${detail('Experiência', registrationExperience(r))}
           ${detail('Status do pagamento', statusLabel(r.payment_status))}
           ${detail('Data do pagamento', dateTime(r.paid_at))}
           ${detail('Contato de emergência', r.emergency_contact_name)}
@@ -425,13 +466,22 @@
         </div>
         <h3 class="section-title">Atletas vinculados (${group.length})</h3>
         ${athleteHtml}
+        <h3 class="section-title">Dados selecionados no formulário</h3>
         <div class="edit-grid">
+          <div class="form-row">
+            <label for="editModality">Modalidade selecionada</label>
+            <input id="editModality" class="field" type="text" readonly value="${escapeHtml(registrationModality(r))}">
+          </div>
+          <div class="form-row">
+            <label for="editExperience">Experiência informada</label>
+            <textarea id="editExperience" class="field" readonly>${escapeHtml(registrationExperience(r))}</textarea>
+          </div>
           <div class="form-row">
             <label for="editPaymentStatus">Status do pagamento</label>
             <select id="editPaymentStatus" class="field">
-              <option value="pending" ${r.payment_status === 'pending' ? 'selected' : ''}>Pendente</option>
-              <option value="confirmed" ${r.payment_status === 'confirmed' ? 'selected' : ''}>Confirmado</option>
-              <option value="cancelled" ${r.payment_status === 'cancelled' ? 'selected' : ''}>Cancelado</option>
+              <option value="pending" ${normalizeStatus(r.payment_status) === 'pending' ? 'selected' : ''}>Pendente</option>
+              <option value="confirmed" ${normalizeStatus(r.payment_status) === 'confirmed' ? 'selected' : ''}>Confirmado</option>
+              <option value="cancelled" ${normalizeStatus(r.payment_status) === 'cancelled' ? 'selected' : ''}>Cancelado</option>
             </select>
           </div>
           <div class="form-row">
@@ -462,16 +512,16 @@
           .select('*')
           .single();
         if (error) throw error;
+        // Usa o status normalizado devolvido pelo banco e atualiza todas as áreas do painel.
+        data.payment_status = normalizeStatus(data.payment_status);
         activeRegistration = data;
         const index = registrations.findIndex(r => r.id === data.id);
         if (index >= 0) registrations[index] = data;
         updateStats();
         renderRegistrations();
+        // Reabre os detalhes com o registro recém-salvo, inclusive paid_at atualizado pelo gatilho.
+        openDetails(data.id);
         showNotice('saveNotice', 'Alterações salvas com sucesso.', 'success');
-        // Atualiza os detalhes para exibir a nova data paid_at calculada pelo gatilho.
-        setTimeout(() => {
-          if (activeRegistration && activeRegistration.id === data.id) openDetails(data.id);
-        }, 500);
       } catch (err) {
         showNotice('saveNotice', 'Não foi possível salvar: ' + err.message, 'error');
       } finally {
